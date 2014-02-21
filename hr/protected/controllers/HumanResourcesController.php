@@ -1,15 +1,18 @@
 <?php
 
-class HumanResourcesController extends GxController {
+class HumanResourcesController extends GxController
+{
 
 
-	public function actionView($id) {
+	public function actionView($id)
+	{
 		$this->render('view', array(
 			'model' => $this->loadModel($id, 'HumanResources'),
 		));
 	}
 
-	public function actionCreate() {
+	public function actionCreate()
+	{
 		$model = new HumanResources;
 
 
@@ -24,10 +27,11 @@ class HumanResourcesController extends GxController {
 			}
 		}
 
-		$this->render('create', array( 'model' => $model));
+		$this->render('create', array('model' => $model));
 	}
 
-	public function actionUpdate($id) {
+	public function actionUpdate($id)
+	{
 		$model = $this->loadModel($id, 'HumanResources');
 
 
@@ -40,11 +44,12 @@ class HumanResourcesController extends GxController {
 		}
 
 		$this->render('update', array(
-				'model' => $model,
-				));
+			'model' => $model,
+		));
 	}
 
-	public function actionDelete($id) {
+	public function actionDelete($id)
+	{
 		if (Yii::app()->getRequest()->getIsPostRequest()) {
 			$this->loadModel($id, 'HumanResources')->delete();
 
@@ -54,22 +59,29 @@ class HumanResourcesController extends GxController {
 			throw new CHttpException(400, Yii::t('app', 'Your request is invalid.'));
 	}
 
-	public function actionIndex() {
+	public function actionIndex()
+	{
 		$dataProvider = new CActiveDataProvider('HumanResources');
 		$this->render('index', array(
 			'dataProvider' => $dataProvider,
 		));
 	}
 
-	public function actionAdmin() {
+	public function actionAdmin()
+	{
 		$model = new HumanResources('search');
 		$model->unsetAttributes();
+
+		$search = trim(Yii::app()->request->getQuery('search'));
+		if ($search)
+			$model->setAttribute('search', $search);//TODO: need modify
 
 		if (isset($_GET['HumanResources']))
 			$model->setAttributes($_GET['HumanResources']);
 
 		$this->render('admin', array(
 			'model' => $model,
+			'divisions' => Divisions::model()->findAll()
 		));
 	}
 

@@ -1,4 +1,6 @@
 .navbar-search .search-query {
-	box-sizing: border-box;
 	width: 250px;
+}
+.navbar-search div.search-query {
+	padding: 0;
 }
