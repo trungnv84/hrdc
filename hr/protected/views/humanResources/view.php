@@ -20,8 +20,10 @@ $this->menu=array(
 	'data' => $model,
 	'attributes' => array(
 'id',
+'employee_id',
 'name',
 'user_id',
+'username',
 'division_id',
 'avatar',
 'phone',

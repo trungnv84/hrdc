@@ -4,11 +4,17 @@
 	<?php echo GxHtml::link(GxHtml::encode($data->id), array('view', 'id' => $data->id)); ?>
 	<br />
 
+	<?php echo GxHtml::encode($data->getAttributeLabel('employee_id')); ?>:
+	<?php echo GxHtml::encode($data->employee_id); ?>
+	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('name')); ?>:
 	<?php echo GxHtml::encode($data->name); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('user_id')); ?>:
 	<?php echo GxHtml::encode($data->user_id); ?>
+	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('username')); ?>:
+	<?php echo GxHtml::encode($data->username); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('division_id')); ?>:
 	<?php echo GxHtml::encode($data->division_id); ?>
@@ -16,13 +22,13 @@
 	<?php echo GxHtml::encode($data->getAttributeLabel('avatar')); ?>:
 	<?php echo GxHtml::encode($data->avatar); ?>
 	<br />
+	<?php /*
 	<?php echo GxHtml::encode($data->getAttributeLabel('phone')); ?>:
 	<?php echo GxHtml::encode($data->phone); ?>
 	<br />
 	<?php echo GxHtml::encode($data->getAttributeLabel('email')); ?>:
 	<?php echo GxHtml::encode($data->email); ?>
 	<br />
-	<?php /*
 	<?php echo GxHtml::encode($data->getAttributeLabel('skype')); ?>:
 	<?php echo GxHtml::encode($data->skype); ?>
 	<br />

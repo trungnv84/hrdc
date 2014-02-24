@@ -11,13 +11,23 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model, 'employee_id'); ?>
+		<?php echo $form->textField($model, 'employee_id', array('maxlength' => 10)); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model, 'name'); ?>
 		<?php echo $form->textField($model, 'name', array('maxlength' => 60)); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model, 'user_id'); ?>
-		<?php echo $form->textField($model, 'user_id', array('maxlength' => 60)); ?>
+		<?php echo $form->textField($model, 'user_id', array('maxlength' => 10)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'username'); ?>
+		<?php echo $form->textField($model, 'username', array('maxlength' => 60)); ?>
 	</div>
 
 	<div class="row">

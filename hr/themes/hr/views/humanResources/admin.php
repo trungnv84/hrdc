@@ -44,8 +44,9 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 	//'filter' => $model,
 	'columns' => array(
 		/*'id',*/
+		'employee_id',
 		'name',
-		'user_id',
+		'username',
 		'division_id',
 		/*'avatar',*/
 		'phone',

@@ -27,7 +27,10 @@ class HumanResourcesController extends GxController
 			}
 		}
 
-		$this->render('create', array('model' => $model));
+		$this->render('create', array(
+			'model' => $model,
+			'divisions' => Divisions::model()->findAll()
+		));
 	}
 
 	public function actionUpdate($id)
@@ -45,6 +48,7 @@ class HumanResourcesController extends GxController
 
 		$this->render('update', array(
 			'model' => $model,
+			'divisions' => Divisions::model()->findAll()
 		));
 	}
 
@@ -74,7 +78,8 @@ class HumanResourcesController extends GxController
 
 		$search = trim(Yii::app()->request->getQuery('search'));
 		if ($search)
-			$model->setAttribute('search', $search);//TODO: need modify
+			$model->search = $search;
+		//TODO: need modify
 
 		if (isset($_GET['HumanResources']))
 			$model->setAttributes($_GET['HumanResources']);
@@ -85,4 +90,21 @@ class HumanResourcesController extends GxController
 		));
 	}
 
+	public function actionUsersSelection()
+	{
+		$q = trim(Yii::app()->request->getQuery('q'));
+		$params = array('limit' => 10);
+		if ($q) array_push($params, array('condition' => 'username LIKE ?', 'params' => array($q)));
+		$users = Users::model()->findAll($params);
+		//$this->renderPartial('_ajaxContent', array('data' => $users), false, true);
+		echo CJSON::encode($users);
+		/*foreach (Yii::app()->log->routes as $route) {
+			if($route instanceof CWebLogRoute) {
+				$route->enabled = false; // disable any weblogroutes
+			}
+		}
+		header('Content-type: application/json');
+		//$this->layout=false;
+		Yii::app()->end();*/
+	}
 }

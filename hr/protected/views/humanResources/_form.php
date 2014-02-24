@@ -14,14 +14,24 @@
 	<?php echo $form->errorSummary($model); ?>
 
 		<div class="row">
+		<?php echo $form->labelEx($model,'employee_id'); ?>
+		<?php echo $form->textField($model, 'employee_id', array('maxlength' => 10)); ?>
+		<?php echo $form->error($model,'employee_id'); ?>
+		</div><!-- row -->
+		<div class="row">
 		<?php echo $form->labelEx($model,'name'); ?>
 		<?php echo $form->textField($model, 'name', array('maxlength' => 60)); ?>
 		<?php echo $form->error($model,'name'); ?>
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'user_id'); ?>
-		<?php echo $form->textField($model, 'user_id', array('maxlength' => 60)); ?>
+		<?php echo $form->textField($model, 'user_id', array('maxlength' => 10)); ?>
 		<?php echo $form->error($model,'user_id'); ?>
+		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'username'); ?>
+		<?php echo $form->textField($model, 'username', array('maxlength' => 60)); ?>
+		<?php echo $form->error($model,'username'); ?>
 		</div><!-- row -->
 		<div class="row">
 		<?php echo $form->labelEx($model,'division_id'); ?>
