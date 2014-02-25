@@ -1,6 +1,6 @@
 <?php
 
-class HumanResourcesController extends GxController
+class HumanResourcesController extends BaseController
 {
 
 
@@ -92,19 +92,21 @@ class HumanResourcesController extends GxController
 
 	public function actionUsersSelection()
 	{
+		$criteria = new CDbCriteria;
+		$criteria->select = 'id, username';
+		$criteria->limit = 10;
 		$q = trim(Yii::app()->request->getQuery('q'));
-		$params = array('limit' => 10);
-		if ($q) array_push($params, array('condition' => 'username LIKE ?', 'params' => array($q)));
-		$users = Users::model()->findAll($params);
-		//$this->renderPartial('_ajaxContent', array('data' => $users), false, true);
-		echo CJSON::encode($users);
-		/*foreach (Yii::app()->log->routes as $route) {
-			if($route instanceof CWebLogRoute) {
-				$route->enabled = false; // disable any weblogroutes
-			}
+		if ($q) {
+			$criteria->condition = 'username LIKE ?';
+			$criteria->params = array($q . '%');
 		}
-		header('Content-type: application/json');
-		//$this->layout=false;
-		Yii::app()->end();*/
+		$users = Users::model()->findAll($criteria);
+		$this->renderJson(array('users' => $users));
+	}
+
+	public function actionUploadAvatar()
+	{
+
+		$this->renderJson('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');
 	}
 }

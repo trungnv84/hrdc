@@ -4,8 +4,13 @@
 // Yii::setPathOfAlias('local','path/to/local-folder');
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
+define('CONFIG_PATH', dirname(__FILE__));
+define('THEMES_PATH', CONFIG_PATH . DIRECTORY_SEPARATOR . '..'
+		. DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'themes');
+
+
 return array(
-	'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
+	'basePath' => CONFIG_PATH . DIRECTORY_SEPARATOR . '..',
 	'name' => 'Human Resource Data Center',
 	'theme' => 'hr',
 	// preloading 'log' component
@@ -13,6 +18,7 @@ return array(
 	'defaultController' => 'dashboard',
 	// autoloading model and component classes
 	'import' => array(
+		'application.controllers.*',
 		'application.models.*',
 		'application.components.*',
 		'ext.giix-components.*', // giix components

@@ -3,6 +3,7 @@ $cs = Yii::app()->getClientScript();
 $baseUrl = Yii::app()->theme->baseUrl;
 $cs->registerCssFile($baseUrl.'/js/select2-3.4.5/select2.css');
 $cs->registerScriptFile($baseUrl.'/js/select2-3.4.5/select2.js');
+$cs->registerScriptFile($baseUrl.'/js/plupload-2.1.1/plupload.full.min.js');
 $cs->registerScriptFile($baseUrl.'/js/human_resource_form.js');
 ?>
 <div class="form">
@@ -35,6 +36,7 @@ $cs->registerScriptFile($baseUrl.'/js/human_resource_form.js');
 			<?php echo $form->labelEx($model, 'username', array('label' => 'User Account')); ?>
 			<?php echo $form->textField($model, 'username', array('class' => 'span12', 'maxlength' => 60)); ?>
 			<?php echo $form->error($model, 'username'); ?>
+			<?php echo $form->hiddenField($model, 'user_id'); ?>
 		</div>
 		<div class="span2">
 			<?php echo $form->labelEx($model, 'division_id'); ?>
@@ -49,9 +51,9 @@ $cs->registerScriptFile($baseUrl.'/js/human_resource_form.js');
 	</div>
 	<!-- row -->
 	<div class="row">
-		<div class="span3">
+		<div id="avatar_container" class="span3">
 			<?php echo $form->labelEx($model, 'avatar'); ?>
-			<?php echo $form->textField($model, 'avatar', array('class' => 'span12', 'maxlength' => 250)); ?>
+			<?php echo $form->textField($model, 'avatar', array('class' => 'span12', 'maxlength' => 250, 'readonly' => true)); ?>
 			<?php echo $form->error($model, 'avatar'); ?>
 		</div>
 		<div class="span3">

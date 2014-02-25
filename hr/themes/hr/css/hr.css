@@ -4,3 +4,6 @@
 .navbar-search div.search-query {
 	padding: 0;
 }
+#HumanResources_avatar {
+	cursor: pointer;
+}
