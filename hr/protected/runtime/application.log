@@ -2124,3 +2124,57 @@ Stack trace:
 #7 {main}
 REQUEST_URI=/hrdc/hr/humanResources/update/1/humanResources/uploadAvatar
 ---
+2014/02/26 08:54:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "humanResource/quickSearch".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('humanResource/q...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/humanResource/quickSearch?q=d&limit=10&offset=0&_=1393401261996
+HTTP_REFERER=http://localhost/hrdc/hr/humanresources/update/1
+---
+2014/02/26 08:54:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "humanResource/quickSearch".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('humanResource/q...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/humanResource/quickSearch?q=ds&limit=10&offset=0&_=1393401262143
+HTTP_REFERER=http://localhost/hrdc/hr/humanresources/update/1
+---
+2014/02/26 09:04:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "humanResource/quickSearch".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('humanResource/q...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/humanResource/quickSearch?q=df&limit=10&offset=0&_=1393401890226
+HTTP_REFERER=http://localhost/hrdc/hr/humanresources/update/1
+---
+2014/02/26 09:04:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "humanResource/quickSearch".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('humanResource/q...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/humanResource/quickSearch?q=dfdf&limit=10&offset=0&_=1393401890432
+HTTP_REFERER=http://localhost/hrdc/hr/humanresources/update/1
+---
+2014/02/26 09:04:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "humanResource/quickSearch".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('humanResource/q...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/humanResource/quickSearch?q=dfd&limit=10&offset=0&_=1393401894325
+HTTP_REFERER=http://localhost/hrdc/hr/humanresources/update/1
+---
+2014/02/26 09:04:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "humanResource/quickSearch".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('humanResource/q...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/humanResource/quickSearch?q=df&limit=10&offset=0&_=1393401894561
+HTTP_REFERER=http://localhost/hrdc/hr/humanresources/update/1
+---

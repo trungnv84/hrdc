@@ -4,6 +4,7 @@ $baseUrl = Yii::app()->theme->baseUrl;
 $cs->registerCssFile($baseUrl.'/js/select2-3.4.5/select2.css');
 $cs->registerScriptFile($baseUrl.'/js/select2-3.4.5/select2.js');
 $cs->registerScriptFile($baseUrl.'/js/plupload-2.1.1/plupload.full.min.js');
+$cs->registerScriptFile($baseUrl.'/js/hotkey.js');
 $cs->registerScriptFile($baseUrl.'/js/human_resource_form.js');
 ?>
 <div class="form">
@@ -24,7 +25,7 @@ $cs->registerScriptFile($baseUrl.'/js/human_resource_form.js');
 	<div class="row">
 		<div class="span1">
 			<?php echo $form->labelEx($model, 'employee_id', array('label' => 'ID')); ?>
-			<?php echo $form->textField($model, 'employee_id', array('class' => 'span12', 'maxlength' => 10)); ?>
+			<?php echo $form->textField($model, 'employee_id', array('class' => 'span12 hot-key', 'maxlength' => 10)); ?>
 			<?php echo $form->error($model, 'employee_id'); ?>
 		</div>
 		<div class="span3">

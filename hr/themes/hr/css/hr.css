@@ -1,9 +1,32 @@
 .navbar-search .search-query {
 	width: 250px;
 }
+
 .navbar-search div.search-query {
 	padding: 0;
 }
+
 #HumanResources_avatar {
+	background: #ffffff;
 	cursor: pointer;
+}
+
+.hot-key-highlight {
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box; /* Firefox, other Gecko */
+	box-sizing: border-box; /* Opera/IE 8+ */
+	background-color: #3A87AD;
+	border-radius: 9px;
+	color: #FFFFFF;
+	font-size: 11.844px;
+	font-weight: bold;
+	height: 18px;
+	line-height: 14px;
+	margin: -8px 0 0 -8px;
+	padding: 2px 1px 2px 0;
+	text-align: center;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	vertical-align: baseline;
+	width: 18px;
+	white-space: nowrap;
 }
