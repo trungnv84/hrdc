@@ -19,5 +19,8 @@ $( document ).ready(function(){
 				return {results: data};
 			}
 		}
-	});
+	}).bind("select2click", function(){
+			$("#s2id_search_query .select2-focusser").focus().focusin();
+			$(this).select2("open");
+		});
 });

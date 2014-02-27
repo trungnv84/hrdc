@@ -1,3 +1,7 @@
+.subnav.navbar-fixed-top {
+	z-index: 1020;
+}
+
 .navbar-search .search-query {
 	width: 250px;
 }
@@ -12,9 +16,11 @@
 }
 
 .hot-key-highlight {
-	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box; /* Firefox, other Gecko */
-	box-sizing: border-box; /* Opera/IE 8+ */
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-box-shadow: 0 0 1px 1px #FFFFFF;
+	box-shadow: 0 0 1px 1px #FFFFFF;
 	background-color: #3A87AD;
 	border-radius: 9px;
 	color: #FFFFFF;
@@ -29,4 +35,5 @@
 	vertical-align: baseline;
 	width: 18px;
 	white-space: nowrap;
+	z-index: 1;
 }

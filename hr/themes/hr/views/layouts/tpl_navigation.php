@@ -65,7 +65,10 @@ $cs->registerScriptFile($baseUrl.'/js/quick_search.js');
 				<a href="javascript:chooseStyle('style7', 60)"><span class="style" style="background-color:#a30c22;"></span></a>
 			</div>
 			<form id="quick_search" class="navbar-search pull-right" action="">
-				<input type="text" id="search_query" class="search-query span2" placeholder="Search">
+				<input type="text" id="search_query" class="search-query span2 hot-key" placeholder="Search"
+				       data-hot-key-container="#s2id_search_query" data-hot-key-label="Search" data-hot-key-code="49"
+				       data-hot-key-action="trigger" data-hot-key-trigger="select2click" data-hot-key-z-index="1031"
+				       data-hot-key-position="fixed">
 			</form>
 		</div>
 		<!-- container -->

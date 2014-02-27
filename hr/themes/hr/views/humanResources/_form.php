@@ -30,23 +30,25 @@ $cs->registerScriptFile($baseUrl.'/js/human_resource_form.js');
 		</div>
 		<div class="span3">
 			<?php echo $form->labelEx($model, 'name'); ?>
-			<?php echo $form->textField($model, 'name', array('class' => 'span12', 'maxlength' => 60)); ?>
+			<?php echo $form->textField($model, 'name', array('class' => 'span12 hot-key', 'maxlength' => 60)); ?>
 			<?php echo $form->error($model, 'name'); ?>
 		</div>
 		<div class="span2">
 			<?php echo $form->labelEx($model, 'username', array('label' => 'User Account')); ?>
-			<?php echo $form->textField($model, 'username', array('class' => 'span12', 'maxlength' => 60)); ?>
+			<?php echo $form->textField($model, 'username', array('class' => 'span12 hot-key', 'maxlength' => 60,
+				'data-hot-key-container' => '#s2id_HumanResources_username', 'data-hot-key-label' => 'User Account',
+				'data-hot-key-action' => 'trigger', 'data-hot-key-trigger' => 'select2click')); ?>
 			<?php echo $form->error($model, 'username'); ?>
 			<?php echo $form->hiddenField($model, 'user_id'); ?>
 		</div>
 		<div class="span2">
 			<?php echo $form->labelEx($model, 'division_id'); ?>
-			<?php echo $form->dropDownList($model, 'division_id', $divisions, array('empty' => '(Division)', 'class' => 'span12', 'maxlength' => 10)); ?>
+			<?php echo $form->dropDownList($model, 'division_id', $divisions, array('empty' => '(Division)', 'class' => 'span12 hot-key', 'maxlength' => 10)); ?>
 			<?php echo $form->error($model, 'division_id'); ?>
 		</div>
 		<div class="span2">
 			<?php echo $form->labelEx($model, 'phone'); ?>
-			<?php echo $form->textField($model, 'phone', array('class' => 'span12')); ?>
+			<?php echo $form->textField($model, 'phone', array('class' => 'span12 hot-key')); ?>
 			<?php echo $form->error($model, 'phone'); ?>
 		</div>
 	</div>
@@ -54,24 +56,43 @@ $cs->registerScriptFile($baseUrl.'/js/human_resource_form.js');
 	<div class="row">
 		<div id="avatar_container" class="span3">
 			<?php echo $form->labelEx($model, 'avatar'); ?>
-			<?php echo $form->textField($model, 'avatar', array('class' => 'span12', 'maxlength' => 250, 'readonly' => true)); ?>
+			<?php echo $form->textField($model, 'avatar', array('class' => 'span12 hot-key', 'maxlength' => 250,
+				'readonly' => true, 'data-hot-key-action' => 'trigger', 'data-hot-key-trigger' => 'focus,click')); ?>
 			<?php echo $form->error($model, 'avatar'); ?>
 		</div>
 		<div class="span3">
 			<?php echo $form->labelEx($model, 'email'); ?>
-			<?php echo $form->textField($model, 'email', array('class' => 'span12', 'maxlength' => 250)); ?>
+			<?php echo $form->textField($model, 'email', array('class' => 'span12 hot-key', 'maxlength' => 250)); ?>
 			<?php echo $form->error($model, 'email'); ?>
 		</div>
 		<div class="span3">
 			<?php echo $form->labelEx($model, 'skype'); ?>
-			<?php echo $form->textField($model, 'skype', array('class' => 'span12', 'maxlength' => 60)); ?>
+			<?php echo $form->textField($model, 'skype', array('class' => 'span12 hot-key', 'maxlength' => 60)); ?>
 			<?php echo $form->error($model, 'skype'); ?>
 		</div>
 		<div class="span2">
-			<?php
-			echo GxHtml::label('&nbsp;', null);
-			echo GxHtml::htmlButton(Yii::t('app', 'Save'), array('type' => 'submit', 'class' => 'btn btn-primary'));
-			?>
+			<?php echo GxHtml::label('&nbsp;', null);?>
+			<div class="btn-group">
+				<?php
+				echo GxHtml::htmlButton(Yii::t('app', 'Save'), array('type' => 'submit', 'id' => 'btn-save',
+					'class' => 'btn btn-primary hot-key', 'data-hot-key-code' => 's'));
+				?>
+				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li>
+						<a id="btn-save-close" href="javascript:;">Save & close</a>
+					</li>
+					<li>
+						<a id="btn-save-new" href="javascript:;">Save & new</a>
+					</li>
+					<li>
+						<a id="btn-save-edit" href="javascript:;">Save & edit</a>
+					</li>
+				</ul>
+			</div>
+			<input type="hidden" id="redirect" name="redirect" value="<?php echo Yii::app()->user->getState("HumanResources_form_states_redirect", 0);?>">
 		</div>
 	</div>
 	<!--<div class="row">
