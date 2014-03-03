@@ -1,5 +1,5 @@
 <?php
-class Helper
+class ViewHelper
 {
 	public static function division($division)
 	{
