@@ -45,7 +45,7 @@ $saveTexts = array('', ' & close', ' & new')
 		</div>
 		<div class="span2">
 			<?php echo $form->labelEx($model, 'division_id'); ?>
-			<?php echo $form->dropDownList($model, 'division_id', $divisions, array('empty' => '(Division)', 'class' => 'span12 hot-key', 'maxlength' => 10)); ?>
+			<?php echo $form->dropDownList($model, 'division_id', CHtml::listData($divisions, 'id', 'name'), array('empty' => '(Division)', 'class' => 'span12 hot-key', 'maxlength' => 10)); ?>
 			<?php echo $form->error($model, 'division_id'); ?>
 		</div>
 		<div class="span3">

@@ -1,5 +1,4 @@
 <?php
-
 $this->breadcrumbs = array(
 	$model->label(2) => array('index'),
 	Yii::t('app', 'Manage'),
@@ -22,6 +21,12 @@ $('.search-form form').submit(function(){
 	return false;
 });
 ");
+
+$division = array();
+foreach($divisions as &$v) {
+	$division[$v->id] = $v->name;
+}
+Helper::division($division);
 ?>
 
 <h1><?php echo Yii::t('app', 'Manage') . ' ' . GxHtml::encode($model->label(2)); ?></h1>
@@ -47,7 +52,10 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 		'employee_id',
 		'name',
 		'username',
-		'division_id',
+		array(
+			'name'=>'division_id',
+			'value'=>'"($data->division_id) " . Helper::division($data->division_id)'
+		),
 		/*'avatar',*/
 		'phone',
 		'email',
