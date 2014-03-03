@@ -70,26 +70,11 @@
 								result = true;
 							}
 
-							if ((!result && this.shiftDown - this.shiftUp < 2) || (doAction && this.shiftDown == 3 && this.shiftUp == 3)) {
+							if ((!result && this.shiftDown - this.shiftUp < 2) ||
+								(doAction && this.shiftDown == 3 && this.shiftUp == 3)) {
 								clearTimeout(this.shiftTimeout);
 								this.hideSuggest();
 							}
-						}
-						break;
-					case ":shiftUp":
-						if (this.elements && this.elements.length) {
-							if (!this.shiftUp) this.shiftUp = 0;
-							if (!this.shiftDown) this.shiftDown = 0;
-
-							if (this.shiftDown > 0 && this.shiftDown <= 3) {
-								this.shiftUp++;
-							}
-
-							if (this.shiftDown - this.shiftUp > 0) {
-								self.hideSuggest();
-							}
-
-							result = true;
 						}
 						break;
 					case ":shiftDown":
@@ -120,6 +105,22 @@
 								/* else { // == 3
 
 								 }*/
+							}
+
+							result = true;
+						}
+						break;
+					case ":shiftUp":
+						if (this.elements && this.elements.length) {
+							if (!this.shiftUp) this.shiftUp = 0;
+							if (!this.shiftDown) this.shiftDown = 0;
+
+							if (this.shiftDown > 0 && this.shiftDown <= 3) {
+								this.shiftUp++;
+							}
+
+							if (this.shiftDown - this.shiftUp > 0) {
+								self.hideSuggest();
 							}
 
 							result = true;
@@ -388,12 +389,14 @@
 		$(d).keydown(function (event) {
 			if (event.keyCode == 16 && event.shiftKey && !event.ctrlKey && !event.altKey) {
 				$.hostKey(":shiftDown");
+			} else if (event.keyCode == 16 && event.shiftKey && event.ctrlKey && !event.altKey) {
+				$.hostKey(":ctrlShiftDown");
 			} else if (!event.ctrlKey && !event.altKey && (event.keyCode == 27 || $.inArray(String.fromCharCode(event.keyCode), codes.split(" ")) > -1)) {
 				if ($.hostKey(":hotKey", event.keyCode)) {
 					event.preventDefault();
 				}
 			}
-			console.log(event);
+			//console.log(event);
 		}).keyup(function (event) {
 				if (event.keyCode == 16 && !event.shiftKey && !event.ctrlKey && !event.altKey) {
 					$.hostKey(":shiftUp");

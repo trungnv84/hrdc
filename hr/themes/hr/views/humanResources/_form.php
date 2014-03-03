@@ -6,6 +6,8 @@ $cs->registerScriptFile($baseUrl.'/js/select2-3.4.5/select2.js');
 $cs->registerScriptFile($baseUrl.'/js/plupload-2.1.1/plupload.full.min.js');
 $cs->registerScriptFile($baseUrl.'/js/hotkey.js');
 $cs->registerScriptFile($baseUrl.'/js/human_resource_form.js');
+$redirect = Yii::app()->user->getState("HumanResources_form_states_redirect", 0);
+$saveTexts = array('', ' & close', ' & new')
 ?>
 <div class="form">
 
@@ -46,7 +48,7 @@ $cs->registerScriptFile($baseUrl.'/js/human_resource_form.js');
 			<?php echo $form->dropDownList($model, 'division_id', $divisions, array('empty' => '(Division)', 'class' => 'span12 hot-key', 'maxlength' => 10)); ?>
 			<?php echo $form->error($model, 'division_id'); ?>
 		</div>
-		<div class="span2">
+		<div class="span3">
 			<?php echo $form->labelEx($model, 'phone'); ?>
 			<?php echo $form->textField($model, 'phone', array('class' => 'span12 hot-key')); ?>
 			<?php echo $form->error($model, 'phone'); ?>
@@ -72,9 +74,9 @@ $cs->registerScriptFile($baseUrl.'/js/human_resource_form.js');
 		</div>
 		<div class="span2">
 			<?php echo GxHtml::label('&nbsp;', null);?>
-			<div class="btn-group">
+			<div id="btn-submit-group" class="btn-group">
 				<?php
-				echo GxHtml::htmlButton(Yii::t('app', 'Save'), array('type' => 'submit', 'id' => 'btn-save',
+				echo GxHtml::htmlButton('Save' . @$saveTexts[$redirect] , array('type' => 'submit', 'id' => 'btn-save',
 					'class' => 'btn btn-primary hot-key', 'data-hot-key-code' => 's'));
 				?>
 				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -92,7 +94,7 @@ $cs->registerScriptFile($baseUrl.'/js/human_resource_form.js');
 					</li>
 				</ul>
 			</div>
-			<input type="hidden" id="redirect" name="redirect" value="<?php echo Yii::app()->user->getState("HumanResources_form_states_redirect", 0);?>">
+			<input type="hidden" id="redirect" name="redirect" value="<?php echo $redirect;?>">
 		</div>
 	</div>
 	<!--<div class="row">

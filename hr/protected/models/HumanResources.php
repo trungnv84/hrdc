@@ -28,7 +28,7 @@ class HumanResources extends BaseHumanResources
 			$criteria->compare('employee_id', $this->search, false, 'OR');
 			$criteria->compare('name', $this->search, true, 'OR');
 			$criteria->compare('username', $this->search, true, 'OR');
-			$criteria->compare('email', $this->search, true, 'OR');
+			$criteria->compare('phone', $this->search, true, 'OR');
 			$criteria->compare('email', $this->search, true, 'OR');
 			$criteria->compare('skype', $this->search, true, 'OR');
 		}

@@ -3,6 +3,7 @@ $cs = Yii::app()->getClientScript();
 $baseUrl = Yii::app()->theme->baseUrl;
 $cs->registerCssFile($baseUrl.'/js/select2-3.4.5/select2.css');
 $cs->registerScriptFile($baseUrl.'/js/select2-3.4.5/select2.js');
+$cs->registerScriptFile($baseUrl.'/js/hotkey.js');
 $cs->registerScriptFile($baseUrl.'/js/quick_search.js');
 ?>
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -66,7 +67,7 @@ $cs->registerScriptFile($baseUrl.'/js/quick_search.js');
 			</div>
 			<form id="quick_search" class="navbar-search pull-right" action="">
 				<input type="text" id="search_query" class="search-query span2 hot-key" placeholder="Search"
-				       data-hot-key-container="#s2id_search_query" data-hot-key-label="Search" data-hot-key-code="49"
+				       data-hot-key-container="#s2id_search_query" data-hot-key-label="Search" data-hot-key-code="z"
 				       data-hot-key-action="trigger" data-hot-key-trigger="select2click" data-hot-key-z-index="1031"
 				       data-hot-key-position="fixed">
 			</form>

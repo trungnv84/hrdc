@@ -5,12 +5,12 @@
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 define('CONFIG_PATH', dirname(__FILE__));
-define('THEMES_PATH', CONFIG_PATH . DIRECTORY_SEPARATOR . '..'
-		. DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'themes');
+define('THEMES_PATH', realpath(CONFIG_PATH . DIRECTORY_SEPARATOR . '..'
+		. DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'themes'));
 
 
 return array(
-	'basePath' => CONFIG_PATH . DIRECTORY_SEPARATOR . '..',
+	'basePath' => realpath(CONFIG_PATH . DIRECTORY_SEPARATOR . '..'),
 	'name' => 'Human Resource Data Center',
 	'theme' => 'hr',
 	// preloading 'log' component

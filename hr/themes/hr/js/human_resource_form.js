@@ -89,7 +89,8 @@ $(document).ready(function () {
 				$("#HumanResources_avatar").click(function () {
 					uploader.start();
 				}).keypress(function (event) {
-						if (event.key == "Enter" && event.keyCode == 13) {
+						var codes = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 0 1 2 3 4 5 6 7 8 9";
+						if (event.keyCode == 13 || $.inArray(String.fromCharCode(event.keyCode), codes.split(" ")) > -1) {
 							event.preventDefault();
 							$(this).click();
 						}
@@ -97,15 +98,36 @@ $(document).ready(function () {
 			},
 
 			FilesAdded: function (up, files) {
+				$("#btn-submit-group button.btn").attr("disabled", false);
+				var avatar = $(up.settings.browse_button);
 				plupload.each(files, function (file) {
-					$(uploader.settings.browse_button).val(file.name);
+					avatar.data("val", avatar.val());
+					avatar.val(file.name);
 				});
 				uploader.start();
 			},
 
+			BeforeUpload: function(up, file) {
+				$("#btn-submit-group button.btn").attr("disabled", true);
+			},
+
+			/*UploadFile: function(up, file) {
+				console.log("UploadFile", up, file);
+			},*/
+
+			ChunkUploaded: function(up, file, part) {
+				var avatar = $(up.settings.browse_button);
+				avatar.val($.parseJSON(part.response).result);
+			},
+
+			FileUploaded: function(up, file, part) {
+				var avatar = $(up.settings.browse_button);
+				avatar.val($.parseJSON(part.response).result);
+			},
+
 			UploadProgress: function (up, file) {
-				//console.log(up.total.percent);
-				$('#HumanResources_avatar').attr("style",
+				var avatar = $(up.settings.browse_button);
+				avatar.attr("style",
 					"position: relative; z-index: 1;" +
 						"background: -moz-linear-gradient(left,  rgba(125,185,232,1) 0%, rgba(125,185,232," + up.total.percent / 100 + ") " + up.total.percent + "%, rgba(255,255,255," + up.total.percent / 100 + ") " + up.total.percent + "%, rgba(255,255,255,0) 100%); /* FF3.6+ */" +
 						"background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(125,185,232,1)), color-stop(" + up.total.percent + "%,rgba(125,185,232," + up.total.percent / 100 + ")), color-stop(" + up.total.percent + "%,rgba(255,255,255," + up.total.percent / 100 + ")), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */" +
@@ -115,15 +137,20 @@ $(document).ready(function () {
 						"background: linear-gradient(to right,  rgba(125,185,232,1) 0%,rgba(125,185,232," + up.total.percent / 100 + ") " + up.total.percent + "%,rgba(255,255,255," + up.total.percent / 100 + ") " + up.total.percent + "%,rgba(255,255,255,0) 100%); /* W3C */" +
 						"filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */"
 				);
-				if (up.total.percent >= 100) {
-					setTimeout(function () {
-						$('#HumanResources_avatar').attr("style", "position: relative; z-index: 1;");
-					}, 1500);
-				}
+			},
+
+			UploadComplete: function (up, files) {
+				setTimeout(function () {
+					avatar.attr("style", "position: relative; z-index: 1;");
+				}, 1500);
+				$("#btn-submit-group button.btn").attr("disabled", false);
 			},
 
 			Error: function (up, err) {
-				//document.getElementById('console').innerHTML += "\nError #" + err.code + ": " + err.message;
+				var avatar = $(up.settings.browse_button);
+				avatar.val(avatar.data("val"));
+				alert("Upload Avatar Error #" + err.code + ": " + err.message);
+				$("#btn-submit-group button.btn").attr("disabled", false);
 			}
 		}
 	});
@@ -132,22 +159,22 @@ $(document).ready(function () {
 
 	$("#HumanResources_employee_id").focus().focusin();
 
-	$("#HumanResources_username").bind("select2click", function(){
+	$("#HumanResources_username").bind("select2click", function () {
 		$("#s2id_HumanResources_username .select2-focusser").focus().focusin();
 		$(this).select2("open");
 	});
 
-	$("#btn-save-close").click(function(){
+	$("#btn-save-close").click(function () {
 		$("#redirect").val(1);
 		$("#btn-save").click();
 	});
 
-	$("#btn-save-new").click(function(){
+	$("#btn-save-new").click(function () {
 		$("#redirect").val(2);
 		$("#btn-save").click();
 	});
 
-	$("#btn-save-edit").click(function(){
+	$("#btn-save-edit").click(function () {
 		$("#redirect").val(0);
 		$("#btn-save").click();
 	});
