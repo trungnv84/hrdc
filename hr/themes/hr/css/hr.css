@@ -1,3 +1,7 @@
+.text-right {
+	text-align: right;
+}
+
 .subnav.navbar-fixed-top {
 	z-index: 1020;
 }

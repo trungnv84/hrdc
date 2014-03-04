@@ -65,6 +65,10 @@ class ProjectsController extends GxController {
 		$model = new Projects('search');
 		$model->unsetAttributes();
 
+		$search = Yii::app()->request->getQuery('search');
+		if ($search)
+			$model->search = $search;
+
 		if (isset($_GET['Projects']))
 			$model->setAttributes($_GET['Projects']);
 

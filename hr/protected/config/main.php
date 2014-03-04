@@ -8,6 +8,9 @@ define('CONFIG_PATH', dirname(__FILE__));
 define('THEMES_PATH', realpath(CONFIG_PATH . DIRECTORY_SEPARATOR . '..'
 		. DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'themes'));
 
+define('PROJECT_TYPE_DEDICATED', 'Dedicated');
+define('PROJECT_TYPE_FIXED_BID', 'Fixed Bid');
+
 
 return array(
 	'basePath' => realpath(CONFIG_PATH . DIRECTORY_SEPARATOR . '..'),
@@ -40,6 +43,7 @@ return array(
 		'user' => array(
 			// enable cookie-based authentication
 			'allowAutoLogin' => true,
+			'class' => 'WebUser'
 		),
 		// uncomment the following to enable URLs in path-format
 		'urlManager' => array(
@@ -90,5 +94,9 @@ return array(
 	'params' => array(
 		// this is used in contact page
 		'adminEmail' => 'webmaster@example.com',
+		'projectTypes' => array(
+			1 => PROJECT_TYPE_DEDICATED,
+			2 => PROJECT_TYPE_FIXED_BID,
+		),
 	),
 );

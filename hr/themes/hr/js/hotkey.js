@@ -33,7 +33,7 @@
  *      data-hot-key-container="#id container"
  *      data-hot-key-label="Label use take hot key"
  *      data-hot-key-code="Hot key code"
- *      data-hot-key-action="click, focus or trigger"
+ *      data-hot-key-action="click, focus, js or trigger"
  *      data-hot-key-trigger="action name"
  *      data-hot-key-z-index="1031" #css: z-index of highlight(suggest)
  *      data-hot-key-position="fixed" #css: position of highlight(suggest)
@@ -345,6 +345,12 @@
 									action = action.split(",");
 									for (var i = 0; i < action.length; i++)
 										element.trigger(action[i]);
+								}
+								break;
+							case "js":
+								var action = $.trim(element.data("hot-key-js"));
+								if (action) {
+									eval(action);
 								}
 								break;
 							default :

@@ -2756,3 +2756,747 @@ Stack trace:
 REQUEST_URI=/hrdc/hr/humanResource/quickSearch?q=z&limit=10&offset=0&_=1393902607972
 HTTP_REFERER=http://localhost/hrdc/hr/humanresources/admin
 ---
+2014/03/04 04:41:48 [error] [exception.CException] exception 'CException' with message 'Property "CWebUser.role" is not defined.' in D:\xampp\htdocs\hrdc\framework\base\CComponent.php:173
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CWebUser.php(160): CComponent->__set('role', '1')
+#1 D:\xampp\htdocs\hrdc\hr\protected\components\UserIdentity.php(27): CWebUser->__set('role', '1')
+#2 D:\xampp\htdocs\hrdc\hr\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#3 D:\xampp\htdocs\hrdc\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#4 D:\xampp\htdocs\hrdc\framework\validators\CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#5 D:\xampp\htdocs\hrdc\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#6 D:\xampp\htdocs\hrdc\hr\protected\controllers\SiteController.php(94): CModel->validate()
+#7 D:\xampp\htdocs\hrdc\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#8 D:\xampp\htdocs\hrdc\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 D:\xampp\htdocs\hrdc\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('login')
+#12 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#13 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/hrdc/hr/site/login
+HTTP_REFERER=http://localhost/hrdc/hr/site/login
+---
+2014/03/04 04:42:52 [error] [exception.CException] exception 'CException' with message 'Property "CWebUser.role" is not defined.' in D:\xampp\htdocs\hrdc\framework\base\CComponent.php:173
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CWebUser.php(160): CComponent->__set('role', 0)
+#1 D:\xampp\htdocs\hrdc\hr\protected\components\UserIdentity.php(27): CWebUser->__set('role', 0)
+#2 D:\xampp\htdocs\hrdc\hr\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#3 D:\xampp\htdocs\hrdc\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#4 D:\xampp\htdocs\hrdc\framework\validators\CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#5 D:\xampp\htdocs\hrdc\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#6 D:\xampp\htdocs\hrdc\hr\protected\controllers\SiteController.php(94): CModel->validate()
+#7 D:\xampp\htdocs\hrdc\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#8 D:\xampp\htdocs\hrdc\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 D:\xampp\htdocs\hrdc\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('login')
+#12 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#13 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/hrdc/hr/site/login
+HTTP_REFERER=http://localhost/hrdc/hr/site/login
+---
+2014/03/04 04:43:39 [error] [exception.CException] exception 'CException' with message 'Property "CWebUser.role" is not defined.' in D:\xampp\htdocs\hrdc\framework\base\CComponent.php:173
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CWebUser.php(160): CComponent->__set('role', '1')
+#1 D:\xampp\htdocs\hrdc\hr\protected\components\UserIdentity.php(28): CWebUser->__set('role', '1')
+#2 D:\xampp\htdocs\hrdc\hr\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#3 D:\xampp\htdocs\hrdc\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#4 D:\xampp\htdocs\hrdc\framework\validators\CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#5 D:\xampp\htdocs\hrdc\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#6 D:\xampp\htdocs\hrdc\hr\protected\controllers\SiteController.php(94): CModel->validate()
+#7 D:\xampp\htdocs\hrdc\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#8 D:\xampp\htdocs\hrdc\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 D:\xampp\htdocs\hrdc\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('login')
+#12 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#13 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/hrdc/hr/site/login
+HTTP_REFERER=http://localhost/hrdc/hr/site/login
+---
+2014/03/04 04:44:55 [error] [exception.CException] exception 'CException' with message 'Property "CWebUser.roles" is not defined.' in D:\xampp\htdocs\hrdc\framework\base\CComponent.php:173
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CWebUser.php(160): CComponent->__set('roles', '1')
+#1 D:\xampp\htdocs\hrdc\hr\protected\components\UserIdentity.php(28): CWebUser->__set('roles', '1')
+#2 D:\xampp\htdocs\hrdc\hr\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#3 D:\xampp\htdocs\hrdc\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#4 D:\xampp\htdocs\hrdc\framework\validators\CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#5 D:\xampp\htdocs\hrdc\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#6 D:\xampp\htdocs\hrdc\hr\protected\controllers\SiteController.php(94): CModel->validate()
+#7 D:\xampp\htdocs\hrdc\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#8 D:\xampp\htdocs\hrdc\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 D:\xampp\htdocs\hrdc\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('login')
+#12 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#13 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/hrdc/hr/site/login
+HTTP_REFERER=http://localhost/hrdc/hr/site/login
+---
+2014/03/04 04:52:01 [error] [exception.CException] exception 'CException' with message 'Property "CWebUser.roles" is not defined.' in D:\xampp\htdocs\hrdc\framework\base\CComponent.php:173
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CWebUser.php(160): CComponent->__set('roles', '1')
+#1 D:\xampp\htdocs\hrdc\hr\protected\components\UserIdentity.php(28): CWebUser->__set('roles', '1')
+#2 D:\xampp\htdocs\hrdc\hr\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#3 D:\xampp\htdocs\hrdc\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#4 D:\xampp\htdocs\hrdc\framework\validators\CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#5 D:\xampp\htdocs\hrdc\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#6 D:\xampp\htdocs\hrdc\hr\protected\controllers\SiteController.php(94): CModel->validate()
+#7 D:\xampp\htdocs\hrdc\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#8 D:\xampp\htdocs\hrdc\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 D:\xampp\htdocs\hrdc\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('login')
+#12 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#13 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/hrdc/hr/site/login
+HTTP_REFERER=http://localhost/hrdc/hr/site/login
+---
+2014/03/04 04:54:23 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users/admin')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/admin
+---
+2014/03/04 04:55:23 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users
+---
+2014/03/04 04:55:28 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users/admin')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/admin
+---
+2014/03/04 04:56:24 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users/admin')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/admin
+---
+2014/03/04 04:57:23 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('index')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users/index')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/index
+---
+2014/03/04 04:57:43 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('index')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users/index')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/index
+---
+2014/03/04 04:57:45 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('index')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users/index')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/index
+---
+2014/03/04 04:58:01 [error] [php] Invalid argument supplied for foreach() (D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:104)
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#1 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): UsersController->runActionWithFilters()
+#3 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): UsersController->run()
+#4 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\hrdc\hr\index.php(13): CWebApplication->run()
+REQUEST_URI=/hrdc/hr/users/index
+in D:\xampp\htdocs\hrdc\hr\index.php (13)
+2014/03/04 04:58:56 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('index')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users/index')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/index
+---
+2014/03/04 04:58:59 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('index')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users/index')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/index
+---
+2014/03/04 05:05:39 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('index')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users/index')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/index
+---
+2014/03/04 05:08:28 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('index')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users/index')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/index
+---
+2014/03/04 05:09:11 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users
+---
+2014/03/04 05:09:17 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users/admin')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/admin
+---
+2014/03/04 05:15:24 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users/admin')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/admin
+---
+2014/03/04 05:15:27 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/
+---
+2014/03/04 05:15:44 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('index')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users/index')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/index
+---
+2014/03/04 05:15:48 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/
+---
+2014/03/04 05:15:53 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('create')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users/create')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/create
+---
+2014/03/04 05:16:07 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/
+---
+2014/03/04 05:16:23 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/
+---
+2014/03/04 05:18:25 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/
+---
+2014/03/04 05:18:26 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/
+---
+2014/03/04 05:19:52 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/
+---
+2014/03/04 05:20:01 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/
+---
+2014/03/04 05:20:29 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users
+---
+2014/03/04 05:20:47 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users
+---
+2014/03/04 05:21:17 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('create')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users/create')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users/create
+HTTP_REFERER=http://localhost/hrdc/hr/users
+---
+2014/03/04 05:32:48 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users
+HTTP_REFERER=http://localhost/hrdc/hr/site/login
+---
+2014/03/04 05:33:00 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), 'You are not aut...')
+#1 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('')
+#8 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users')
+#9 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/hrdc/hr/users
+HTTP_REFERER=http://localhost/hrdc/hr/site/login
+---
+2014/03/04 10:22:48 [error] [exception.CException] exception 'CException' with message 'Property "Users.role" is not defined.' in D:\xampp\htdocs\hrdc\framework\base\CComponent.php:130
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\db\ar\CActiveRecord.php(145): CComponent->__get('role')
+#1 D:\xampp\htdocs\hrdc\hr\protected\models\_base\BaseUsers.php(73): CActiveRecord->__get('role')
+#2 D:\xampp\htdocs\hrdc\hr\protected\views\users\admin.php(42): BaseUsers->search()
+#3 D:\xampp\htdocs\hrdc\framework\web\CBaseController.php(126): require('D:\xampp\htdocs...')
+#4 D:\xampp\htdocs\hrdc\framework\web\CBaseController.php(95): CBaseController->renderInternal('D:\xampp\htdocs...', Array, true)
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(869): CBaseController->renderFile('D:\xampp\htdocs...', Array, true)
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#7 D:\xampp\htdocs\hrdc\hr\protected\controllers\UsersController.php(107): CController->render('admin', Array)
+#8 D:\xampp\htdocs\hrdc\framework\web\actions\CInlineAction.php(49): UsersController->actionAdmin()
+#9 D:\xampp\htdocs\hrdc\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#16 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('admin')
+#18 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users/admin')
+#19 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#20 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/hrdc/hr/users/admin
+---
+2014/03/04 10:22:59 [error] [exception.CException] exception 'CException' with message 'Property "Users.role" is not defined.' in D:\xampp\htdocs\hrdc\framework\base\CComponent.php:130
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\db\ar\CActiveRecord.php(145): CComponent->__get('role')
+#1 D:\xampp\htdocs\hrdc\hr\protected\models\_base\BaseUsers.php(73): CActiveRecord->__get('role')
+#2 D:\xampp\htdocs\hrdc\hr\protected\views\users\admin.php(42): BaseUsers->search()
+#3 D:\xampp\htdocs\hrdc\framework\web\CBaseController.php(126): require('D:\xampp\htdocs...')
+#4 D:\xampp\htdocs\hrdc\framework\web\CBaseController.php(95): CBaseController->renderInternal('D:\xampp\htdocs...', Array, true)
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(869): CBaseController->renderFile('D:\xampp\htdocs...', Array, true)
+#6 D:\xampp\htdocs\hrdc\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#7 D:\xampp\htdocs\hrdc\hr\protected\controllers\UsersController.php(107): CController->render('admin', Array)
+#8 D:\xampp\htdocs\hrdc\framework\web\actions\CInlineAction.php(49): UsersController->actionAdmin()
+#9 D:\xampp\htdocs\hrdc\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 D:\xampp\htdocs\hrdc\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 D:\xampp\htdocs\hrdc\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 D:\xampp\htdocs\hrdc\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 D:\xampp\htdocs\hrdc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 D:\xampp\htdocs\hrdc\framework\web\CController.php(291): CFilterChain->run()
+#16 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('admin')
+#18 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('users/admin')
+#19 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#20 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/hrdc/hr/users/admin
+HTTP_REFERER=http://localhost/hrdc/hr/users/
+---
+2014/03/04 11:16:43 [error] [php] Invalid argument supplied for foreach() (D:\xampp\htdocs\hrdc\framework\web\helpers\CHtml.php:2325)
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\hr\themes\hr\views\projects\_search.php(15): GxActiveForm->dropDownList()
+#1 D:\xampp\htdocs\hrdc\framework\web\CBaseController.php(126): require()
+#2 D:\xampp\htdocs\hrdc\framework\web\CBaseController.php(95): ProjectsController->renderInternal()
+#3 D:\xampp\htdocs\hrdc\framework\web\CController.php(869): ProjectsController->renderFile()
+#4 D:\xampp\htdocs\hrdc\hr\protected\views\projects\admin.php(37): ProjectsController->renderPartial()
+#5 D:\xampp\htdocs\hrdc\framework\web\CBaseController.php(126): require()
+#6 D:\xampp\htdocs\hrdc\framework\web\CBaseController.php(95): ProjectsController->renderInternal()
+#7 D:\xampp\htdocs\hrdc\framework\web\CController.php(869): ProjectsController->renderFile()
+#8 D:\xampp\htdocs\hrdc\framework\web\CController.php(782): ProjectsController->renderPartial()
+#9 D:\xampp\htdocs\hrdc\hr\protected\controllers\ProjectsController.php(77): ProjectsController->render()
+#10 D:\xampp\htdocs\hrdc\framework\web\actions\CInlineAction.php(49): ProjectsController->actionAdmin()
+#11 D:\xampp\htdocs\hrdc\framework\web\CController.php(308): CInlineAction->runWithParams()
+#12 D:\xampp\htdocs\hrdc\framework\web\CController.php(286): ProjectsController->runAction()
+#13 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): ProjectsController->runActionWithFilters()
+#14 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): ProjectsController->run()
+#15 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 D:\xampp\htdocs\hrdc\hr\index.php(13): CWebApplication->run()
+REQUEST_URI=/hrdc/hr/resourceallocation/admin
+in D:\xampp\htdocs\hrdc\hr\themes\hr\views\projects\_search.php (15)
+in D:\xampp\htdocs\hrdc\hr\protected\views\projects\admin.php (37)
+in D:\xampp\htdocs\hrdc\hr\protected\controllers\ProjectsController.php (77)
+in D:\xampp\htdocs\hrdc\hr\index.php (13)
+2014/03/04 11:25:39 [error] [php] trim() expects parameter 1 to be string, array given (D:\xampp\htdocs\hrdc\hr\protected\controllers\ProjectsController.php:68)
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 D:\xampp\htdocs\hrdc\framework\web\CController.php(286): ProjectsController->runAction()
+#2 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): ProjectsController->runActionWithFilters()
+#3 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): ProjectsController->run()
+#4 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 D:\xampp\htdocs\hrdc\hr\index.php(13): CWebApplication->run()
+REQUEST_URI=/hrdc/hr/resourceallocation/admin?Projects%5Btype%5D=0&ajax=projects-grid&search%5Btext%5D=
+in D:\xampp\htdocs\hrdc\hr\protected\controllers\ProjectsController.php (68)
+in D:\xampp\htdocs\hrdc\hr\index.php (13)
+2014/03/04 11:45:12 [error] [php] Undefined variable: cs (D:\xampp\htdocs\hrdc\hr\themes\hr\views\humanResources\_search.php:2)
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CController.php(869): HumanResourcesController->renderFile()
+#1 D:\xampp\htdocs\hrdc\hr\themes\hr\views\humanResources\admin.php(43): HumanResourcesController->renderPartial()
+#2 D:\xampp\htdocs\hrdc\framework\web\CBaseController.php(126): require()
+#3 D:\xampp\htdocs\hrdc\framework\web\CBaseController.php(95): HumanResourcesController->renderInternal()
+#4 D:\xampp\htdocs\hrdc\framework\web\CController.php(869): HumanResourcesController->renderFile()
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(782): HumanResourcesController->renderPartial()
+#6 D:\xampp\htdocs\hrdc\hr\protected\controllers\HumanResourcesController.php(112): HumanResourcesController->render()
+#7 D:\xampp\htdocs\hrdc\framework\web\actions\CInlineAction.php(49): HumanResourcesController->actionAdmin()
+#8 D:\xampp\htdocs\hrdc\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 D:\xampp\htdocs\hrdc\framework\web\CController.php(286): HumanResourcesController->runAction()
+#10 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): HumanResourcesController->runActionWithFilters()
+#11 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): HumanResourcesController->run()
+#12 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 D:\xampp\htdocs\hrdc\hr\index.php(13): CWebApplication->run()
+REQUEST_URI=/hrdc/hr/humanresources/admin
+in D:\xampp\htdocs\hrdc\hr\themes\hr\views\humanResources\_search.php (2)
+in D:\xampp\htdocs\hrdc\hr\themes\hr\views\humanResources\admin.php (43)
+in D:\xampp\htdocs\hrdc\hr\protected\controllers\HumanResourcesController.php (112)
+in D:\xampp\htdocs\hrdc\hr\index.php (13)
+2014/03/04 11:46:48 [error] [php] Undefined variable: cs (D:\xampp\htdocs\hrdc\hr\themes\hr\views\humanResources\_search.php:4)
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CController.php(869): HumanResourcesController->renderFile()
+#1 D:\xampp\htdocs\hrdc\hr\themes\hr\views\humanResources\admin.php(43): HumanResourcesController->renderPartial()
+#2 D:\xampp\htdocs\hrdc\framework\web\CBaseController.php(126): require()
+#3 D:\xampp\htdocs\hrdc\framework\web\CBaseController.php(95): HumanResourcesController->renderInternal()
+#4 D:\xampp\htdocs\hrdc\framework\web\CController.php(869): HumanResourcesController->renderFile()
+#5 D:\xampp\htdocs\hrdc\framework\web\CController.php(782): HumanResourcesController->renderPartial()
+#6 D:\xampp\htdocs\hrdc\hr\protected\controllers\HumanResourcesController.php(112): HumanResourcesController->render()
+#7 D:\xampp\htdocs\hrdc\framework\web\actions\CInlineAction.php(49): HumanResourcesController->actionAdmin()
+#8 D:\xampp\htdocs\hrdc\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 D:\xampp\htdocs\hrdc\framework\web\CController.php(286): HumanResourcesController->runAction()
+#10 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): HumanResourcesController->runActionWithFilters()
+#11 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): HumanResourcesController->run()
+#12 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 D:\xampp\htdocs\hrdc\hr\index.php(13): CWebApplication->run()
+REQUEST_URI=/hrdc/hr/humanresources/admin
+in D:\xampp\htdocs\hrdc\hr\themes\hr\views\humanResources\_search.php (4)
+in D:\xampp\htdocs\hrdc\hr\themes\hr\views\humanResources\admin.php (43)
+in D:\xampp\htdocs\hrdc\hr\protected\controllers\HumanResourcesController.php (112)
+in D:\xampp\htdocs\hrdc\hr\index.php (13)
+2014/03/04 11:47:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hr/js/human_resource_admin.js".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/hr/js/hu...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/themes/hr/js/human_resource_admin.js
+HTTP_REFERER=http://localhost/hrdc/hr/humanresources/admin
+---
+2014/03/04 11:47:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hr/js/human_resource_admin.js".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/hr/js/hu...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/themes/hr/js/human_resource_admin.js
+HTTP_REFERER=http://localhost/hrdc/hr/humanresources/admin
+---
+2014/03/04 12:10:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "undefined".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('undefined')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/undefined
+HTTP_REFERER=http://localhost/hrdc/hr/humanresources/admin
+---

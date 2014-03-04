@@ -13,8 +13,8 @@
 	<?php echo GxHtml::encode($data->getAttributeLabel('email')); ?>:
 	<?php echo GxHtml::encode($data->email); ?>
 	<br />
-	<?php echo GxHtml::encode($data->getAttributeLabel('role')); ?>:
-	<?php echo GxHtml::encode($data->role); ?>
+	<?php echo GxHtml::encode($data->getAttributeLabel('roles')); ?>:
+	<?php echo GxHtml::encode($data->roles); ?>
 	<br />
 
 </div>

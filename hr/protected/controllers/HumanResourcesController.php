@@ -102,7 +102,6 @@ class HumanResourcesController extends BaseController
 		$search = trim(Yii::app()->request->getQuery('search'));
 		if ($search)
 			$model->search = $search;
-		//TODO: need modify
 
 		if (isset($_GET['HumanResources']))
 			$model->setAttributes($_GET['HumanResources']);

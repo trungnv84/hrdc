@@ -16,7 +16,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('users-grid', {
+	$.fn.yiiGridView.update('projects-grid', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -38,15 +38,27 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id' => 'users-grid',
+	'id' => 'projects-grid',
 	'dataProvider' => $model->search(),
-	'filter' => $model,
+	//'filter' => $model,
 	'columns' => array(
 		'id',
-		'username',
-		'password',
-		'email',
-		'roles',
+		'name',
+		'short_name',
+		/*
+		'image',
+		'logo',
+		'icon',
+		'type',
+		'billable_effort',
+		'total_effort',
+		'actual_effort',
+		'discovery_phase_starts',
+		'development_phase_starts',
+		'end_development_phase_starts',
+		'uat_phase_starts',
+		'resources',
+		*/
 		array(
 			'class' => 'CButtonColumn',
 		),

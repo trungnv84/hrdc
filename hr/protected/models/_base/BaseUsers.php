@@ -13,7 +13,7 @@
  * @property string $username
  * @property string $password
  * @property string $email
- * @property integer $role
+ * @property integer $roles
  *
  */
 abstract class BaseUsers extends GxActiveRecord {
@@ -36,10 +36,10 @@ abstract class BaseUsers extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('role', 'numerical', 'integerOnly'=>true),
+			array('roles', 'numerical', 'integerOnly'=>true),
 			array('username, password, email', 'length', 'max'=>128),
-			array('username, password, email, role', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, username, password, email, role', 'safe', 'on'=>'search'),
+			array('username, password, email, roles', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, username, password, email, roles', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,7 +59,7 @@ abstract class BaseUsers extends GxActiveRecord {
 			'username' => Yii::t('app', 'Username'),
 			'password' => Yii::t('app', 'Password'),
 			'email' => Yii::t('app', 'Email'),
-			'role' => Yii::t('app', 'Role'),
+			'roles' => Yii::t('app', 'Roles'),
 		);
 	}
 
@@ -70,7 +70,7 @@ abstract class BaseUsers extends GxActiveRecord {
 		$criteria->compare('username', $this->username, true);
 		$criteria->compare('password', $this->password, true);
 		$criteria->compare('email', $this->email, true);
-		$criteria->compare('role', $this->role);
+		$criteria->compare('roles', $this->roles);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

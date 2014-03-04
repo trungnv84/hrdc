@@ -29,9 +29,9 @@
 		<?php echo $form->error($model,'email'); ?>
 		</div><!-- row -->
 		<div class="row">
-		<?php echo $form->labelEx($model,'role'); ?>
-		<?php echo $form->textField($model, 'role'); ?>
-		<?php echo $form->error($model,'role'); ?>
+		<?php echo $form->labelEx($model,'roles'); ?>
+		<?php echo $form->textField($model, 'roles'); ?>
+		<?php echo $form->error($model,'roles'); ?>
 		</div><!-- row -->
 
 

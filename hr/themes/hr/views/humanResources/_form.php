@@ -1,6 +1,6 @@
 <?php
-$cs = Yii::app()->getClientScript();
-$baseUrl = Yii::app()->theme->baseUrl;
+if (!isset($cs)) $cs = Yii::app()->getClientScript();
+if (!isset($baseUrl)) $baseUrl = Yii::app()->theme->baseUrl;
 $cs->registerCssFile($baseUrl.'/js/select2-3.4.5/select2.css');
 $cs->registerScriptFile($baseUrl.'/js/select2-3.4.5/select2.js');
 $cs->registerScriptFile($baseUrl.'/js/plupload-2.1.1/plupload.full.min.js');
