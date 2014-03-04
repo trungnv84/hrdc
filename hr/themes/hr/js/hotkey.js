@@ -71,10 +71,17 @@
 							}
 
 							if ((!result && this.shiftDown - this.shiftUp < 2) ||
-								(doAction && this.shiftDown == 3 && this.shiftUp == 3)) {
+								(doAction && this.shiftDown >= 3 && this.shiftUp >= 3)) {
 								clearTimeout(this.shiftTimeout);
 								this.hideSuggest();
 							}
+						}
+						break;
+					case ":showSuggest":
+						if (this.elements && this.elements.length) {
+							this.shiftUp = 4;
+							this.shiftDown = 4;
+							if (!this.showedSuggest) this.showSuggest();
 						}
 						break;
 					case ":shiftDown":
@@ -82,7 +89,7 @@
 							if (!this.shiftUp) this.shiftUp = 0;
 							if (!this.shiftDown) this.shiftDown = 0;
 
-							if (this.shiftDown >= 0 && this.shiftDown < 4) {
+							if (this.shiftDown >= 0 && this.shiftDown <= 3) {
 								this.shiftDown++;
 								clearTimeout(this.shiftTimeout);
 
@@ -387,16 +394,18 @@
 		}
 
 		$(d).keydown(function (event) {
-			if (event.keyCode == 16 && event.shiftKey && !event.ctrlKey && !event.altKey) {
+			if ($.inArray(event.keyCode, [16, 17]) > -1 && event.shiftKey && event.ctrlKey && !event.altKey) {
+				$.hostKey(":showSuggest");
+			} else if (90 == event.keyCode && !event.shiftKey && !event.ctrlKey && event.altKey) {
+				$.hostKey(":showSuggest");
+			} else if (16 == event.keyCode && event.shiftKey && !event.ctrlKey && !event.altKey) {
 				$.hostKey(":shiftDown");
-			} else if (event.keyCode == 16 && event.shiftKey && event.ctrlKey && !event.altKey) {
-				$.hostKey(":ctrlShiftDown");
-			} else if (!event.ctrlKey && !event.altKey && (event.keyCode == 27 || $.inArray(String.fromCharCode(event.keyCode), codes.split(" ")) > -1)) {
+			} else if (!event.ctrlKey && !event.altKey && (27 == event.keyCode || $.inArray(String.fromCharCode(event.keyCode), codes.split(" ")) > -1)) {
 				if ($.hostKey(":hotKey", event.keyCode)) {
 					event.preventDefault();
 				}
 			}
-			//console.log(event);
+			console.log(event);
 		}).keyup(function (event) {
 				if (event.keyCode == 16 && !event.shiftKey && !event.ctrlKey && !event.altKey) {
 					$.hostKey(":shiftUp");

@@ -46,6 +46,10 @@ return array(
 			'urlFormat' => 'path',
 			'showScriptName' => false,
 			'rules' => array(
+				'resourceallocation/<id:\d+>' => 'projects/view',
+				'resourceallocation/<action:\w+>/<id:\d+>' => 'projects/<action>',
+				'resourceallocation/<action:\w+>' => 'projects/<action>',
+
 				'<controller:\w+>/<id:\d+>' => '<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
 				'<controller:\w+>/<action:\w+>' => '<controller>/<action>',

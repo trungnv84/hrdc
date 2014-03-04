@@ -16,7 +16,14 @@
  * @property string $logo
  * @property string $icon
  * @property integer $type
- * @property string $params
+ * @property string $billable_effort
+ * @property string $total_effort
+ * @property string $actual_effort
+ * @property string $discovery_phase_starts
+ * @property string $development_phase_starts
+ * @property integer $end_development_phase_starts
+ * @property integer $uat_phase_starts
+ * @property string $resources
  *
  */
 abstract class BaseProjects extends GxActiveRecord {
@@ -39,13 +46,14 @@ abstract class BaseProjects extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('type', 'numerical', 'integerOnly'=>true),
+			array('type, end_development_phase_starts, uat_phase_starts', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>120),
 			array('short_name', 'length', 'max'=>30),
 			array('image, logo, icon', 'length', 'max'=>250),
-			array('params', 'safe'),
-			array('name, short_name, image, logo, icon, type, params', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, name, short_name, image, logo, icon, type, params', 'safe', 'on'=>'search'),
+			array('billable_effort, total_effort, actual_effort, discovery_phase_starts, development_phase_starts', 'length', 'max'=>10),
+			array('resources', 'safe'),
+			array('name, short_name, image, logo, icon, type, billable_effort, total_effort, actual_effort, discovery_phase_starts, development_phase_starts, end_development_phase_starts, uat_phase_starts, resources', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, name, short_name, image, logo, icon, type, billable_effort, total_effort, actual_effort, discovery_phase_starts, development_phase_starts, end_development_phase_starts, uat_phase_starts, resources', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,7 +76,14 @@ abstract class BaseProjects extends GxActiveRecord {
 			'logo' => Yii::t('app', 'Logo'),
 			'icon' => Yii::t('app', 'Icon'),
 			'type' => Yii::t('app', 'Type'),
-			'params' => Yii::t('app', 'Params'),
+			'billable_effort' => Yii::t('app', 'Billable Effort'),
+			'total_effort' => Yii::t('app', 'Total Effort'),
+			'actual_effort' => Yii::t('app', 'Actual Effort'),
+			'discovery_phase_starts' => Yii::t('app', 'Discovery Phase Starts'),
+			'development_phase_starts' => Yii::t('app', 'Development Phase Starts'),
+			'end_development_phase_starts' => Yii::t('app', 'End Development Phase Starts'),
+			'uat_phase_starts' => Yii::t('app', 'Uat Phase Starts'),
+			'resources' => Yii::t('app', 'Resources'),
 		);
 	}
 
@@ -82,7 +97,14 @@ abstract class BaseProjects extends GxActiveRecord {
 		$criteria->compare('logo', $this->logo, true);
 		$criteria->compare('icon', $this->icon, true);
 		$criteria->compare('type', $this->type);
-		$criteria->compare('params', $this->params, true);
+		$criteria->compare('billable_effort', $this->billable_effort, true);
+		$criteria->compare('total_effort', $this->total_effort, true);
+		$criteria->compare('actual_effort', $this->actual_effort, true);
+		$criteria->compare('discovery_phase_starts', $this->discovery_phase_starts, true);
+		$criteria->compare('development_phase_starts', $this->development_phase_starts, true);
+		$criteria->compare('end_development_phase_starts', $this->end_development_phase_starts);
+		$criteria->compare('uat_phase_starts', $this->uat_phase_starts);
+		$criteria->compare('resources', $this->resources, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,

@@ -44,9 +44,44 @@
 		<?php echo $form->error($model,'type'); ?>
 		</div><!-- row -->
 		<div class="row">
-		<?php echo $form->labelEx($model,'params'); ?>
-		<?php echo $form->textArea($model, 'params'); ?>
-		<?php echo $form->error($model,'params'); ?>
+		<?php echo $form->labelEx($model,'billable_effort'); ?>
+		<?php echo $form->textField($model, 'billable_effort', array('maxlength' => 10)); ?>
+		<?php echo $form->error($model,'billable_effort'); ?>
+		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'total_effort'); ?>
+		<?php echo $form->textField($model, 'total_effort', array('maxlength' => 10)); ?>
+		<?php echo $form->error($model,'total_effort'); ?>
+		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'actual_effort'); ?>
+		<?php echo $form->textField($model, 'actual_effort', array('maxlength' => 10)); ?>
+		<?php echo $form->error($model,'actual_effort'); ?>
+		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'discovery_phase_starts'); ?>
+		<?php echo $form->textField($model, 'discovery_phase_starts', array('maxlength' => 10)); ?>
+		<?php echo $form->error($model,'discovery_phase_starts'); ?>
+		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'development_phase_starts'); ?>
+		<?php echo $form->textField($model, 'development_phase_starts', array('maxlength' => 10)); ?>
+		<?php echo $form->error($model,'development_phase_starts'); ?>
+		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'end_development_phase_starts'); ?>
+		<?php echo $form->textField($model, 'end_development_phase_starts'); ?>
+		<?php echo $form->error($model,'end_development_phase_starts'); ?>
+		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'uat_phase_starts'); ?>
+		<?php echo $form->textField($model, 'uat_phase_starts'); ?>
+		<?php echo $form->error($model,'uat_phase_starts'); ?>
+		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'resources'); ?>
+		<?php echo $form->textArea($model, 'resources'); ?>
+		<?php echo $form->error($model,'resources'); ?>
 		</div><!-- row -->
 
 

@@ -23,8 +23,29 @@
 	<?php echo GxHtml::encode($data->type); ?>
 	<br />
 	<?php /*
-	<?php echo GxHtml::encode($data->getAttributeLabel('params')); ?>:
-	<?php echo GxHtml::encode($data->params); ?>
+	<?php echo GxHtml::encode($data->getAttributeLabel('billable_effort')); ?>:
+	<?php echo GxHtml::encode($data->billable_effort); ?>
+	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('total_effort')); ?>:
+	<?php echo GxHtml::encode($data->total_effort); ?>
+	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('actual_effort')); ?>:
+	<?php echo GxHtml::encode($data->actual_effort); ?>
+	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('discovery_phase_starts')); ?>:
+	<?php echo GxHtml::encode($data->discovery_phase_starts); ?>
+	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('development_phase_starts')); ?>:
+	<?php echo GxHtml::encode($data->development_phase_starts); ?>
+	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('end_development_phase_starts')); ?>:
+	<?php echo GxHtml::encode($data->end_development_phase_starts); ?>
+	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('uat_phase_starts')); ?>:
+	<?php echo GxHtml::encode($data->uat_phase_starts); ?>
+	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('resources')); ?>:
+	<?php echo GxHtml::encode($data->resources); ?>
 	<br />
 	*/ ?>
 

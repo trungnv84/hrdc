@@ -29,8 +29,8 @@ $cs->registerScriptFile($baseUrl.'/js/quick_search.js');
 					'items' => array(
 						//TODO: Change navigation
 						array('label' => 'Dashboard', 'url' => array('/')),
-						array('label' => 'Human Resource', 'url' => array('/humanresources')),
-						array('label' => 'Forms', 'url' => array('/site/page', 'view' => 'forms')),
+						array('label' => 'Human Resource', 'url' => array('/humanresources/admin')),
+						array('label' => 'Resource Allocation', 'url' => array('/resourceallocation/admin')),
 						array('label' => 'Tables', 'url' => array('/site/page', 'view' => 'tables')),
 						array('label' => 'Interface', 'url' => array('/site/page', 'view' => 'interface')),
 						array('label' => 'Typography', 'url' => array('/site/page', 'view' => 'typography')),

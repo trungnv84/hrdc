@@ -26,7 +26,14 @@ $this->menu=array(
 'logo',
 'icon',
 'type',
-'params',
+'billable_effort',
+'total_effort',
+'actual_effort',
+'discovery_phase_starts',
+'development_phase_starts',
+'end_development_phase_starts',
+'uat_phase_starts',
+'resources',
 	),
 )); ?>
 
