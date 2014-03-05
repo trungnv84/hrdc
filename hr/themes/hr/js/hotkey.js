@@ -170,7 +170,7 @@
 						result = true;
 				}
 
-				if (!this.ini) {
+				if (!this.ini || this.ini == undefined) {
 					this.ini = true;
 
 					this.showSuggest = function () {
@@ -290,19 +290,20 @@
 							if (!code) code = codes;
 
 							if (code) {
-								var hks = code.split(" ");
+								var hks = code.split(/\s+/);
+								console.log(hks);
 								var hk = this.selectCode(hks);
 								if (hk) code = hk;
 
 								if (code != codes) {
 									if (!$.isNumeric(code)) {
-										hks = code.split("");
+										hks = code.split(/\s*/);
 										var hk = this.selectCode(hks);
 										if (hk) code = hk;
 									}
 
 									if (!$.isNumeric(code)) {
-										hks = codes.split("");
+										hks = codes.split(/\s+/);
 										var hk = this.selectCode(hks);
 										if (hk) code = hk;
 									}
@@ -317,8 +318,8 @@
 
 					this.selectCode = function (hks) {
 						for (var i = 0; i < hks.length; i++) {
-							var hk = hks[i].toUpperCase();
-							if ($.inArray(hk, codes) > -1 && -1 == $.inArray(hk = hk.charCodeAt(0), this.keyCodes)) {
+							var hk = hks[i][0].toUpperCase();
+							if ($.inArray(hk, codes.split(/\s+/)) > -1 && -1 == $.inArray(hk = hk.charCodeAt(0), this.keyCodes)) {
 								return hk;
 								break;
 							}
@@ -406,12 +407,12 @@
 				$.hostKey(":showSuggest");
 			} else if (16 == event.keyCode && event.shiftKey && !event.ctrlKey && !event.altKey) {
 				$.hostKey(":shiftDown");
-			} else if (!event.ctrlKey && !event.altKey && (27 == event.keyCode || $.inArray(String.fromCharCode(event.keyCode), codes.split(" ")) > -1)) {
+			} else if (!event.ctrlKey && !event.altKey && (27 == event.keyCode || $.inArray(String.fromCharCode(event.keyCode), codes.split(/\s+/)) > -1)) {
 				if ($.hostKey(":hotKey", event.keyCode)) {
 					event.preventDefault();
 				}
 			}
-			console.log(event);
+			//console.log(event);
 		}).keyup(function (event) {
 				if (event.keyCode == 16 && !event.shiftKey && !event.ctrlKey && !event.altKey) {
 					$.hostKey(":shiftUp");

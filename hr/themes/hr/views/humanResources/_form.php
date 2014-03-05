@@ -7,7 +7,7 @@ $cs->registerScriptFile($baseUrl.'/js/plupload-2.1.1/plupload.full.min.js');
 $cs->registerScriptFile($baseUrl.'/js/hotkey.js');
 $cs->registerScriptFile($baseUrl.'/js/human_resource_form.js');
 $redirect = Yii::app()->user->getState("HumanResources_form_states_redirect", 0);
-$saveTexts = array('', ' & close', ' & new')
+$saveTexts = array('', _SAVE_END_CLOSE, _SAVE_END_NEW);
 ?>
 <div class="form">
 
@@ -45,7 +45,7 @@ $saveTexts = array('', ' & close', ' & new')
 		</div>
 		<div class="span2">
 			<?php echo $form->labelEx($model, 'division_id'); ?>
-			<?php echo $form->dropDownList($model, 'division_id', CHtml::listData($divisions, 'id', 'name'), array('empty' => '(Division)', 'class' => 'span12 hot-key', 'maxlength' => 10)); ?>
+			<?php echo $form->dropDownList($model, 'division_id', CHtml::listData($divisions, 'id', 'name'), array('empty' => '(Select division)', 'class' => 'span12 hot-key', 'maxlength' => 10)); ?>
 			<?php echo $form->error($model, 'division_id'); ?>
 		</div>
 		<div class="span3">
@@ -76,7 +76,7 @@ $saveTexts = array('', ' & close', ' & new')
 			<?php echo GxHtml::label('&nbsp;', null);?>
 			<div id="btn-submit-group" class="btn-group">
 				<?php
-				echo GxHtml::htmlButton('Save' . @$saveTexts[$redirect] , array('type' => 'submit', 'id' => 'btn-save',
+				echo GxHtml::htmlButton('Save' . @$saveTexts[$redirect], array('type' => 'submit', 'id' => 'btn-save',
 					'class' => 'btn btn-primary hot-key', 'data-hot-key-code' => 's'));
 				?>
 				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">

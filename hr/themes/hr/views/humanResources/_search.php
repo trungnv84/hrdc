@@ -13,7 +13,7 @@ $cs->registerScriptFile($baseUrl.'/js/hotkey.js');
 	<div class="row">
 		<div class="span3">
 			<?php echo GxHtml::label('Search', 'search'); ?>
-			<?php echo GxHtml::textField('search', null, array('class' => 'span12 hot-key', 'maxlength' => 60)); ?>
+			<?php echo GxHtml::textField('search', null, array('class' => 'span12 hot-key', 'maxlength' => 60, 'data-hot-key-code' => 'a')); ?>
 		</div>
 		<div class="span3">
 			<?php echo $form->label($model, 'division_id'); ?>
@@ -21,11 +21,11 @@ $cs->registerScriptFile($baseUrl.'/js/hotkey.js');
 		</div>
 		<div class="span2">
 			<label>&nbsp;</label>
-			<?php echo GxHtml::htmlButton(Yii::t('app', 'Search'), array('type' => 'submit', 'class' => 'btn hot-key')); ?>
+			<?php echo GxHtml::htmlButton(Yii::t('app', 'Search'), array('type' => 'submit', 'class' => 'btn hot-key', 'data-hot-key-code' => 's')); ?>
 		</div>
 		<div class="span2 offset2 text-right">
 			<label>&nbsp;</label>
-			<?php echo GxHtml::link('Create', array('/humanresources/create'), array('id' => 'hr-create', 'class' => 'btn hot-key', 'data-hot-key-action' => 'js', 'data-hot-key-js' => 'location = $(\'#hr-create\').attr(\'href\');')); ?>
+			<?php echo GxHtml::link('Create', array('/humanresources/create'), array('id' => 'hr-create', 'class' => 'btn hot-key', 'data-hot-key-code' => 'c', 'data-hot-key-action' => 'js', 'data-hot-key-js' => 'location = $(\'#hr-create\').attr(\'href\');')); ?>
 		</div>
 	</div>
 

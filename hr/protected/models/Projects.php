@@ -32,4 +32,14 @@ class Projects extends BaseProjects
 			'criteria' => $criteria,
 		));
 	}
+
+	public function beforeValidate()
+	{
+		if (preg_match('/\d{1,2}-\d{1,2}-\d{4}/', $this->discovery_phase_starts)) {
+			$date = explode('-', $this->discovery_phase_starts);
+			$date = array_reverse($date);
+			$this->discovery_phase_starts = strtotime($date);
+		}
+		return parent::beforeValidate();
+	}
 }

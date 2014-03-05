@@ -12,9 +12,9 @@
  * @property string $id
  * @property string $employee_id
  * @property string $name
- * @property string $user_id
+ * @property integer $user_id
  * @property string $username
- * @property string $division_id
+ * @property integer $division_id
  * @property string $avatar
  * @property string $phone
  * @property string $email
@@ -42,12 +42,13 @@ abstract class BaseHumanResources extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('employee_id, user_id, division_id', 'length', 'max'=>10),
+			array('user_id, division_id', 'numerical', 'integerOnly'=>true),
+			array('employee_id', 'length', 'max'=>10),
 			array('name, username, skype', 'length', 'max'=>60),
 			array('avatar, email', 'length', 'max'=>250),
 			array('phone, position', 'safe'),
 			array('employee_id, name, user_id, username, division_id, avatar, phone, email, skype, position', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, employee_id, name, user_id, username, division_id, phone, email, skype', 'safe', 'on'=>'search'),
+			array('id, employee_id, name, user_id, username, division_id, avatar, phone, email, skype, position', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -83,9 +84,9 @@ abstract class BaseHumanResources extends GxActiveRecord {
 		$criteria->compare('id', $this->id, true);
 		$criteria->compare('employee_id', $this->employee_id, true);
 		$criteria->compare('name', $this->name, true);
-		$criteria->compare('user_id', $this->user_id, true);
+		$criteria->compare('user_id', $this->user_id);
 		$criteria->compare('username', $this->username, true);
-		$criteria->compare('division_id', $this->division_id, true);
+		$criteria->compare('division_id', $this->division_id);
 		$criteria->compare('avatar', $this->avatar, true);
 		$criteria->compare('phone', $this->phone, true);
 		$criteria->compare('email', $this->email, true);

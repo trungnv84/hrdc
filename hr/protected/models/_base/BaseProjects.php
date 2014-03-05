@@ -16,11 +16,11 @@
  * @property string $logo
  * @property string $icon
  * @property integer $type
- * @property string $billable_effort
- * @property string $total_effort
- * @property string $actual_effort
- * @property string $discovery_phase_starts
- * @property string $development_phase_starts
+ * @property integer $billable_effort
+ * @property integer $total_effort
+ * @property integer $actual_effort
+ * @property integer $discovery_phase_starts
+ * @property integer $development_phase_starts
  * @property integer $end_development_phase_starts
  * @property integer $uat_phase_starts
  * @property string $resources
@@ -46,11 +46,10 @@ abstract class BaseProjects extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('type, end_development_phase_starts, uat_phase_starts', 'numerical', 'integerOnly'=>true),
+			array('type, billable_effort, total_effort, actual_effort, discovery_phase_starts, development_phase_starts, end_development_phase_starts, uat_phase_starts', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>120),
 			array('short_name', 'length', 'max'=>30),
 			array('image, logo, icon', 'length', 'max'=>250),
-			array('billable_effort, total_effort, actual_effort, discovery_phase_starts, development_phase_starts', 'length', 'max'=>10),
 			array('resources', 'safe'),
 			array('name, short_name, image, logo, icon, type, billable_effort, total_effort, actual_effort, discovery_phase_starts, development_phase_starts, end_development_phase_starts, uat_phase_starts, resources', 'default', 'setOnEmpty' => true, 'value' => null),
 			array('id, name, short_name, image, logo, icon, type, billable_effort, total_effort, actual_effort, discovery_phase_starts, development_phase_starts, end_development_phase_starts, uat_phase_starts, resources', 'safe', 'on'=>'search'),
@@ -97,11 +96,11 @@ abstract class BaseProjects extends GxActiveRecord {
 		$criteria->compare('logo', $this->logo, true);
 		$criteria->compare('icon', $this->icon, true);
 		$criteria->compare('type', $this->type);
-		$criteria->compare('billable_effort', $this->billable_effort, true);
-		$criteria->compare('total_effort', $this->total_effort, true);
-		$criteria->compare('actual_effort', $this->actual_effort, true);
-		$criteria->compare('discovery_phase_starts', $this->discovery_phase_starts, true);
-		$criteria->compare('development_phase_starts', $this->development_phase_starts, true);
+		$criteria->compare('billable_effort', $this->billable_effort);
+		$criteria->compare('total_effort', $this->total_effort);
+		$criteria->compare('actual_effort', $this->actual_effort);
+		$criteria->compare('discovery_phase_starts', $this->discovery_phase_starts);
+		$criteria->compare('development_phase_starts', $this->development_phase_starts);
 		$criteria->compare('end_development_phase_starts', $this->end_development_phase_starts);
 		$criteria->compare('uat_phase_starts', $this->uat_phase_starts);
 		$criteria->compare('resources', $this->resources, true);

@@ -1,6 +1,6 @@
 <?php
 
-class ProjectsController extends GxController {
+class ProjectsController extends BaseController {
 
 
 	public function actionView($id) {
@@ -20,7 +20,7 @@ class ProjectsController extends GxController {
 				if (Yii::app()->getRequest()->getIsAjaxRequest())
 					Yii::app()->end();
 				else
-					$this->redirect(array('view', 'id' => $model->id));
+					$this->saveRedirect($model->id);
 			}
 		}
 
@@ -35,7 +35,7 @@ class ProjectsController extends GxController {
 			$model->setAttributes($_POST['Projects']);
 
 			if ($model->save()) {
-				$this->redirect(array('view', 'id' => $model->id));
+				$this->saveRedirect($model->id);
 			}
 		}
 

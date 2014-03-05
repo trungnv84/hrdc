@@ -11,10 +11,14 @@ define('THEMES_PATH', realpath(CONFIG_PATH . DIRECTORY_SEPARATOR . '..'
 define('PROJECT_TYPE_DEDICATED', 'Dedicated');
 define('PROJECT_TYPE_FIXED_BID', 'Fixed Bid');
 
+define('_SAVE_END_CLOSE', ' & close');
+define('_SAVE_END_EDIT', ' & edit');
+define('_SAVE_END_NEW', ' & new');
 
 return array(
 	'basePath' => realpath(CONFIG_PATH . DIRECTORY_SEPARATOR . '..'),
 	'name' => 'Human Resource Data Center',
+	'timeZone' => 'Asia/Calcutta',//TODO: need change
 	'theme' => 'hr',
 	// preloading 'log' component
 	'preload' => array('log'),

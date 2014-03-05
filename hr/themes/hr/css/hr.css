@@ -1,7 +1,17 @@
 .text-right {
 	text-align: right;
 }
-
+.row label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.row label:hover {
+	overflow: visible;
+}
+.style-switcher {
+	display: none;
+}
 .subnav.navbar-fixed-top {
 	z-index: 1020;
 }

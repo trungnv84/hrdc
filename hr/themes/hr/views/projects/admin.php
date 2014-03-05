@@ -42,20 +42,35 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 	'dataProvider' => $model->search(),
 	//'filter' => $model,
 	'columns' => array(
-		'id',
+		/*'id',*/
 		'name',
 		'short_name',
+		array(
+			'name' => 'type',
+			'value' => 'ViewHelper::projectType($data->type)'
+		),
+		array(
+			'name' => 'discovery_phase_starts',
+			'header' => 'Start Date',
+			'value' => '$data->discovery_phase_starts?date(\'d/m/Y\', $data->discovery_phase_starts):\'\''
+		),
+		/*'development_phase_starts',*/
+		array(
+			'name' => 'end_development_phase_starts',
+			'header' => 'End Date',
+			'value' => '$data->end_development_phase_starts?date(\'d/m/Y\', $data->end_development_phase_starts):\'\''
+		),
+		array(
+			'name' => 'total_effort',
+			'header' => 'Effort (hrs)',
+			'value' => '"$data->actual_effort/$data->total_effort"'
+		),
+		/*'actual_effort',*/
 		/*
 		'image',
 		'logo',
 		'icon',
-		'type',
 		'billable_effort',
-		'total_effort',
-		'actual_effort',
-		'discovery_phase_starts',
-		'development_phase_starts',
-		'end_development_phase_starts',
 		'uat_phase_starts',
 		'resources',
 		*/

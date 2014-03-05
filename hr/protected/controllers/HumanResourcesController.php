@@ -11,28 +11,6 @@ class HumanResourcesController extends BaseController
 		));
 	}
 
-	private function saveRedirect($id = null)
-	{
-		$redirect = Yii::app()->request->getPost('redirect');
-		Yii::app()->user->setState("HumanResources_form_states_redirect", $redirect);
-		switch ($redirect) {
-			case 4:
-				$this->redirect(array('view', 'id' => $id));
-				break;
-			case 3:
-				$this->redirect(array('index'));
-				break;
-			case 2:
-				$this->redirect(array('create'));
-				break;
-			case 1:
-				$this->redirect(array('admin'));
-				break;
-			default:
-				$this->redirect(array('update', 'id' => $id));
-		}
-	}
-
 	public function actionCreate()
 	{
 		$model = new HumanResources;
@@ -44,9 +22,8 @@ class HumanResourcesController extends BaseController
 			if ($model->save()) {
 				if (Yii::app()->getRequest()->getIsAjaxRequest())
 					Yii::app()->end();
-				else {
+				else
 					$this->saveRedirect($model->id);
-				}
 			}
 		}
 
