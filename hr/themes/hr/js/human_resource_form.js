@@ -56,15 +56,16 @@ $(document).ready(function () {
 		}
 	});
 
-	var uploader = new plupload.Uploader({
+	var humanResources_avatar_uploader = new plupload.Uploader({
 		runtimes: 'html5,flash,silverlight,html4',
 
 		browse_button: 'HumanResources_avatar', // you can pass in id...
 		container: document.getElementById('avatar_container'), // ... or DOM Element itself
 
-		url: $("base").first().attr("href") + "humanResources/uploadAvatar",
+		url: $("base").first().attr("href") + "humanResources/uploadImages?type=avatar",
 
 		dragdrop: true,
+		drop_element: 'HumanResources_avatar',
 		chunk_size: '100kb',
 		multi_selection: false,
 
@@ -82,15 +83,15 @@ $(document).ready(function () {
 		silverlight_xap_url: 'js/plupload-2.1.1/Moxie.xap',
 
 		init: {
-			PostInit: function () {
-				//console.log(this.settings.container);
-				$(this.settings.container).find("input[type=file]").attr('tabindex', '-1');
+			PostInit: function (up) {
+				//console.log(up.settings.container);
+				$(up.settings.container).find("input[type=file]").attr('tabindex', '-1');
 
-				$("#HumanResources_avatar").click(function () {
-					uploader.start();
-				}).keypress(function (event) {
+				$(up.settings.browse_button).click(function () {
+					up.start();
+				}).keyup(function (event) {
 						var codes = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 0 1 2 3 4 5 6 7 8 9";
-						if (event.keyCode == 13 || $.inArray(String.fromCharCode(event.keyCode), codes.split(" ")) > -1) {
+						if (event.keyCode == 13 || $.inArray(String.fromCharCode(event.keyCode), codes.split(/\s+/)) > -1) {
 							event.preventDefault();
 							$(this).click();
 						}
@@ -104,7 +105,7 @@ $(document).ready(function () {
 					avatar.data("val", avatar.val());
 					avatar.val(file.name);
 				});
-				uploader.start();
+				up.start();
 			},
 
 			BeforeUpload: function(up, file) {
@@ -129,17 +130,18 @@ $(document).ready(function () {
 				var avatar = $(up.settings.browse_button);
 				avatar.attr("style",
 					"position: relative; z-index: 1;" +
-						"background: -moz-linear-gradient(left,  rgba(125,185,232,1) 0%, rgba(125,185,232," + up.total.percent / 100 + ") " + up.total.percent + "%, rgba(255,255,255," + up.total.percent / 100 + ") " + up.total.percent + "%, rgba(255,255,255,0) 100%); /* FF3.6+ */" +
-						"background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(125,185,232,1)), color-stop(" + up.total.percent + "%,rgba(125,185,232," + up.total.percent / 100 + ")), color-stop(" + up.total.percent + "%,rgba(255,255,255," + up.total.percent / 100 + ")), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */" +
-						"background: -webkit-linear-gradient(left,  rgba(125,185,232,1) 0%,rgba(125,185,232," + up.total.percent / 100 + ") " + up.total.percent + "%,rgba(255,255,255," + up.total.percent / 100 + ") " + up.total.percent + "%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */" +
-						"background: -o-linear-gradient(left,  rgba(125,185,232,1) 0%,rgba(125,185,232," + up.total.percent / 100 + ") " + up.total.percent + "%,rgba(255,255,255," + up.total.percent / 100 + ") " + up.total.percent + "%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */" +
-						"background: -ms-linear-gradient(left,  rgba(125,185,232,1) 0%,rgba(125,185,232," + up.total.percent / 100 + ") " + up.total.percent + "%,rgba(255,255,255," + up.total.percent / 100 + ") " + up.total.percent + "%,rgba(255,255,255,0) 100%); /* IE10+ */" +
-						"background: linear-gradient(to right,  rgba(125,185,232,1) 0%,rgba(125,185,232," + up.total.percent / 100 + ") " + up.total.percent + "%,rgba(255,255,255," + up.total.percent / 100 + ") " + up.total.percent + "%,rgba(255,255,255,0) 100%); /* W3C */" +
+						"background: -moz-linear-gradient(left,  rgba(125,185,232,1) 0%, rgba(125,185,232," + file.percent / 100 + ") " + file.percent + "%, rgba(255,255,255," + file.percent / 100 + ") " + file.percent + "%, rgba(255,255,255,0) 100%); /* FF3.6+ */" +
+						"background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(125,185,232,1)), color-stop(" + file.percent + "%,rgba(125,185,232," + file.percent / 100 + ")), color-stop(" + file.percent + "%,rgba(255,255,255," + file.percent / 100 + ")), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */" +
+						"background: -webkit-linear-gradient(left,  rgba(125,185,232,1) 0%,rgba(125,185,232," + file.percent / 100 + ") " + file.percent + "%,rgba(255,255,255," + file.percent / 100 + ") " + file.percent + "%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */" +
+						"background: -o-linear-gradient(left,  rgba(125,185,232,1) 0%,rgba(125,185,232," + file.percent / 100 + ") " + file.percent + "%,rgba(255,255,255," + file.percent / 100 + ") " + file.percent + "%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */" +
+						"background: -ms-linear-gradient(left,  rgba(125,185,232,1) 0%,rgba(125,185,232," + file.percent / 100 + ") " + file.percent + "%,rgba(255,255,255," + file.percent / 100 + ") " + file.percent + "%,rgba(255,255,255,0) 100%); /* IE10+ */" +
+						"background: linear-gradient(to right,  rgba(125,185,232,1) 0%,rgba(125,185,232," + file.percent / 100 + ") " + file.percent + "%,rgba(255,255,255," + file.percent / 100 + ") " + file.percent + "%,rgba(255,255,255,0) 100%); /* W3C */" +
 						"filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */"
 				);
 			},
 
 			UploadComplete: function (up, files) {
+				var avatar = $(up.settings.browse_button);
 				setTimeout(function () {
 					avatar.attr("style", "position: relative; z-index: 1;");
 				}, 1500);
@@ -155,7 +157,7 @@ $(document).ready(function () {
 		}
 	});
 
-	uploader.init();
+	humanResources_avatar_uploader.init();
 
 	$("#HumanResources_employee_id").focus().focusin();
 

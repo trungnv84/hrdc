@@ -3705,3 +3705,25 @@ in D:\xampp\htdocs\hrdc\hr\protected\components\ModelHelper.php (15)
 in D:\xampp\htdocs\hrdc\hr\protected\models\Projects.php (39)
 in D:\xampp\htdocs\hrdc\hr\protected\controllers\ProjectsController.php (37)
 in D:\xampp\htdocs\hrdc\hr\index.php (13)
+2014/03/06 13:06:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "uploadImages".' in D:\xampp\htdocs\hrdc\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CController.php(270): CController->missingAction('uploadImages')
+#1 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('uploadImages')
+#2 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('projects/upload...')
+#3 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/hrdc/hr/projects/uploadImages
+HTTP_REFERER=http://localhost/hrdc/hr/resourceallocation/update/1
+---
+2014/03/06 13:06:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "uploadImages".' in D:\xampp\htdocs\hrdc\framework\web\CController.php:483
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CController.php(270): CController->missingAction('uploadImages')
+#1 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('uploadImages')
+#2 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('projects/upload...')
+#3 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/hrdc/hr/projects/uploadImages
+HTTP_REFERER=http://localhost/hrdc/hr/resourceallocation/update/1
+---

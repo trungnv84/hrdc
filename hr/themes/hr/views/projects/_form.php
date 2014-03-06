@@ -45,14 +45,14 @@ $saveTexts = array('', _SAVE_END_CLOSE, _SAVE_END_NEW);
 			<?php /*echo $form->textField($model, 'image', array('class' => 'span12 hot-key', 'maxlength' => 250)); */?>
 			<?php /*echo $form->error($model, 'image'); */?>
 		</div>-->
-		<div class="span2">
+		<div id="logo_container" class="span2">
 			<?php echo $form->labelEx($model, 'logo'); ?>
-			<?php echo $form->textField($model, 'logo', array('class' => 'span12 hot-key', 'maxlength' => 250)); ?>
+			<?php echo $form->textField($model, 'logo', array('class' => 'span12 hot-key', 'maxlength' => 250, 'readonly' => true)); ?>
 			<?php echo $form->error($model, 'logo'); ?>
 		</div>
-		<div class="span2">
+		<div id="icon_container" class="span2">
 			<?php echo $form->labelEx($model, 'icon'); ?>
-			<?php echo $form->textField($model, 'icon', array('class' => 'span12 hot-key', 'maxlength' => 250)); ?>
+			<?php echo $form->textField($model, 'icon', array('class' => 'span12 hot-key', 'maxlength' => 250, 'readonly' => true)); ?>
 			<?php echo $form->error($model, 'icon'); ?>
 		</div>
 	</div>

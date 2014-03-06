@@ -15,6 +15,9 @@
 .row label:hover {
 	overflow: visible;
 }
+.row input.hasDatepicker, .row label.add-on {
+	cursor: pointer;
+}
 .style-switcher {
 	display: none;
 }
@@ -30,7 +33,7 @@
 	padding: 0;
 }
 
-#HumanResources_avatar {
+#HumanResources_avatar, #Projects_logo, #Projects_icon {
 	background: #ffffff;
 	cursor: pointer;
 }

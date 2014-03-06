@@ -77,4 +77,20 @@ class ProjectsController extends BaseController {
 		));
 	}
 
+	public function actionUploadImages(){
+		$type = Yii::app()->request->getQuery('type', '');
+		switch ($type) {
+			default:
+				$this->renderJson('{"jsonrpc" : "2.0", "result" : "", "id" : "id"}');
+				break;
+			case 'logo':
+			case 'icon':
+		}
+		// Create target dir
+		$path = Yii::app()->basePath . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'images' .
+				DIRECTORY_SEPARATOR . 'projects' . DIRECTORY_SEPARATOR .  $type . DIRECTORY_SEPARATOR;
+		if (!is_dir($path)) @mkdir($path, 0755, true);
+
+		$this->renderJson(ControllerHelper::upload($path));
+	}
 }
