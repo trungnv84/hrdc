@@ -60,3 +60,35 @@
 	white-space: nowrap;
 	z-index: 1;
 }
+
+#projects_list .items .view {
+	margin-right: 20px;
+	float: left;
+	position: relative;
+}
+
+#projects_list .view h4 {
+	background-color: #dff0d8;
+	padding: 6px 16px;
+	margin-top: 0;
+	text-align: center;
+
+	max-width: 200px;
+	min-width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#projects_list h4 img {
+	float: left;
+	height: 20px;
+	margin-right: 8px;
+	width: 20px;
+}
+
+#projects_list .view .label.pull-right {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+}

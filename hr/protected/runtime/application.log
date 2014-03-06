@@ -3727,3 +3727,110 @@ Stack trace:
 REQUEST_URI=/hrdc/hr/projects/uploadImages
 HTTP_REFERER=http://localhost/hrdc/hr/resourceallocation/update/1
 ---
+2014/03/06 17:28:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/projects/$type/$image".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('images/projects...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/images/projects/$type/$image
+HTTP_REFERER=http://localhost/hrdc/hr/resourceallocation/index
+---
+2014/03/06 17:28:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/projects/$type/$image".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('images/projects...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/images/projects/$type/$image
+---
+2014/03/06 17:29:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/projects/defaults/logo.png".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('images/projects...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/images/projects/defaults/logo.png
+HTTP_REFERER=http://localhost/hrdc/hr/resourceallocation/index
+---
+2014/03/06 17:29:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/projects/defaults/logo.png".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('images/projects...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/images/projects/defaults/logo.png
+HTTP_REFERER=http://localhost/hrdc/hr/resourceallocation/index
+---
+2014/03/06 17:30:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/projects/defaults/logo.png".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('images/projects...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/images/projects/defaults/logo.png
+HTTP_REFERER=http://localhost/hrdc/hr/resourceallocation/index
+---
+2014/03/06 17:30:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/projects/defaults/logo.png".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('images/projects...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/images/projects/defaults/logo.png
+HTTP_REFERER=http://localhost/hrdc/hr/resourceallocation/index
+---
+2014/03/06 17:32:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/projects/defaults/logo.png".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('images/projects...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/images/projects/defaults/logo.png
+HTTP_REFERER=http://localhost/hrdc/hr/resourceallocation/index
+---
+2014/03/06 17:32:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/projects/defaults/logo.png".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('images/projects...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/images/projects/defaults/logo.png
+HTTP_REFERER=http://localhost/hrdc/hr/resourceallocation/index
+---
+2014/03/06 17:34:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/projects/defaults/logo.png".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('images/projects...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/images/projects/defaults/logo.png
+HTTP_REFERER=http://localhost/hrdc/hr/resourceallocation/index
+---
+2014/03/06 17:34:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/projects/defaults/logo.png".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('images/projects...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/images/projects/defaults/logo.png
+HTTP_REFERER=http://localhost/hrdc/hr/resourceallocation/index
+---
+2014/03/06 17:35:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/projects/defaults/logo.png".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('images/projects...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/images/projects/defaults/logo.png
+HTTP_REFERER=http://localhost/hrdc/hr/resourceallocation/index
+---
+2014/03/06 17:35:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/projects/defaults/logo.png".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('images/projects...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/images/projects/defaults/logo.png
+HTTP_REFERER=http://localhost/hrdc/hr/resourceallocation/index
+---

@@ -62,7 +62,7 @@ $(document).ready(function () {
 		browse_button: 'HumanResources_avatar', // you can pass in id...
 		container: document.getElementById('avatar_container'), // ... or DOM Element itself
 
-		url: $("base").first().attr("href") + "humanResources/uploadImages?type=avatar",
+		url: $("base").first().attr("href") + "humanResources/uploadImages?type=avatars",
 
 		dragdrop: true,
 		drop_element: 'HumanResources_avatar',

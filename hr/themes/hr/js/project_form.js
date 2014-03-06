@@ -5,7 +5,7 @@ $(document).ready(function () {
 		browse_button: 'Projects_logo', // you can pass in id...
 		container: document.getElementById('logo_container'), // ... or DOM Element itself
 
-		url: $("base").first().attr("href") + "projects/uploadImages?type=logo",
+		url: $("base").first().attr("href") + "projects/uploadImages?type=logos",
 
 		dragdrop: true,
 		drop_element: 'Projects_logo',
@@ -108,7 +108,7 @@ $(document).ready(function () {
 		drop_element: 'Projects_icon',
 		browse_button: 'Projects_icon',
 		container: document.getElementById('icon_container'),
-		url: $("base").first().attr("href") + "projects/uploadImages?type=icon"
+		url: $("base").first().attr("href") + "projects/uploadImages?type=icons"
 	});
 	var projects_icon_uploader = new plupload.Uploader(uploadSettings);
 	projects_icon_uploader.init();

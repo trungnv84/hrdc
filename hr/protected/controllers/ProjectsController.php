@@ -83,8 +83,8 @@ class ProjectsController extends BaseController {
 			default:
 				$this->renderJson('{"jsonrpc" : "2.0", "result" : "", "id" : "id"}');
 				break;
-			case 'logo':
-			case 'icon':
+			case 'logos':
+			case 'icons':
 		}
 		// Create target dir
 		$path = Yii::app()->basePath . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'images' .

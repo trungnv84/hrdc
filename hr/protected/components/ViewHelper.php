@@ -19,6 +19,21 @@ class ViewHelper
 		return isset($projectTypes[$type]) ? $projectTypes[$type] : '';
 	}
 
+	public static function projectIcon(&$project)
+	{
+		if($project->icon) {
+			$type = 'icons';
+			$image = $project->icon;
+		} elseif($project->logo) {
+			$type = 'logos';
+			$image = $project->logo;
+		} else {
+			$type = 'defaults';
+			$image = 'logo.ico';
+		}
+		return "images/projects/$type/$image";
+	}
+
 	public static function dateTimeIntDBToFormat($format, $date)
 	{
 		$dateObj = new DateTime(date('Y-m-d H:i:s', $date), new DateTimeZone(Yii::app()->params['dbTimeZone']));
