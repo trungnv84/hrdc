@@ -18,7 +18,7 @@ define('_SAVE_END_NEW', ' & new');
 return array(
 	'basePath' => realpath(CONFIG_PATH . DIRECTORY_SEPARATOR . '..'),
 	'name' => 'Human Resource Data Center',
-	'timeZone' => 'Asia/Calcutta',//TODO: need change
+	'timeZone' => 'Asia/Ho_Chi_Minh',
 	'theme' => 'hr',
 	// preloading 'log' component
 	'preload' => array('log'),
@@ -63,9 +63,9 @@ return array(
 				'<controller:\w+>/<action:\w+>' => '<controller>/<action>',
 			),
 		),
-		'db' => array(
+		/*'db' => array(
 			'connectionString' => 'sqlite:' . dirname(__FILE__) . '/../data/testdrive.db',
-		),
+		),*/
 		// uncomment the following to use a MySQL database
 		'db' => array(
 			'connectionString' => 'mysql:host=localhost;dbname=hrdc',
@@ -98,6 +98,8 @@ return array(
 	'params' => array(
 		// this is used in contact page
 		'adminEmail' => 'webmaster@example.com',
+		'timeZone' => 'Asia/Ho_Chi_Minh',
+		'dbTimeZone' => 'GMT',
 		'projectTypes' => array(
 			1 => PROJECT_TYPE_DEDICATED,
 			2 => PROJECT_TYPE_FIXED_BID,

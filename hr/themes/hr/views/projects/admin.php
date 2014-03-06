@@ -52,13 +52,13 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 		array(
 			'name' => 'discovery_phase_starts',
 			'header' => 'Start Date',
-			'value' => '$data->discovery_phase_starts?date(\'d/m/Y\', $data->discovery_phase_starts):\'\''
+			'value' => '$data->discovery_phase_starts?ViewHelper::dateTimeIntDBToFormat(\'d/m/Y\', $data->discovery_phase_starts):\'\''
 		),
 		/*'development_phase_starts',*/
 		array(
 			'name' => 'end_development_phase_starts',
 			'header' => 'End Date',
-			'value' => '$data->end_development_phase_starts?date(\'d/m/Y\', $data->end_development_phase_starts):\'\''
+			'value' => '$data->end_development_phase_starts?ViewHelper::dateTimeIntDBToFormat(\'d/m/Y\', $data->end_development_phase_starts):\'\''
 		),
 		array(
 			'name' => 'total_effort',

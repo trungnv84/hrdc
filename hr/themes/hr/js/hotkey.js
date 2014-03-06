@@ -50,128 +50,33 @@
 			hostKey: function (elements, settings) {
 				var self = this;
 				var result = false;
-				switch (elements) {
-					case ":setCodes":
-						codes = settings;
-						break;
-					case ":hotKey":
-						if (this.elements && this.elements.length) {
-							var doAction = false;
-
-							if (settings == 27 && this.shiftDown > 0) {
-								clearTimeout(this.shiftTimeout);
-								this.hideSuggest();
-								result = true;
-							} else if (this.shiftDown > 1) {
-								if ($.inArray(settings, this.keyCodes) > -1) {
-									this.action(this.suggests[settings]);
-									doAction = true;
-								}
-								result = true;
-							}
-
-							if ((!result && this.shiftDown - this.shiftUp < 2) ||
-								(doAction && this.shiftDown >= 3 && this.shiftUp >= 3)) {
-								clearTimeout(this.shiftTimeout);
-								this.hideSuggest();
-							}
-						}
-						break;
-					case ":showSuggest":
-						if (this.elements && this.elements.length) {
-							this.shiftUp = 4;
-							this.shiftDown = 4;
-							if (!this.showedSuggest) this.showSuggest();
-						}
-						break;
-					case ":shiftDown":
-						if (this.elements && this.elements.length) {
-							if (!this.shiftUp) this.shiftUp = 0;
-							if (!this.shiftDown) this.shiftDown = 0;
-
-							if (this.shiftDown >= 0 && this.shiftDown <= 3) {
-								this.shiftDown++;
-								clearTimeout(this.shiftTimeout);
-
-								if (this.shiftDown < 3) {
-									if (1 == this.shiftDown - this.shiftUp) {
-										this.shiftTimeout = setTimeout(function () {
-											if (self.shiftDown == 2) {
-												self.hideSuggest();
-											} else {
-												self.shiftUp = 0;
-												self.shiftDown = 0;
-											}
-										}, this.shiftDown > 1 ? 2000 : 1500);
-									}
-
-									if (this.shiftDown > 1) {
-										this.showSuggest();
-									}
-								}
-								/* else { // == 3
-
-								 }*/
-							}
-
-							result = true;
-						}
-						break;
-					case ":shiftUp":
-						if (this.elements && this.elements.length) {
-							if (!this.shiftUp) this.shiftUp = 0;
-							if (!this.shiftDown) this.shiftDown = 0;
-
-							if (this.shiftDown > 0 && this.shiftDown <= 3) {
-								this.shiftUp++;
-							}
-
-							if (this.shiftDown - this.shiftUp > 0) {
-								self.hideSuggest();
-							}
-
-							result = true;
-						}
-						break;
-					default:
-						if (!this.elements) {
-							this.elements = [];
-							this.elements.add = function (element) {
-								for (var i = 0; i < this.length; i++) {
-									if (element[0] === this[i][0]) {
-										return;
-									}
-								}
-								if (element.data("hot-key-code"))
-									this.unshift(element);
-								else this.push(element);
-							}
-						}
-
-						if ($.isArray(elements)) {
-							for (var i = 0; i < elements.length; i++) {
-								this.elements.add($(elements[i].element).data("hot-key-settings", elements[i].settings));
-							}
-						} else if ($.isPlainObject(elements)) {
-							this.elements.add($(elements.element).data("hot-key-settings", elements.settings));
-						} else {
-							elements = $(elements);
-							if (elements.length > 1) {
-								for (var i = 0; i < elements.length; i++) {
-									this.elements.add($(elements[i]).data("hot-key-settings", settings));
-								}
-							} else {
-								this.elements.add($(elements).data("hot-key-settings", settings));
-							}
-						}
-
-						//console.log(this.elements);
-
-						result = true;
-				}
 
 				if (!this.ini || this.ini == undefined) {
 					this.ini = true;
+
+					this.shiftUp = 0;
+					this.shiftDown = 0;
+					this.elements = [];
+					this.elements.add = function (element) {
+						for (var i = 0; i < this.length; i++) {
+							if (element[0] === this[i][0]) {
+								return false;
+							}
+						}
+						if (element.data("hot-key-code"))
+							this.unshift(element);
+						else this.push(element);
+						return true;
+					};
+					this.elements.remove = function (element) {
+						for (var i = 0; i < this.length; i++) {
+							if (element[0] === this[i][0]) {
+								this.splice(i, 1);
+								return true;
+							}
+						}
+						return false;
+					}
 
 					this.showSuggest = function () {
 						if (!this.showedSuggest) {
@@ -202,34 +107,31 @@
 								if (settings.keyCode) {
 									if (-1 == $.inArray(settings.keyCode, this.keyCodes)) {
 										var highlight = this.elements[i].data("hot-key-highlight");
-										if (highlight) {
-											highlight.text(String.fromCharCode(settings.keyCode).toLowerCase()).show();
-										} else {
-											var pos = settings.container ? settings.container.offset() : this.elements[i].offset();
-											//var hei = settings.container ? settings.container.outerHeight() :this.elements[i].outerHeight();
-											var wid = settings.container ? settings.container.outerWidth() : this.elements[i].outerWidth();
-
-											var set = this.elements[i].data("hot-key-position");
-											if (set == "fixed")
-												pos.top -= $(window).scrollTop();
-
-											highlight = $("<strong/>").addClass("hot-key-highlight")
-												.text(String.fromCharCode(settings.keyCode).toLowerCase())
-												.css({
-													position: "absolute",
-													top: pos.top,
-													left: pos.left + wid
-												});
-
-											if (set) highlight.css("position", set);
-
-											var set = this.elements[i].data("hot-key-z-index");
-											if (set) highlight.css("z-index", set);
-
+										if (!highlight) {
+											highlight = $("<strong/>").addClass("hot-key-highlight").hide();
 											$("body").append(highlight);
-
 											this.elements[i].data("hot-key-highlight", highlight);
 										}
+
+										var pos = settings.container ? settings.container.offset() : this.elements[i].offset();
+										//var hei = settings.container ? settings.container.outerHeight() :this.elements[i].outerHeight();
+										var wid = settings.container ? settings.container.outerWidth() : this.elements[i].outerWidth();
+
+										var set = this.elements[i].data("hot-key-position");
+										if (set == "fixed") pos.top -= $(window).scrollTop();
+
+										highlight.css({
+											position: "absolute",
+											top: pos.top,
+											left: pos.left + wid
+										});
+
+										if (set) highlight.css("position", set);
+
+										var set = this.elements[i].data("hot-key-z-index");
+										if (set) highlight.css("z-index", set);
+
+										highlight.text(String.fromCharCode(settings.keyCode).toLowerCase()).show();
 
 										this.keyCodes.push(settings.keyCode);
 										this.suggests[settings.keyCode] = this.elements[i];
@@ -291,7 +193,6 @@
 
 							if (code) {
 								var hks = code.split(/\s+/);
-								console.log(hks);
 								var hk = this.selectCode(hks);
 								if (hk) code = hk;
 
@@ -378,6 +279,120 @@
 								}
 						}
 					}
+				}
+
+				switch (elements) {
+					case ":setCodes":
+						codes = settings;
+						break;
+					case ":hotKey":
+						if (this.elements && this.elements.length) {
+							var doAction = false;
+
+							if (settings == 27 && this.shiftDown > 0) {
+								clearTimeout(this.shiftTimeout);
+								this.hideSuggest();
+								result = true;
+							} else if (this.shiftDown > 1) {
+								if ($.inArray(settings, this.keyCodes) > -1) {
+									this.action(this.suggests[settings]);
+									doAction = true;
+								}
+								result = true;
+							}
+
+							if ((!result && this.shiftDown - this.shiftUp < 2) ||
+								(doAction && this.shiftDown >= 3 && this.shiftUp >= 3)) {
+								clearTimeout(this.shiftTimeout);
+								this.hideSuggest();
+							}
+						}
+						break;
+					case ":showSuggest":
+						if (this.elements && this.elements.length) {
+							this.shiftUp = 4;
+							this.shiftDown = 4;
+							if (!this.showedSuggest) this.showSuggest();
+						}
+						break;
+					case ":shiftDown":
+						if (this.elements && this.elements.length) {
+							if (this.shiftDown >= 0 && this.shiftDown <= 3) {
+								this.shiftDown++;
+								clearTimeout(this.shiftTimeout);
+
+								if (this.shiftDown < 3) {
+									if (1 == this.shiftDown - this.shiftUp) {
+										this.shiftTimeout = setTimeout(function () {
+											if (self.shiftDown == 2) {
+												self.hideSuggest();
+											} else {
+												self.shiftUp = 0;
+												self.shiftDown = 0;
+											}
+										}, this.shiftDown > 1 ? 2000 : 1500);
+									}
+
+									if (this.shiftDown > 1) {
+										this.showSuggest();
+									}
+								}
+								/* else { // == 3
+
+								 }*/
+							}
+
+							result = true;
+						}
+						break;
+					case ":shiftUp":
+						if (this.elements && this.elements.length) {
+							if (this.shiftDown > 0 && this.shiftDown <= 3) {
+								this.shiftUp++;
+							}
+
+							if (this.shiftDown - this.shiftUp > 0) {
+								self.hideSuggest();
+							}
+
+							result = true;
+						}
+						break;
+					case ":remove":
+						if ($.isArray(settings)) {
+							for (var i = 0; i < settings.length; i++) {
+								this.elements.remove($(settings[i]));
+							}
+						} else {
+							settings = $(settings);
+							if (settings.length > 1) {
+								for (var i = 0; i < settings.length; i++) {
+									this.elements.remove($(settings[i]));
+								}
+							} else {
+								this.elements.remove(settings);
+							}
+						}
+						break;
+					default:
+						if ($.isArray(elements)) {
+							for (var i = 0; i < elements.length; i++) {
+								this.elements.add($(elements[i].element).data("hot-key-settings", elements[i].settings));
+							}
+						} else if ($.isPlainObject(elements)) {
+							this.elements.add($(elements.element).data("hot-key-settings", elements.settings));
+						} else {
+							elements = $(elements);
+							if (elements.length > 1) {
+								for (var i = 0; i < elements.length; i++) {
+									this.elements.add($(elements[i]).data("hot-key-settings", settings));
+								}
+							} else {
+								this.elements.add(elements.data("hot-key-settings", settings));
+							}
+						}
+
+						result = true;
 				}
 
 				return result;

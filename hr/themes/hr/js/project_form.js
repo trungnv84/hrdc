@@ -109,6 +109,8 @@ $(document).ready(function () {
 		dateFormat: 'dd-mm-yy'
 	});
 
+	$.hostKey(":remove", $("#Projects_actual_effort"));
+
 	$("#btn-save-close").click(function () {
 		$("#redirect").val(1);
 		$("#btn-save").click();

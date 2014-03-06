@@ -67,12 +67,12 @@ $saveTexts = array('', _SAVE_END_CLOSE, _SAVE_END_NEW);
 			<?php echo $form->textField($model, 'email', array('class' => 'span12 hot-key', 'maxlength' => 250)); ?>
 			<?php echo $form->error($model, 'email'); ?>
 		</div>
-		<div class="span3">
+		<div class="span2">
 			<?php echo $form->labelEx($model, 'skype'); ?>
 			<?php echo $form->textField($model, 'skype', array('class' => 'span12 hot-key', 'maxlength' => 60)); ?>
 			<?php echo $form->error($model, 'skype'); ?>
 		</div>
-		<div class="span2">
+		<div class="span3">
 			<?php echo GxHtml::label('&nbsp;', null);?>
 			<div id="btn-submit-group" class="btn-group">
 				<?php
@@ -94,6 +94,7 @@ $saveTexts = array('', _SAVE_END_CLOSE, _SAVE_END_NEW);
 					</li>
 				</ul>
 			</div>
+			<?php echo GxHtml::link('Cancel', array('admin'), array('class' => 'btn'));?>
 			<input type="hidden" id="redirect" name="redirect" value="<?php echo $redirect;?>">
 		</div>
 	</div>

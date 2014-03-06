@@ -18,4 +18,11 @@ class ViewHelper
 			$projectTypes = Yii::app()->params['projectTypes'];
 		return isset($projectTypes[$type]) ? $projectTypes[$type] : '';
 	}
+
+	public static function dateTimeIntDBToFormat($format, $date)
+	{
+		$dateObj = new DateTime(date('Y-m-d H:i:s', $date), new DateTimeZone(Yii::app()->params['dbTimeZone']));
+		$dateObj->setTimezone(new DateTimeZone(Yii::app()->timeZone));
+		return $dateObj->format($format);
+	}
 }

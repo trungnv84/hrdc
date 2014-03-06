@@ -35,11 +35,10 @@ class Projects extends BaseProjects
 
 	public function beforeValidate()
 	{
-		if (preg_match('/\d{1,2}-\d{1,2}-\d{4}/', $this->discovery_phase_starts)) {
-			$date = explode('-', $this->discovery_phase_starts);
-			$date = array_reverse($date);
-			$this->discovery_phase_starts = strtotime($date);
-		}
+		$this->discovery_phase_starts = ModelHelper::dateTimeToIntForDB($this->discovery_phase_starts);
+		$this->development_phase_starts = ModelHelper::dateTimeToIntForDB($this->development_phase_starts);
+		$this->end_development_phase_starts = ModelHelper::dateTimeToIntForDB($this->end_development_phase_starts);
+		$this->uat_phase_starts = ModelHelper::dateTimeToIntForDB($this->uat_phase_starts);
 		return parent::beforeValidate();
 	}
 }

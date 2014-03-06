@@ -8,7 +8,6 @@ $cs->registerScriptFile($baseUrl . '/js/hotkey.js');
 $cs->registerScriptFile($baseUrl . '/js/project_form.js');
 $redirect = Yii::app()->user->getState("Projects_form_states_redirect", 0);
 $saveTexts = array('', _SAVE_END_CLOSE, _SAVE_END_NEW);
-echo date_default_timezone_get ();
 ?>
 <div class="form">
 
@@ -62,7 +61,7 @@ echo date_default_timezone_get ();
 		<div class="span3">
 			<?php echo $form->labelEx($model, 'discovery_phase_starts'); ?>
 			<div class="input-append">
-				<?php echo $form->textField($model, 'discovery_phase_starts', array('value' => $model->discovery_phase_starts ? 'Password' : '', 'class' => 'span10 hot-key', 'maxlength' => 10)); ?>
+				<?php echo $form->textField($model, 'discovery_phase_starts', array('value' => $model->discovery_phase_starts ? ViewHelper::dateTimeIntDBToFormat('d-m-Y', $model->discovery_phase_starts) : '', 'class' => 'span10 hot-key', 'maxlength' => 10)); ?>
 				<label for="Projects_discovery_phase_starts" class="add-on"><i class="icon-calendar"></i></label>
 			</div>
 			<?php echo $form->error($model, 'discovery_phase_starts'); ?>
@@ -70,7 +69,7 @@ echo date_default_timezone_get ();
 		<div class="span3">
 			<?php echo $form->labelEx($model, 'development_phase_starts'); ?>
 			<div class="input-append">
-				<?php echo $form->textField($model, 'development_phase_starts', array('class' => 'span10 hot-key', 'maxlength' => 10)); ?>
+				<?php echo $form->textField($model, 'development_phase_starts', array('value' => $model->development_phase_starts ? ViewHelper::dateTimeIntDBToFormat('d-m-Y', $model->development_phase_starts) : '', 'class' => 'span10 hot-key', 'maxlength' => 10)); ?>
 				<label for="Projects_development_phase_starts" class="add-on"><i class="icon-calendar"></i></label>
 			</div>
 			<?php echo $form->error($model, 'development_phase_starts'); ?>
@@ -78,7 +77,7 @@ echo date_default_timezone_get ();
 		<div class="span3">
 			<?php echo $form->labelEx($model, 'end_development_phase_starts'); ?>
 			<div class="input-append">
-				<?php echo $form->textField($model, 'end_development_phase_starts', array('class' => 'span10 hot-key', 'maxlength' => 10)); ?>
+				<?php echo $form->textField($model, 'end_development_phase_starts', array('value' => $model->end_development_phase_starts ? ViewHelper::dateTimeIntDBToFormat('d-m-Y', $model->end_development_phase_starts) : '', 'class' => 'span10 hot-key', 'maxlength' => 10)); ?>
 				<label for="Projects_end_development_phase_starts" class="add-on"><i class="icon-calendar"></i></label>
 			</div>
 			<?php echo $form->error($model, 'end_development_phase_starts'); ?>
@@ -86,7 +85,7 @@ echo date_default_timezone_get ();
 		<div class="span3">
 			<?php echo $form->labelEx($model, 'uat_phase_starts'); ?>
 			<div class="input-append">
-				<?php echo $form->textField($model, 'uat_phase_starts', array('class' => 'span10 hot-key', 'maxlength' => 10)); ?>
+				<?php echo $form->textField($model, 'uat_phase_starts', array('value' => $model->uat_phase_starts ? ViewHelper::dateTimeIntDBToFormat('d-m-Y', $model->uat_phase_starts) : '', 'class' => 'span10 hot-key', 'maxlength' => 10)); ?>
 				<label for="Projects_uat_phase_starts" class="add-on"><i class="icon-calendar"></i></label>
 			</div>
 			<?php echo $form->error($model, 'uat_phase_starts'); ?>
@@ -95,21 +94,16 @@ echo date_default_timezone_get ();
 	<!-- row -->
 	<div class="row">
 		<div class="span2">
-			<?php echo $form->labelEx($model, 'billable_effort'); ?>
+			<?php echo $form->labelEx($model, 'billable_effort', array('label' => 'Billable Effort (hrs)')); ?>
 			<?php echo $form->textField($model, 'billable_effort', array('class' => 'span12 hot-key', 'maxlength' => 10)); ?>
 			<?php echo $form->error($model, 'billable_effort'); ?>
 		</div>
 		<div class="span2">
-			<?php echo $form->labelEx($model, 'total_effort'); ?>
+			<?php echo $form->labelEx($model, 'total_effort', array('label' => 'Total Effort (hrs)')); ?>
 			<?php echo $form->textField($model, 'total_effort', array('class' => 'span12 hot-key', 'maxlength' => 10)); ?>
 			<?php echo $form->error($model, 'total_effort'); ?>
 		</div>
-		<div class="span2">
-			<?php echo $form->labelEx($model, 'actual_effort'); ?>
-			<?php echo $form->textField($model, 'actual_effort', array('class' => 'span12 hot-key', 'maxlength' => 10)); ?>
-			<?php echo $form->error($model, 'actual_effort'); ?>
-		</div>
-		<div class="span2">
+		<div class="span3">
 			<?php echo GxHtml::label('&nbsp;', null); ?>
 			<div id="btn-submit-group" class="btn-group">
 				<?php
@@ -132,13 +126,21 @@ echo date_default_timezone_get ();
 					</li>
 				</ul>
 			</div>
+			<?php echo GxHtml::link('Cancel', array('admin'), array('class' => 'btn'));?>
 			<input type="hidden" id="redirect" name="redirect" value="<?php echo $redirect; ?>">
 		</div>
 	</div>
 	<!-- row -->
 	<div class="row" style="display: none">
-		<?php echo $form->labelEx($model, 'resources'); ?>
-		<?php echo $form->hiddenField($model, 'resources'); ?>
-		<?php echo $form->error($model, 'resources'); ?>
+		<div class="span2">
+			<?php echo $form->labelEx($model, 'actual_effort', array('label' => 'Actual Effort (hrs)')); ?>
+			<?php echo $form->textField($model, 'actual_effort', array('class' => 'span12 hot-key', 'maxlength' => 10)); ?>
+			<?php echo $form->error($model, 'actual_effort'); ?>
+		</div>
+		<div class="span1">
+			<?php echo $form->labelEx($model, 'resources'); ?>
+			<?php echo $form->hiddenField($model, 'resources'); ?>
+			<?php echo $form->error($model, 'resources'); ?>
+		</div>
 	</div>
 </div><!-- form -->

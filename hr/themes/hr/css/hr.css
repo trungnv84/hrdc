@@ -1,6 +1,12 @@
 .text-right {
 	text-align: right;
 }
+.btn-group {
+	display: inline-block;
+}
+.row .span3 {
+	white-space: nowrap;
+}
 .row label {
 	overflow: hidden;
 	text-overflow: ellipsis;
