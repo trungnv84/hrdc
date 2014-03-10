@@ -13,7 +13,7 @@ class HumanResources extends BaseHumanResources
 	public function search() {
 		$criteria = new CDbCriteria;
 
-		$criteria->compare('id', $this->id, false);
+		$criteria->compare('id', $this->id);
 		$criteria->compare('employee_id', $this->employee_id, false);
 		$criteria->compare('name', $this->name, true);
 		$criteria->compare('user_id', $this->user_id, false);

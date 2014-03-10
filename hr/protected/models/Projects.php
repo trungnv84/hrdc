@@ -15,7 +15,7 @@ class Projects extends BaseProjects
 	{
 		$criteria = new CDbCriteria;
 
-		$criteria->compare('id', $this->id, true);
+		$criteria->compare('id', $this->id);
 		$criteria->compare('name', $this->name, true);
 		$criteria->compare('short_name', $this->short_name, true);
 		$criteria->compare('type', $this->type);

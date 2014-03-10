@@ -9,7 +9,7 @@
  * Columns in table "projects" available as properties of the model,
  * and there are no model relations.
  *
- * @property string $id
+ * @property integer $id
  * @property string $name
  * @property string $short_name
  * @property string $image
@@ -89,7 +89,7 @@ abstract class BaseProjects extends GxActiveRecord {
 	public function search() {
 		$criteria = new CDbCriteria;
 
-		$criteria->compare('id', $this->id, true);
+		$criteria->compare('id', $this->id);
 		$criteria->compare('name', $this->name, true);
 		$criteria->compare('short_name', $this->short_name, true);
 		$criteria->compare('image', $this->image, true);

@@ -55,9 +55,13 @@ class ProjectsController extends BaseController {
 	}
 
 	public function actionIndex() {
-		$dataProvider = new CActiveDataProvider('Projects');
+		$dataProvider = new CActiveDataProvider('Projects', array(
+			'pagination' => false
+		));
+		//$projects = $dataProvider->getData();
+
 		$this->render('index', array(
-			'dataProvider' => $dataProvider,
+			'dataProvider' => $dataProvider
 		));
 	}
 

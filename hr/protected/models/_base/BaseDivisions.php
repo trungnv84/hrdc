@@ -9,7 +9,7 @@
  * Columns in table "divisions" available as properties of the model,
  * and there are no model relations.
  *
- * @property string $id
+ * @property integer $id
  * @property string $name
  *
  */
@@ -59,7 +59,7 @@ abstract class BaseDivisions extends GxActiveRecord {
 	public function search() {
 		$criteria = new CDbCriteria;
 
-		$criteria->compare('id', $this->id, true);
+		$criteria->compare('id', $this->id);
 		$criteria->compare('name', $this->name, true);
 
 		return new CActiveDataProvider($this, array(
