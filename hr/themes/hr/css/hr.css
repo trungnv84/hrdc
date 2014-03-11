@@ -96,3 +96,32 @@
 	top: 2px;
 	right: 2px;
 }
+
+#projects_list .item-list .human-resource {
+	cursor: default;
+	font-size: 1.2em;
+	line-height: 1.5em;
+	padding: 5px 10px;
+}
+
+#projects_list .human-resource .edit-button {
+	display: none;
+	margin-left: 5px;
+}
+
+#projects_list .human-resource .btn {
+	font-size: 1em;
+	line-height: 1em;
+}
+
+#projects_list .btn .icon {
+	margin-top: 0;
+}
+
+#projects_list .item-list {
+	min-height: 100px;
+}
+
+#frees .work-time-edit {
+	display: none;
+}

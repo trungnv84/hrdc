@@ -35,13 +35,26 @@ $this->menu = array(
 					Free
 				</h4>
 
-				<?php foreach ($human_resources as $human_resource): ?>
+				<div class="item-list">
+					<?php foreach ($human_resources as $human_resource): ?>
 
-					<div class="human-resource">
-						<?php echo $human_resource->username ? $human_resource->username : $human_resource->name . " ($human_resource->employee_id)"; ?>
-					</div>
+						<div class="human-resource" data-resource="<?php echo htmlentities(json_encode($human_resource)); ?>">
+							<?php echo $human_resource->username ? $human_resource->username : $human_resource->name . " ($human_resource->employee_id)"; ?>
+							<div class="edit-button">
+								<a href="javascript:;" title="Apply">
+									<i class="icon icon-ok"></i>
+								</a>
+								<a href="javascript:;" title="Cancel">
+									<i class="icon icon-remove"></i>
+								</a>
+							</div>
+							<a class="pull-right work-time-edit" href="javascript:;" title="Modify">
+								<i class="icon icon-edit"></i>
+							</a>
+						</div>
 
-				<?php endforeach; ?>
+					<?php endforeach; ?>
+				</div>
 			</div>
 		</div>
 	</div>

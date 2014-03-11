@@ -1,17 +1,31 @@
 <?php
 class ViewHelper
 {
+	static $divisions;
 	static $workings_now;
 	static $human_resources;
 
-	public static function division($division)
+	public static function &divisions()
+	{
+		if (!isset(self::$divisions)) {
+			self::$divisions = Divisions::model()->findAll();
+		}
+		return self::$divisions;
+	}
+
+	public static function division($id)
 	{
 		static $divisions;
-		if (is_numeric($division)) {
-			if (isset($divisions) && isset($divisions[$division])) return $divisions[$division];
-			else return null;
-		} elseif (is_array($division)) $divisions = $division;
-		return true;
+		if (!isset($divisions)) {
+			$divisions = array();
+			$division = self::divisions();
+			foreach ($division as &$v) {
+				$divisions[$v->id] = $v->name;
+			}
+		}
+		if (is_numeric($id) && isset($divisions) && isset($divisions[$id]))
+			return $divisions[$id];
+		else return null;
 	}
 
 	public static function projectType($type)
@@ -49,7 +63,7 @@ class ViewHelper
 		if (!isset(self::$workings_now)) {
 			$now = ModelHelper::dateTimeToIntForDB(time());
 			self::$workings_now = WorkingTimes::model()->findAll(array(
-				'condition' => "start_time <= $now AND (end_time = 0 OR end_time > $now)",
+				'condition' => "status = 1 AND start_time <= $now AND (end_time = 0 OR end_time > $now)",
 				'index' => 'id'
 			));
 		}

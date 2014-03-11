@@ -17,7 +17,7 @@ $cs->registerScriptFile($baseUrl.'/js/hotkey.js');
 		</div>
 		<div class="span3">
 			<?php echo $form->label($model, 'division_id'); ?>
-			<?php echo $form->dropDownList($model, 'division_id', CHtml::listData($divisions, 'id', 'name'), array('empty' => '(Select a division)', 'class' => 'span12 hot-key', 'maxlength' => 10));?>
+			<?php echo $form->dropDownList($model, 'division_id', CHtml::listData(ViewHelper::divisions(), 'id', 'name'), array('empty' => '(Select a division)', 'class' => 'span12 hot-key', 'maxlength' => 10));?>
 		</div>
 		<div class="span2">
 			<label>&nbsp;</label>

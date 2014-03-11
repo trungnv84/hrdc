@@ -85,7 +85,7 @@ class HumanResourcesController extends BaseController
 
 		$this->render('admin', array(
 			'model' => $model,
-			'divisions' => Divisions::model()->findAll()
+			//'divisions' => Divisions::model()->findAll()
 		));
 	}
 

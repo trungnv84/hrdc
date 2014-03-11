@@ -17,6 +17,7 @@
  * @property integer $end_time
  * @property integer $left_point
  * @property integer $right_point
+ * @property integer $status
  * @property string $note
  *
  */
@@ -40,10 +41,10 @@ abstract class BaseWorkingTimes extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('resource_id, project_id, role, start_time, end_time, left_point, right_point', 'numerical', 'integerOnly'=>true),
+			array('resource_id, project_id, role, start_time, end_time, left_point, right_point, status', 'numerical', 'integerOnly'=>true),
 			array('note', 'safe'),
-			array('resource_id, project_id, role, start_time, end_time, left_point, right_point, note', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, resource_id, project_id, role, start_time, end_time, left_point, right_point, note', 'safe', 'on'=>'search'),
+			array('resource_id, project_id, role, start_time, end_time, left_point, right_point, status, note', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, resource_id, project_id, role, start_time, end_time, left_point, right_point, status, note', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,6 +68,7 @@ abstract class BaseWorkingTimes extends GxActiveRecord {
 			'end_time' => Yii::t('app', 'End Time'),
 			'left_point' => Yii::t('app', 'Left Point'),
 			'right_point' => Yii::t('app', 'Right Point'),
+			'status' => Yii::t('app', 'Status'),
 			'note' => Yii::t('app', 'Note'),
 		);
 	}
@@ -82,6 +84,7 @@ abstract class BaseWorkingTimes extends GxActiveRecord {
 		$criteria->compare('end_time', $this->end_time);
 		$criteria->compare('left_point', $this->left_point);
 		$criteria->compare('right_point', $this->right_point);
+		$criteria->compare('status', $this->status);
 		$criteria->compare('note', $this->note, true);
 
 		return new CActiveDataProvider($this, array(

@@ -21,12 +21,6 @@ $('.search-form form').submit(function(){
 	return false;
 });
 ");
-
-$division = array();
-foreach($divisions as &$v) {
-	$division[$v->id] = $v->name;
-}
-ViewHelper::division($division);
 ?>
 
 <h1><?php echo Yii::t('app', 'Manage') . ' ' . GxHtml::encode($model->label(2)); ?></h1>
@@ -38,8 +32,7 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 <?php echo GxHtml::link(Yii::t('app', 'Advanced Search'), '#', array('class' => 'search-button')); ?>
 <div class="search-form">
 <?php $this->renderPartial('_search', array(
-	'model' => $model,
-	'divisions' => $divisions
+	'model' => $model
 )); ?>
 </div><!-- search-form -->
 
