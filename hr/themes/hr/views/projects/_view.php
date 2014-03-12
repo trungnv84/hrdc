@@ -11,11 +11,16 @@ $human_resources = ViewHelper::getWorkerInProject($data->id);
 	<div class="item-list">
 		<?php foreach ($human_resources as $human_resource): ?>
 
-			<div class="human-resource" data-work-time="<?php echo htmlentities(json_encode($human_resource)); ?>">
+			<div class="human-resource" data-working-time="<?php echo htmlentities(json_encode($human_resource)); ?>">
 				<?php echo $human_resource->resource->username ? $human_resource->resource->username : $human_resource->resource->name . " ($human_resource->resource->employee_id)"; ?>
+				<div class="edit-button">
+					<a class="wt-apply" href="javascript:;" title="Apply">
+						<i class="icon icon-ok"></i></a>
+					<a class="wt-cancel" href="javascript:;" title="Cancel">
+						<i class="icon icon-remove"></i></a>
+				</div>
 				<a class="pull-right work-time-edit" href="javascript:;" title="Modify">
-					<i class="icon icon-edit"></i>
-				</a>
+					<i class="icon icon-edit"></i></a>
 			</div>
 
 		<?php endforeach; ?>

@@ -97,4 +97,9 @@ class ProjectsController extends BaseController {
 
 		$this->renderJson(ControllerHelper::upload($path));
 	}
+
+	public function actionUpdateWorkingTime()
+	{
+
+	}
 }
