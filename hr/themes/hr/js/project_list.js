@@ -15,19 +15,19 @@ $(document).ready(function () {
 		time = time - 100;
 		var percent = 1 - (time / start);
 		var element_css, before_css, after_css;
-		var deg = Math.ceil(360 * percent) - 90;
+		var deg = Math.ceil(380 * percent) - 90;
 
 		if (percent < 0.25) {
-			element_css = "border-color: #92EB00;";
-			after_css = "border-color: transparent #92EB00 #92EB00;"
+			element_css = "border-color: #ffffff;";
+			after_css = "border-color: transparent #ffffff #ffffff;"
 		} else if (percent < 0.50) {
-			element_css = "border-color: transparent #92EB00 #92EB00;";
-			after_css = "border-color: transparent transparent #92EB00 #92EB00;"
+			element_css = "border-color: #92EB00 #ffffff #ffffff;";
+			after_css = "border-color: transparent transparent #ffffff #ffffff;"
 		} else if (percent < 0.75) {
-			element_css = "border-color: transparent transparent #92EB00 #92EB00;";
-			after_css = "border-color: transparent transparent transparent #92EB00;"
+			element_css = "border-color: #92EB00 #92EB00 #ffffff #ffffff;";
+			after_css = "border-color: transparent transparent transparent #ffffff;"
 		} else {
-			element_css = "border-color: transparent transparent transparent #92EB00;"
+			element_css = "border-color: #92EB00 #92EB00 #92EB00 #ffffff;"
 			after_css = "border-color: transparent"
 		}
 
