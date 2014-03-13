@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	function timer(time, element) {
+	function startCircle(time, element) {
 		var start = element.data("time");
 		if (!start) {
 			start = time;
@@ -45,20 +45,69 @@ $(document).ready(function () {
 
 		style.text(element_css + before_css + after_css);
 
+		element.data("timing", time);
+
 		if (time > 0) {
 			element.data("timer", setTimeout(function () {
-				timer(time, element)
+				startCircle(time, element)
 			}, 100));
 		} else {
 			element.click();
 		}
 	}
 
-	function stop(self) {
-		clearTimeout(self.data("timer"));
-		var newClass = self.data("circle-class");
-		self.removeClass("circle-" + newClass).data("time", 0);
+	function stopCircle(element) {
+		clearTimeout(element.data("timer"));
+		var newClass = element.data("circle-class");
+		element.removeClass("circle-" + newClass).data("time", 0);
 		$("#circle-style-" + newClass).remove();
+	}
+
+	function pauseCircle(element) {
+		//TODO: loi close khong stop circle
+		clearTimeout(element.data("timer"));
+	}
+
+	function continueCircle(element) {
+		var timing = element.data("timing");
+		if (timing) startCircle(timing, element);
+	}
+
+	function revertTo(element, container) {
+		var child = container.find(">").last();
+		if (child.length > 0) {
+			var pos = child.offset();
+			var nx = pos.left;
+			var ny = pos.top + child.outerHeight();
+		} else {
+			var pos = container.offset();
+			var nx = pos.left;
+			var ny = pos.top;
+		}
+
+		var pos = element.offset();
+		var ox = pos.left;
+		var oy = pos.top;
+
+		element.css({
+			height: element.height(),
+			width: element.width(),
+			position: "absolute"
+		});
+
+		element.animate(
+			{
+				left: nx - ox,
+				top: ny - oy
+			}, null, null,
+			function () {
+				container.append(element.detach().removeAttr("style"));
+				if (element.hasClass("unsortable")) {
+					element.removeClass("unsortable");
+					$("#projects_list .item-list").sortable("refresh");
+				}
+			}
+		);
 	}
 
 	$("#projects_list .wt-apply").live("click", function () {
@@ -66,12 +115,53 @@ $(document).ready(function () {
 
 		var update_data = self.data("update-data");
 		update_data.item.find(".edit-button").first().hide();
-		stop(self);
+		stopCircle(self);
 
-		//TODO: AJAX...
+		var editBtn = update_data.item.find(".work-time-edit").first().addClass("hiding");
+		var busyIco = update_data.item.find(".saving-busy").first().show();
+		$.post(
+			"resourceallocation/updateWorkingTime",
+			{
+				resource: update_data.resource,
+				resource_id: update_data.resource_id,
+				working_time: update_data.working_time,
+				new_project_id: update_data.new_project_id
+			},
+			function (data) {
+				busyIco.hide();
+				editBtn.removeClass("hiding");
+				if (data && data.status == 1 && data.working_time) {
+					//TODO: notification
+					self.data("update-data", null);
+					self.next().data("cancel-data", null);
+					if (update_data.item.hasClass("unsortable")) {
+						update_data.item.data("working-time", data.working_time).removeClass("unsortable");
+						$("#projects_list .item-list").sortable("refresh");
+					}
+				} else {
+					//TODO: notification
+					revertTo(update_data.item, update_data.old_container);
+				}
+			},
+			"json"
+		).fail(function () {
+				busyIco.hide();
+				editBtn.removeClass("hiding");
 
-		update_data.item.removeClass("unsortable");
-		$("#projects_list .item-list").sortable("refresh");
+				//TODO: notification
+				revertTo(update_data.item, update_data.old_container);
+			});
+
+	});
+
+	$("#projects_list .wt-cancel").live("click", function () {
+		var self = $(this);
+		var cancel_data = $(this).data("cancel-data");
+
+		cancel_data.item.find(".edit-button").first().hide();
+		stopCircle(self.prev());
+
+		revertTo(cancel_data.item, cancel_data.old_container);
 	});
 
 	$("#projects_list .item-list").sortable({
@@ -88,51 +178,95 @@ $(document).ready(function () {
 			var wt_apply = item.find(".wt-apply").first();
 			var wt_cancel = item.find(".wt-cancel").first();
 
+			var old_container = $(ui.sender);
 			var oldProject = $(ui.sender).parents(".view").first();
 			var newProject = item.parents(".view").first();
 
 			var working_time = item.data("working-time");
 			if (working_time) {
 				var resource_id = working_time.resource_id;
+				var resource = working_time.resource;
 			} else {
 				var resource = item.data("resource");
 				var resource_id = resource.id;
 			}
-			var new_project = newProject.data("project-id");
+			var old_project_id = oldProject.data("project-id");
+			var new_project_id = newProject.data("project-id");
 
-			wt_apply.data("update-data", {
-				item: item,
-				resource_id: resource_id,
-				working_time: JSON.stringify(working_time),
-				new_project: new_project
-			});
+			if (!wt_apply.data("update-data"))
+				wt_apply.data("update-data", {
+					item: item,
+					resource_id: resource_id,
+					resource: working_time ? null : JSON.stringify(resource),
+					working_time: working_time ? JSON.stringify(working_time) : null,
+					new_project_id: new_project_id,
+					old_project_id: old_project_id,
+					old_container: old_container
+				});
 
-			wt_cancel.data("cancel-data", {
-				item: item,
-				oldContainer: $(ui.sender)
-			});
+			if (old_project_id > 0 || !wt_cancel.data("cancel-data"))
+				wt_cancel.data("cancel-data", {
+					item: item,
+					old_project_id: old_project_id,
+					old_container: old_container
+				});
 
-			item.addClass("unsortable");
-			$("#projects_list .item-list").sortable("refresh");
+			if (new_project_id > 0) {
+				item.addClass("unsortable");
+				$("#projects_list .item-list").sortable("refresh");
+			}
 
-			timer(5000, wt_apply);
+			if (new_project_id) startCircle(5000, wt_apply);
 
 			//$("#projects_list .item-list").sortable( "refresh" );
 			//$("#projects_list .item-list").sortable( "cancel" );
-
-			/*$.post(
-			 "resourceallocation/updateWorkingTime",
-			 {
-			 resource_id: resource_id,
-			 working_time: JSON.stringify(working_time),
-			 new_project: new_project
-			 },
-			 function(data){
-
-			 },
-			 "json"
-			 );*/
-
 		}
+	});
+
+	$("#dialog-form").dialog({
+		autoOpen: false,
+		height: 400,
+		width: 450,
+		modal: true,
+		buttons: {
+			"Save": function () {
+				var bValid = true;
+
+				if (bValid) {
+					$("#users tbody").append("<tr>" +
+						"<td>" + name.val() + "</td>" +
+						"<td>" + email.val() + "</td>" +
+						"<td>" + password.val() + "</td>" +
+						"</tr>");
+					$(this).dialog("close");
+				}
+			},
+			Close: function (event, ui) {
+				var self = $(this);
+				var target = $(this).data("target");
+				var circle = target.find(".wt-apply").first();
+				if (circle.length > 0 && circle.data("timing") > 0) continueCircle(circle);
+				self.dialog("close");
+			},
+			Cancel: function () {
+				$(this).dialog("close");
+			}
+		},
+		open: function () {
+			var target = $(this).data("target");
+			var circle = target.find(".wt-apply").first();
+			if (circle.length > 0 && circle.data("timing") > 0) pauseCircle(circle);
+		},
+		close: function () {
+			var target = $(this).data("target");
+			var circle = target.find(".wt-apply").first();
+			if (circle.length > 0 && circle.data("timing") > 0) continueCircle(circle);
+		}
+	});
+
+	$("#projects_list .work-time-edit").live("click", function () {
+		var self = $(this);
+		var item = self.parents(".human-resource").first();
+		$("#dialog-form").data("target", item).dialog("open");
 	});
 });

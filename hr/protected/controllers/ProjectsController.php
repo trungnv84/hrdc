@@ -100,6 +100,6 @@ class ProjectsController extends BaseController {
 
 	public function actionUpdateWorkingTime()
 	{
-
+		echo '{"status": 1}';
 	}
 }

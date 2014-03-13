@@ -46,6 +46,7 @@ $this->menu = array(
 								<a class="wt-cancel" href="javascript:;" title="Cancel">
 									<i class="icon icon-remove"></i></a>
 							</div>
+							<div class="pull-right saving-busy" title="Saving..."><!--&nbsp;&nbsp;s--></div>
 							<a class="pull-right work-time-edit" href="javascript:;" title="Modify">
 								<i class="icon icon-edit"></i></a>
 						</div>
@@ -56,3 +57,19 @@ $this->menu = array(
 		</div>
 	</div>
 </div>
+
+
+<div id="dialog-form" title="Update working time">
+	<p class="validateTips">All form fields are required.</p>
+	<form>
+		<fieldset>
+			<label for="name">Name</label>
+			<input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
+			<label for="email">Email</label>
+			<input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all">
+			<label for="password">Password</label>
+			<input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all">
+		</fieldset>
+	</form>
+</div>
+

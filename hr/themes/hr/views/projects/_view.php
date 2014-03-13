@@ -6,7 +6,8 @@ $human_resources = ViewHelper::getWorkerInProject($data->id);
 		<img src="<?php echo ViewHelper::projectIcon($data); ?>">
 		<?php echo GxHtml::encode($data->name); ?>
 	</h4>
-	<span class="label label-info pull-right"><?php echo GxHtml::encode($data->short_name); ?></span>
+	<span class="label <?php echo $data->type != 1 ? 'label-info' : 'label-success' ?> pull-right">
+		<?php echo GxHtml::encode($data->short_name); ?></span>
 
 	<div class="item-list">
 		<?php foreach ($human_resources as $human_resource): ?>
@@ -19,6 +20,7 @@ $human_resources = ViewHelper::getWorkerInProject($data->id);
 					<a class="wt-cancel" href="javascript:;" title="Cancel">
 						<i class="icon icon-remove"></i></a>
 				</div>
+				<div class="pull-right saving-busy" title="Saving..."><!--&nbsp;&nbsp;s--></div>
 				<a class="pull-right work-time-edit" href="javascript:;" title="Modify">
 					<i class="icon icon-edit"></i></a>
 			</div>
