@@ -25,6 +25,7 @@ $this->menu=array(
 'user_id',
 'username',
 'division_id',
+'role_id',
 'avatar',
 'phone',
 'email',

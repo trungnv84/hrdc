@@ -7,7 +7,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'id'); ?>
-		<?php echo $form->textField($model, 'id', array('maxlength' => 10)); ?>
+		<?php echo $form->textField($model, 'id'); ?>
 	</div>
 
 	<div class="row">
@@ -22,7 +22,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'user_id'); ?>
-		<?php echo $form->textField($model, 'user_id', array('maxlength' => 10)); ?>
+		<?php echo $form->textField($model, 'user_id'); ?>
 	</div>
 
 	<div class="row">
@@ -32,7 +32,12 @@
 
 	<div class="row">
 		<?php echo $form->label($model, 'division_id'); ?>
-		<?php echo $form->textField($model, 'division_id', array('maxlength' => 10)); ?>
+		<?php echo $form->textField($model, 'division_id'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model, 'role_id'); ?>
+		<?php echo $form->textField($model, 'role_id'); ?>
 	</div>
 
 	<div class="row">

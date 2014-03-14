@@ -8,7 +8,7 @@ class ViewHelper
 	public static function &divisions()
 	{
 		if (!isset(self::$divisions)) {
-			self::$divisions = Divisions::model()->findAll();
+			self::$divisions = Divisions::model()->findAll(array('index' => 'id'));
 		}
 		return self::$divisions;
 	}
@@ -26,6 +26,11 @@ class ViewHelper
 		if (is_numeric($id) && isset($divisions) && isset($divisions[$id]))
 			return $divisions[$id];
 		else return null;
+	}
+
+	public static function roles()
+	{
+		return Yii::app()->params['roles'];
 	}
 
 	public static function projectType($type)
@@ -49,6 +54,14 @@ class ViewHelper
 			$image = 'logo.ico';
 		}
 		return "images/projects/$type/$image";
+	}
+
+	public static function projects()
+	{
+		static $projects;
+		if(!isset($projects))
+			$projects = Projects::model()->findAll(array('index' => 'id'));
+		return $projects;
 	}
 
 	public static function dateTimeIntDBToFormat($format, $date)
@@ -114,5 +127,30 @@ class ViewHelper
 			}
 		}
 		return $free_men_now;
+	}
+
+	public static function objectToJsView($data, $id, $value, $name)
+	{
+		$result = array();
+		foreach ($data as &$v) {
+			$result[] = $v->$id . ': "' . str_replace('"', '\\"', $v->$value) . '"';
+		}
+		return "var $name = {" . implode(',', $result) . '};';
+	}
+
+	public static function arrayToJsView($data, $name)
+	{
+		$result = array();
+		foreach ($data as $k => &$v) {
+			$result[] = $k . ': "' . str_replace('"', '\\"', $v) . '"';
+		}
+		return "var $name = {" . implode(',', $result) . '};';
+	}
+
+	public static function getTimeOffset()
+	{
+		$tz = new DateTime(null, new DateTimeZone(Yii::app()->timeZone));
+		$db_tz = new DateTime(null, new DateTimeZone(Yii::app()->params['dbTimeZone']));
+		return $tz->format('P') - $db_tz->format('P');
 	}
 }

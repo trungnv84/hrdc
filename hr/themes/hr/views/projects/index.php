@@ -3,6 +3,10 @@ if (!isset($cs)) $cs = Yii::app()->getClientScript();
 if (!isset($baseUrl)) $baseUrl = Yii::app()->theme->baseUrl;
 $cs->registerCssFile($cs->getCoreScriptUrl() . '/jui/css/base/jquery-ui.css');
 $cs->registerCoreScript('jquery.ui');
+$cs->registerScript('$divisions_data', ViewHelper::objectToJsView(ViewHelper::divisions(), 'id', 'name', '$divisions'), CClientScript::POS_HEAD);
+$cs->registerScript('$roles_data', ViewHelper::arrayToJsView(ViewHelper::roles(), '$roles'), CClientScript::POS_HEAD);
+$cs->registerScript('$time_offset_data', 'var $time_offset = ' . ViewHelper::getTimeOffset() . ';', CClientScript::POS_HEAD);
+$cs->registerScriptFile($baseUrl . '/js/date.format.js');
 $cs->registerScriptFile($baseUrl . '/js/project_list.js');
 
 $this->breadcrumbs = array(
@@ -38,7 +42,7 @@ $this->menu = array(
 				<div class="item-list">
 					<?php foreach ($human_resources as $human_resource): ?>
 
-						<div class="human-resource" data-resource="<?php echo htmlentities(json_encode($human_resource)); ?>">
+						<div class="human-resource" data-resource="<?php echo GxHtml::encode(json_encode($human_resource)); ?>">
 							<?php echo $human_resource->username ? $human_resource->username : $human_resource->name . " ($human_resource->employee_id)"; ?>
 							<div class="edit-button">
 								<a class="wt-apply" href="javascript:;" title="Apply">
@@ -59,16 +63,59 @@ $this->menu = array(
 </div>
 
 
-<div id="dialog-form" title="Update working time">
-	<p class="validateTips">All form fields are required.</p>
-	<form>
+<div id="dialog-form" class="hide" title="Update working time">
+	<p id="form_activity_tip"></p>
+
+	<form class="form-inline">
 		<fieldset>
-			<label for="name">Name</label>
-			<input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
-			<label for="email">Email</label>
-			<input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all">
-			<label for="password">Password</label>
-			<input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all">
+			<div id="form_current_project" class="row-fluid control-group">
+				Current: <span id="form_current_project_name"></span>
+			</div>
+
+			<div class="row-fluid control-group">
+				<div class="span6">
+					<label class="control-label" for="form_division">
+						Division:
+					</label>
+					<input type="text" id="form_division" class="input-small" disabled="disabled">
+				</div>
+				<div class="span6">
+					<label class="control-label" for="role">Role: </label>
+					<?php echo GxHtml::dropDownList('role', null, ViewHelper::roles(), array('class' => 'input-medium')); ?>
+				</div>
+			</div>
+
+			<div id="form_current_project" class="row-fluid control-group">
+				<label class="checkbox">
+					<input type="checkbox" id="move_to" name="move_to" value="1">
+					Move to:
+				</label>
+				<?php echo GxHtml::dropDownList('role', null, ViewHelper::projects(), array('style' => 'max-width:100%;width:auto;')); ?>
+			</div>
+
+			<div class="row-fluid control-group">
+				<div class="span6">
+					<label for="start_time">Start time:</label><br />
+
+					<div class="input-append">
+						<input type="text" name="start_time" id="start_time" class="input-medium hasDatepicker">
+						<label class="add-on" for="start_time">
+							<i class="icon-calendar"></i>
+						</label>
+					</div>
+				</div>
+
+				<div class="span6">
+					<label for="end_time">End time:</label><br />
+
+					<div class="input-append">
+						<input type="text" name="end_time" id="end_time" class="input-medium hasDatepicker">
+						<label class="add-on" for="end_time">
+							<i class="icon-calendar"></i>
+						</label>
+					</div>
+				</div>
+			</div>
 		</fieldset>
 	</form>
 </div>

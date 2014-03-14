@@ -49,6 +49,7 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 		'username',
 		'division_id',
 		/*
+		'role_id',
 		'avatar',
 		'phone',
 		'email',

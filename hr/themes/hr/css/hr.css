@@ -16,7 +16,7 @@
 .row label:hover {
 	overflow: visible;
 }
-.row input.hasDatepicker, .row label.add-on {
+.row input.hasDatepicker, .row label.add-on, .row-fluid input.hasDatepicker, .row-fluid label.add-on {
 	cursor: pointer;
 }
 .style-switcher {

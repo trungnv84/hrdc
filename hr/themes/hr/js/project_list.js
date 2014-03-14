@@ -1,4 +1,9 @@
 $(document).ready(function () {
+	function phpDateFormat($time) {
+		$time = new Date((($time_offset * 60 * 60) + $time) * 1000);
+		return $time.format("mediumDate");
+	}
+
 	function startCircle(time, element) {
 		var start = element.data("time");
 		if (!start) {
@@ -64,13 +69,24 @@ $(document).ready(function () {
 	}
 
 	function pauseCircle(element) {
-		//TODO: loi close khong stop circle
 		clearTimeout(element.data("timer"));
 	}
 
 	function continueCircle(element) {
 		var timing = element.data("timing");
 		if (timing) startCircle(timing, element);
+	}
+
+	function pauseAllCircle() {
+		$("#projects_list .wt-apply").each(function (index, element) {
+			pauseCircle($(element));
+		});
+	}
+
+	function continueAllCircle() {
+		$("#projects_list .wt-apply").each(function (index, element) {
+			continueCircle($(element));
+		});
 	}
 
 	function revertTo(element, container) {
@@ -130,12 +146,16 @@ $(document).ready(function () {
 			function (data) {
 				busyIco.hide();
 				editBtn.removeClass("hiding");
-				if (data && data.status == 1 && data.working_time) {
+				if (data && data.status == 1 && (data.working_time || data.resource)) {
 					//TODO: notification
 					self.data("update-data", null);
 					self.next().data("cancel-data", null);
+					if (data.working_time)
+						update_data.item.data("working-time", data.working_time);
+					else if (data.resource)
+						update_data.item.data("resource", data.resource);
 					if (update_data.item.hasClass("unsortable")) {
-						update_data.item.data("working-time", data.working_time).removeClass("unsortable");
+						update_data.item.removeClass("unsortable");
 						$("#projects_list .item-list").sortable("refresh");
 					}
 				} else {
@@ -223,9 +243,9 @@ $(document).ready(function () {
 		}
 	});
 
-	$("#dialog-form").dialog({
+	$("#dialog-form").removeClass("hide");$().dialog({
 		autoOpen: false,
-		height: 400,
+		height: 320,
 		width: 450,
 		modal: true,
 		buttons: {
@@ -242,31 +262,51 @@ $(document).ready(function () {
 				}
 			},
 			Close: function (event, ui) {
-				var self = $(this);
-				var target = $(this).data("target");
-				var circle = target.find(".wt-apply").first();
-				if (circle.length > 0 && circle.data("timing") > 0) continueCircle(circle);
-				self.dialog("close");
+				$(this).dialog("close");
 			},
 			Cancel: function () {
 				$(this).dialog("close");
 			}
 		},
 		open: function () {
-			var target = $(this).data("target");
-			var circle = target.find(".wt-apply").first();
-			if (circle.length > 0 && circle.data("timing") > 0) pauseCircle(circle);
+			/*var target = $(this).data("target");
+			 var circle = target.find(".wt-apply").first();*/
+			pauseAllCircle();
 		},
 		close: function () {
-			var target = $(this).data("target");
-			var circle = target.find(".wt-apply").first();
-			if (circle.length > 0 && circle.data("timing") > 0) continueCircle(circle);
+			/*var target = $(this).data("target");
+			 var circle = target.find(".wt-apply").first();*/
+			continueAllCircle();
 		}
+	});
+
+	$(".hasDatepicker").datepicker({
+		showOtherMonths: true,
+		selectOtherMonths: true,
+		dateFormat: 'dd-mm-yy',
+		showWeek: true
 	});
 
 	$("#projects_list .work-time-edit").live("click", function () {
 		var self = $(this);
 		var item = self.parents(".human-resource").first();
+		var working_time = item.data("working-time");
+		if (working_time) {
+			var resource = working_time.resource;
+			var project = $("#project_" + working_time.project_id).data("project");
+			$("#form_current_project_name").html(
+				(project.short_name ? project.short_name : project.name) + " (" +
+					phpDateFormat(parseInt(working_time.start_time)) +
+					(parseInt(working_time.end_time) ? " ~ " + phpDateFormat(parseInt(working_time.end_time)) : "") + ")");
+
+			$("#form_current_project").show();
+		} else {
+			var resource = item.data("resource");
+			$("#form_current_project").hide();
+		}
+		$("#form_division").val($divisions[resource.division_id]);
+
+
 		$("#dialog-form").data("target", item).dialog("open");
 	});
 });

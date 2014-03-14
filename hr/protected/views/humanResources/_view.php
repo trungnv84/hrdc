@@ -19,10 +19,13 @@
 	<?php echo GxHtml::encode($data->getAttributeLabel('division_id')); ?>:
 	<?php echo GxHtml::encode($data->division_id); ?>
 	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('role_id')); ?>:
+	<?php echo GxHtml::encode($data->role_id); ?>
+	<br />
+	<?php /*
 	<?php echo GxHtml::encode($data->getAttributeLabel('avatar')); ?>:
 	<?php echo GxHtml::encode($data->avatar); ?>
 	<br />
-	<?php /*
 	<?php echo GxHtml::encode($data->getAttributeLabel('phone')); ?>:
 	<?php echo GxHtml::encode($data->phone); ?>
 	<br />

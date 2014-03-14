@@ -104,5 +104,12 @@ return array(
 			1 => PROJECT_TYPE_DEDICATED,
 			2 => PROJECT_TYPE_FIXED_BID,
 		),
+		'roles' => array(
+			1 => 'PM',
+			2 => 'TechLead',
+			3 => 'Dev',
+			4 => 'Supporter',
+			5 => 'QA'
+		)
 	),
 );

@@ -15,6 +15,7 @@
  * @property integer $user_id
  * @property string $username
  * @property integer $division_id
+ * @property integer $role_id
  * @property string $avatar
  * @property string $phone
  * @property string $email
@@ -42,13 +43,13 @@ abstract class BaseHumanResources extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('user_id, division_id', 'numerical', 'integerOnly'=>true),
+			array('user_id, division_id, role_id', 'numerical', 'integerOnly'=>true),
 			array('employee_id', 'length', 'max'=>10),
 			array('name, username, skype', 'length', 'max'=>60),
 			array('avatar, email', 'length', 'max'=>250),
 			array('phone, position', 'safe'),
-			array('employee_id, name, user_id, username, division_id, avatar, phone, email, skype, position', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, employee_id, name, user_id, username, division_id, avatar, phone, email, skype, position', 'safe', 'on'=>'search'),
+			array('employee_id, name, user_id, username, division_id, role_id, avatar, phone, email, skype, position', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, employee_id, name, user_id, username, division_id, role_id, avatar, phone, email, skype, position', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,6 +71,7 @@ abstract class BaseHumanResources extends GxActiveRecord {
 			'user_id' => Yii::t('app', 'User'),
 			'username' => Yii::t('app', 'Username'),
 			'division_id' => Yii::t('app', 'Division'),
+			'role_id' => Yii::t('app', 'Role'),
 			'avatar' => Yii::t('app', 'Avatar'),
 			'phone' => Yii::t('app', 'Phone'),
 			'email' => Yii::t('app', 'Email'),
@@ -87,6 +89,7 @@ abstract class BaseHumanResources extends GxActiveRecord {
 		$criteria->compare('user_id', $this->user_id);
 		$criteria->compare('username', $this->username, true);
 		$criteria->compare('division_id', $this->division_id);
+		$criteria->compare('role_id', $this->role_id);
 		$criteria->compare('avatar', $this->avatar, true);
 		$criteria->compare('phone', $this->phone, true);
 		$criteria->compare('email', $this->email, true);
