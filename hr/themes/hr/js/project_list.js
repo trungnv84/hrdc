@@ -243,7 +243,7 @@ $(document).ready(function () {
 		}
 	});
 
-	$("#dialog-form").removeClass("hide");$().dialog({
+	$("#dialog-form").removeClass("hide").dialog({
 		autoOpen: false,
 		height: 320,
 		width: 450,
@@ -280,11 +280,23 @@ $(document).ready(function () {
 		}
 	});
 
-	$(".hasDatepicker").datepicker({
-		showOtherMonths: true,
-		selectOtherMonths: true,
-		dateFormat: 'dd-mm-yy',
-		showWeek: true
+	var range_date_time = $(".date-time-picker");
+	var start_time = range_date_time.first().datetimepicker().on('changeDate', function(ev) {
+		if (ev.date.valueOf() > end_time.date.valueOf()) {
+			var newDate = new Date(ev.date)
+			newDate.setDate(newDate.getDate() + 1);
+			end_time.setValue(newDate);
+		}
+		start_time.hide();
+		range_date_time.last().focus();
+	});
+	var end_time = range_date_time.last().datetimepicker({
+		onRender: function(date) {
+			return date.valueOf() <= start_time.date.valueOf() ? 'disabled' : '';
+		}
+	});
+	$(".date-time-picker input").focusin(function(){
+		$(this).next().click();
 	});
 
 	$("#projects_list .work-time-edit").live("click", function () {

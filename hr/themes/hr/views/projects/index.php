@@ -2,10 +2,12 @@
 if (!isset($cs)) $cs = Yii::app()->getClientScript();
 if (!isset($baseUrl)) $baseUrl = Yii::app()->theme->baseUrl;
 $cs->registerCssFile($cs->getCoreScriptUrl() . '/jui/css/base/jquery-ui.css');
+$cs->registerCssFile($baseUrl . '/js/bootstrap-datetimepicker-0.0.11/css/bootstrap-datetimepicker.min.css');
 $cs->registerCoreScript('jquery.ui');
 $cs->registerScript('$divisions_data', ViewHelper::objectToJsView(ViewHelper::divisions(), 'id', 'name', '$divisions'), CClientScript::POS_HEAD);
 $cs->registerScript('$roles_data', ViewHelper::arrayToJsView(ViewHelper::roles(), '$roles'), CClientScript::POS_HEAD);
 $cs->registerScript('$time_offset_data', 'var $time_offset = ' . ViewHelper::getTimeOffset() . ';', CClientScript::POS_HEAD);
+$cs->registerScriptFile($baseUrl . '/js/bootstrap-datetimepicker-0.0.11/js/bootstrap-datetimepicker.min.js');
 $cs->registerScriptFile($baseUrl . '/js/date.format.js');
 $cs->registerScriptFile($baseUrl . '/js/project_list.js');
 
@@ -96,22 +98,20 @@ $this->menu = array(
 			<div class="row-fluid control-group">
 				<div class="span6">
 					<label for="start_time">Start time:</label><br />
-
-					<div class="input-append">
-						<input type="text" name="start_time" id="start_time" class="input-medium hasDatepicker">
+					<div class="input-append date date-time-picker">
+						<input class="input-medium" data-format="dd/MM/yyyy hh:mm" id="start_time" name="start_time" type="text">
 						<label class="add-on" for="start_time">
-							<i class="icon-calendar"></i>
+							<i class="icon-calendar" data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
 						</label>
 					</div>
 				</div>
 
 				<div class="span6">
 					<label for="end_time">End time:</label><br />
-
-					<div class="input-append">
-						<input type="text" name="end_time" id="end_time" class="input-medium hasDatepicker">
+					<div class="input-append date date-time-picker">
+						<input class="input-medium" data-format="dd/MM/yyyy hh:mm" id="end_time" name="end_time" type="text">
 						<label class="add-on" for="end_time">
-							<i class="icon-calendar"></i>
+							<i class="icon-calendar" data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
 						</label>
 					</div>
 				</div>
