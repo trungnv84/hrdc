@@ -152,8 +152,10 @@ $(document).ready(function () {
 					self.next().data("cancel-data", null);
 					if (data.working_time)
 						update_data.item.data("working-time", data.working_time);
-					else if (data.resource)
+					else if (data.resource) {
+						update_data.item.data("working-time", null);
 						update_data.item.data("resource", data.resource);
+					}
 					if (update_data.item.hasClass("unsortable")) {
 						update_data.item.removeClass("unsortable");
 						$("#projects_list .item-list").sortable("refresh");
@@ -245,7 +247,6 @@ $(document).ready(function () {
 
 	$("#dialog-form").removeClass("hide").dialog({
 		autoOpen: false,
-		height: 320,
 		width: 450,
 		modal: true,
 		buttons: {
@@ -265,13 +266,19 @@ $(document).ready(function () {
 				$(this).dialog("close");
 			},
 			Cancel: function () {
+				var item = $(this).data("target");
+				item.find(".wt-cancel:visible").first().click();//TODO: Bug click cancel
 				$(this).dialog("close");
 			}
 		},
 		open: function () {
+			pauseAllCircle();
 			/*var target = $(this).data("target");
 			 var circle = target.find(".wt-apply").first();*/
-			pauseAllCircle();
+
+			var start = dialog_start_time.datetimepicker('getDate');
+			if (start) dialog_end_time.datetimepicker('option', 'minDate', start);
+			else dialog_end_time.datetimepicker('option', 'minDate', null);
 		},
 		close: function () {
 			/*var target = $(this).data("target");
@@ -280,22 +287,33 @@ $(document).ready(function () {
 		}
 	});
 
-	var range_date_time = $(".date-time-picker");
-	var start_time = range_date_time.first().datetimepicker().on('changeDate', function(ev) {
-		if (ev.date.valueOf() > end_time.date.valueOf()) {
-			var newDate = new Date(ev.date)
-			newDate.setDate(newDate.getDate() + 1);
-			end_time.setValue(newDate);
+	var dialog_start_time = $("#dialog_start_time").datetimepicker({
+		/*minDate: now,*/
+		showWeek: true,
+		dateFormat: 'M dd, yy',
+		timeFormat: 'HH:mm',
+		showOptions: { direction: "down" },
+		onClose: function (dateText, inst) {
+			if (dialog_end_time.val() != '') {
+				var testStartDate = dialog_start_time.datetimepicker('getDate');
+				var testEndDate = dialog_end_time.datetimepicker('getDate');
+				if (testStartDate > testEndDate)
+					dialog_end_time.datetimepicker('setDate', testStartDate);
+			}
+		},
+		onSelect: function (selectedDateTime) {
+			dialog_end_time.datetimepicker('option', 'minDate', dialog_start_time.datetimepicker('getDate'));
 		}
-		start_time.hide();
-		range_date_time.last().focus();
 	});
-	var end_time = range_date_time.last().datetimepicker({
-		onRender: function(date) {
-			return date.valueOf() <= start_time.date.valueOf() ? 'disabled' : '';
-		}
+
+	var dialog_end_time = $("#dialog_end_time").datetimepicker({
+		showWeek: true,
+		dateFormat: 'M dd, yy',
+		timeFormat: 'HH:mm',
+		showOptions: { direction: "down" }
 	});
-	$(".date-time-picker input").focusin(function(){
+
+	$(".date-time-picker input").focusin(function () {
 		$(this).next().click();
 	});
 
@@ -305,19 +323,36 @@ $(document).ready(function () {
 		var working_time = item.data("working-time");
 		if (working_time) {
 			var resource = working_time.resource;
-			var project = $("#project_" + working_time.project_id).data("project");
-			$("#form_current_project_name").html(
+			var old_project_id = working_time.project_id;
+			var project = $("#project_" + old_project_id).data("project");
+			$("#dialog_current_project_name").html(
 				(project.short_name ? project.short_name : project.name) + " (" +
 					phpDateFormat(parseInt(working_time.start_time)) +
 					(parseInt(working_time.end_time) ? " ~ " + phpDateFormat(parseInt(working_time.end_time)) : "") + ")");
+			$("#dialog_current_project").show();
 
-			$("#form_current_project").show();
 		} else {
+			var old_project_id = 0;
 			var resource = item.data("resource");
-			$("#form_current_project").hide();
+			$("#dialog_current_project").hide();
 		}
-		$("#form_division").val($divisions[resource.division_id]);
 
+		var dialog_project_id = $("#dialog_project_id");
+		dialog_project_id.find("option").show();
+		if (old_project_id) dialog_project_id.find("option[value=" + old_project_id + "]").hide();
+		var new_project_id = item.parents(".view").first().data("project-id");
+		if (new_project_id == old_project_id) {
+			$("#move_to").attr('checked', false);
+			dialog_project_id.attr("readonly", "readonly");
+		} else {
+			$("#move_to").attr('checked', true);
+			dialog_project_id.removeAttr("readonly");
+			$("#dialog_project_id").val(new_project_id);
+		}
+
+		$("#dialog_division").val($divisions[resource.division_id]);
+		$("#dialog_role_id").val($roles[(working_time ? working_time.role_id : resource.role_id)]);
+		//TODO:zzz
 
 		$("#dialog-form").data("target", item).dialog("open");
 	});

@@ -2,12 +2,13 @@
 if (!isset($cs)) $cs = Yii::app()->getClientScript();
 if (!isset($baseUrl)) $baseUrl = Yii::app()->theme->baseUrl;
 $cs->registerCssFile($cs->getCoreScriptUrl() . '/jui/css/base/jquery-ui.css');
-$cs->registerCssFile($baseUrl . '/js/bootstrap-datetimepicker-0.0.11/css/bootstrap-datetimepicker.min.css');
+//$cs->registerCssFile($baseUrl . '/js/bootstrap-datetimepicker-0.0.11/css/bootstrap-datetimepicker.min.css');
 $cs->registerCoreScript('jquery.ui');
 $cs->registerScript('$divisions_data', ViewHelper::objectToJsView(ViewHelper::divisions(), 'id', 'name', '$divisions'), CClientScript::POS_HEAD);
 $cs->registerScript('$roles_data', ViewHelper::arrayToJsView(ViewHelper::roles(), '$roles'), CClientScript::POS_HEAD);
 $cs->registerScript('$time_offset_data', 'var $time_offset = ' . ViewHelper::getTimeOffset() . ';', CClientScript::POS_HEAD);
-$cs->registerScriptFile($baseUrl . '/js/bootstrap-datetimepicker-0.0.11/js/bootstrap-datetimepicker.min.js');
+//$cs->registerScriptFile($baseUrl . '/js/bootstrap-datetimepicker-0.0.11/js/bootstrap-datetimepicker.min.js');
+$cs->registerScriptFile($baseUrl . '/js/plugins/jquery-ui-timepicker-addon.js');
 $cs->registerScriptFile($baseUrl . '/js/date.format.js');
 $cs->registerScriptFile($baseUrl . '/js/project_list.js');
 
@@ -66,52 +67,52 @@ $this->menu = array(
 
 
 <div id="dialog-form" class="hide" title="Update working time">
-	<p id="form_activity_tip"></p>
+	<p id="dialog_activity_tip"></p>
 
-	<form class="form-inline">
+	<form class="form-inline dialog_form">
 		<fieldset>
-			<div id="form_current_project" class="row-fluid control-group">
-				Current: <span id="form_current_project_name"></span>
+			<div id="dialog_current_project" class="row-fluid control-group">
+				Current: <span id="dialog_current_project_name"></span>
 			</div>
 
 			<div class="row-fluid control-group">
 				<div class="span6">
-					<label class="control-label" for="form_division">
+					<label class="control-label" for="dialog_division">
 						Division:
 					</label>
-					<input type="text" id="form_division" class="input-small" disabled="disabled">
+					<input type="text" id="dialog_division" class="input-small" disabled="disabled">
 				</div>
 				<div class="span6">
-					<label class="control-label" for="role">Role: </label>
-					<?php echo GxHtml::dropDownList('role', null, ViewHelper::roles(), array('class' => 'input-medium')); ?>
+					<label class="control-label" for="dialog_role_id">Role: </label>
+					<?php echo GxHtml::dropDownList('dialog_role_id', null, ViewHelper::roles(), array('class' => 'input-medium')); ?>
 				</div>
 			</div>
 
-			<div id="form_current_project" class="row-fluid control-group">
+			<div class="row-fluid control-group">
 				<label class="checkbox">
 					<input type="checkbox" id="move_to" name="move_to" value="1">
 					Move to:
 				</label>
-				<?php echo GxHtml::dropDownList('role', null, ViewHelper::projects(), array('style' => 'max-width:100%;width:auto;')); ?>
+				<?php echo GxHtml::dropDownList('dialog_project_id', null, ViewHelper::projects(), array('style' => 'max-width:100%;width:auto;')); ?>
 			</div>
 
 			<div class="row-fluid control-group">
 				<div class="span6">
-					<label for="start_time">Start time:</label><br />
-					<div class="input-append date date-time-picker">
-						<input class="input-medium" data-format="dd/MM/yyyy hh:mm" id="start_time" name="start_time" type="text">
-						<label class="add-on" for="start_time">
-							<i class="icon-calendar" data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+					<label for="dialog_start_time">Start time:</label><br />
+					<div class="input-append date-time-picker">
+						<input class="input-medium" id="dialog_start_time" name="start_time" type="text">
+						<label class="add-on" for="dialog_start_time">
+							<i class="icon-calendar"></i>
 						</label>
 					</div>
 				</div>
 
 				<div class="span6">
-					<label for="end_time">End time:</label><br />
-					<div class="input-append date date-time-picker">
-						<input class="input-medium" data-format="dd/MM/yyyy hh:mm" id="end_time" name="end_time" type="text">
-						<label class="add-on" for="end_time">
-							<i class="icon-calendar" data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+					<label for="dialog_end_time">End time:</label><br />
+					<div class="input-append date-time-picker">
+						<input class="input-medium" id="dialog_end_time" name="end_time" type="text">
+						<label class="add-on" for="dialog_end_time">
+							<i class="icon-calendar"></i>
 						</label>
 					</div>
 				</div>
