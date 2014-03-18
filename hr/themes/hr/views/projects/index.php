@@ -99,6 +99,7 @@ $this->menu = array(
 			<div class="row-fluid control-group">
 				<div class="span6">
 					<label for="dialog_start_time">Start time:</label><br />
+
 					<div class="input-append date-time-picker">
 						<input class="input-medium" id="dialog_start_time" name="start_time" type="text">
 						<label class="add-on" for="dialog_start_time">
@@ -109,8 +110,12 @@ $this->menu = array(
 
 				<div class="span6">
 					<label for="dialog_end_time">End time:</label><br />
+
 					<div class="input-append date-time-picker">
 						<input class="input-medium" id="dialog_end_time" name="end_time" type="text">
+						<span id="end_time_remove" class="add-on">
+							<i class="icon-remove"></i>
+						</span>
 						<label class="add-on" for="dialog_end_time">
 							<i class="icon-calendar"></i>
 						</label>

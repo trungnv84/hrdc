@@ -62,7 +62,7 @@ $(document).ready(function () {
 	}
 
 	function stopCircle(element) {
-		clearTimeout(element.data("timer"));
+		clearTimeout(element.data("timing", null).data("timer"));
 		var newClass = element.data("circle-class");
 		element.removeClass("circle-" + newClass).data("time", 0);
 		$("#circle-style-" + newClass).remove();
@@ -146,6 +146,7 @@ $(document).ready(function () {
 			function (data) {
 				busyIco.hide();
 				editBtn.removeClass("hiding");
+				update_data.item.tooltip('destroy');
 				if (data && data.status == 1 && (data.working_time || data.resource)) {
 					//TODO: notification
 					self.data("update-data", null);
@@ -169,6 +170,7 @@ $(document).ready(function () {
 		).fail(function () {
 				busyIco.hide();
 				editBtn.removeClass("hiding");
+				update_data.item.tooltip('destroy');
 
 				//TODO: notification
 				revertTo(update_data.item, update_data.old_container);
@@ -181,6 +183,7 @@ $(document).ready(function () {
 		var cancel_data = $(this).data("cancel-data");
 
 		cancel_data.item.find(".edit-button").first().hide();
+		cancel_data.item.tooltip('destroy');
 		stopCircle(self.prev());
 
 		revertTo(cancel_data.item, cancel_data.old_container);
@@ -195,6 +198,10 @@ $(document).ready(function () {
 		receive: function (event, ui) {
 			//console.log(event, ui);
 			var item = $(ui.item);
+
+			item.tooltip({
+				title: 'zzz'
+			});
 
 			item.find(".edit-button").first().css("display", "inline-block");
 			var wt_apply = item.find(".wt-apply").first();
@@ -238,7 +245,7 @@ $(document).ready(function () {
 				$("#projects_list .item-list").sortable("refresh");
 			}
 
-			if (new_project_id) startCircle(5000, wt_apply);
+			if (new_project_id) startCircle(7000, wt_apply);
 
 			//$("#projects_list .item-list").sortable( "refresh" );
 			//$("#projects_list .item-list").sortable( "cancel" );
@@ -267,7 +274,7 @@ $(document).ready(function () {
 			},
 			Cancel: function () {
 				var item = $(this).data("target");
-				item.find(".wt-cancel:visible").first().click();//TODO: Bug click cancel
+				item.find(".wt-cancel:visible").first().click();
 				$(this).dialog("close");
 			}
 		},
@@ -276,9 +283,9 @@ $(document).ready(function () {
 			/*var target = $(this).data("target");
 			 var circle = target.find(".wt-apply").first();*/
 
-			var start = dialog_start_time.datetimepicker('getDate');
-			if (start) dialog_end_time.datetimepicker('option', 'minDate', start);
-			else dialog_end_time.datetimepicker('option', 'minDate', null);
+			/*var start = dialog_start_time.datetimepicker('getDate');
+			 if (start) dialog_end_time.datetimepicker('option', 'minDate', start);
+			 else dialog_end_time.datetimepicker('option', 'minDate', null);*/
 		},
 		close: function () {
 			/*var target = $(this).data("target");
@@ -287,34 +294,36 @@ $(document).ready(function () {
 		}
 	});
 
-	var dialog_start_time = $("#dialog_start_time").datetimepicker({
-		/*minDate: now,*/
-		showWeek: true,
-		dateFormat: 'M dd, yy',
-		timeFormat: 'HH:mm',
-		showOptions: { direction: "down" },
-		onClose: function (dateText, inst) {
-			if (dialog_end_time.val() != '') {
-				var testStartDate = dialog_start_time.datetimepicker('getDate');
-				var testEndDate = dialog_end_time.datetimepicker('getDate');
-				if (testStartDate > testEndDate)
-					dialog_end_time.datetimepicker('setDate', testStartDate);
+	var dialog_start_time;
+
+	function dialog_start_time_enable() {
+		dialog_start_time = $("#dialog_start_time").datetimepicker({
+			/*minDate: now,*/
+			showWeek: true,
+			dateFormat: 'M dd, yy',
+			timeFormat: 'HH:mm',
+			showOptions: { direction: "down" },
+			onClose: function (dateText, inst) {
+				if (dialog_end_time.val() != '') {
+					var testStartDate = dialog_start_time.datetimepicker('getDate');
+					var testEndDate = dialog_end_time.datetimepicker('getDate');
+					if (testStartDate > testEndDate)
+						dialog_end_time.datetimepicker('setDate', null);
+				}
+			},
+			onSelect: function (selectedDateTime) {
+				dialog_end_time.datetimepicker('option', 'minDate', dialog_start_time.datetimepicker('getDate'));
 			}
-		},
-		onSelect: function (selectedDateTime) {
-			dialog_end_time.datetimepicker('option', 'minDate', dialog_start_time.datetimepicker('getDate'));
-		}
-	});
+		});
+	}
+
+	dialog_start_time_enable();
 
 	var dialog_end_time = $("#dialog_end_time").datetimepicker({
 		showWeek: true,
 		dateFormat: 'M dd, yy',
 		timeFormat: 'HH:mm',
 		showOptions: { direction: "down" }
-	});
-
-	$(".date-time-picker input").focusin(function () {
-		$(this).next().click();
 	});
 
 	$("#projects_list .work-time-edit").live("click", function () {
@@ -331,29 +340,64 @@ $(document).ready(function () {
 					(parseInt(working_time.end_time) ? " ~ " + phpDateFormat(parseInt(working_time.end_time)) : "") + ")");
 			$("#dialog_current_project").show();
 
+			var current_start_time = new Date((($time_offset * 60 * 60) + parseInt(working_time.start_time)) * 1000);
+			dialog_start_time.datetimepicker('setDate', current_start_time);
+			var start = dialog_start_time.datetimepicker('getDate');
+			if (start) dialog_end_time.datetimepicker('option', 'minDate', start);
+			else dialog_end_time.datetimepicker('option', 'minDate', null);
+			dialog_start_time.datetimepicker("destroy");
 		} else {
 			var old_project_id = 0;
+			var current_start_time = null;
 			var resource = item.data("resource");
 			$("#dialog_current_project").hide();
 		}
 
 		var dialog_project_id = $("#dialog_project_id");
 		dialog_project_id.find("option").show();
-		if (old_project_id) dialog_project_id.find("option[value=" + old_project_id + "]").hide();
+		dialog_project_id.val(dialog_project_id.find("option").first().attr("value"));
+		if (old_project_id) {
+			var current_option = dialog_project_id.find("option[value=" + old_project_id + "]").hide();
+			if (dialog_project_id.val() == old_project_id) {
+				dialog_project_id.val(current_option.next().attr("value"));
+			}
+			$("#dialog_role_id").val(4);
+		} else {
+			$("#dialog_role_id").val($roles[(working_time ? working_time.role_id : resource.role_id)]);
+		}
 		var new_project_id = item.parents(".view").first().data("project-id");
 		if (new_project_id == old_project_id) {
-			$("#move_to").attr('checked', false);
-			dialog_project_id.attr("readonly", "readonly");
+			$("#move_to").attr({checked: false, disabled: false});
+			dialog_project_id.attr("disabled", true);
 		} else {
-			$("#move_to").attr('checked', true);
-			dialog_project_id.removeAttr("readonly");
+			$("#move_to").attr({checked: true, disabled: true});
+			dialog_project_id.removeAttr("disabled");
 			$("#dialog_project_id").val(new_project_id);
+
+			dialog_start_time_enable();
+			dialog_start_time.datetimepicker('option', 'minDate', current_start_time);
+			dialog_start_time.datetimepicker('setDate', new Date());
+			var start = dialog_start_time.datetimepicker('getDate');
+			if (start) dialog_end_time.datetimepicker('option', 'minDate', start);
+			else dialog_end_time.datetimepicker('option', 'minDate', null);
+			dialog_end_time.datetimepicker('setDate', null);
 		}
 
 		$("#dialog_division").val($divisions[resource.division_id]);
-		$("#dialog_role_id").val($roles[(working_time ? working_time.role_id : resource.role_id)]);
-		//TODO:zzz
 
 		$("#dialog-form").data("target", item).dialog("open");
+	});
+
+	$("#end_time_remove").click(function () {
+		dialog_end_time.datetimepicker('setDate', null);
+	});
+
+	$("#move_to").click(function () {
+		var dialog_project_id = $("#dialog_project_id");
+		if ($(this).is(":checked"))
+			dialog_project_id.removeAttr("disabled");
+		else
+			dialog_project_id.attr("disabled", true);
+
 	});
 });
