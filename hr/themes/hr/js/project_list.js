@@ -126,7 +126,7 @@ $(document).ready(function () {
 		);
 	}
 
-	$("#projects_list .wt-apply").live("click", function () {
+	$("#projects_list .wt-apply").click(function () {
 		var self = $(this);
 
 		var update_data = self.data("update-data");
@@ -153,9 +153,10 @@ $(document).ready(function () {
 					self.next().data("cancel-data", null);
 					if (data.working_time)
 						update_data.item.data("working-time", data.working_time);
-					else if (data.resource) {
+					else /*if (data.resource)*/ {
 						update_data.item.data("working-time", null);
-						update_data.item.data("resource", data.resource);
+						if (!update_data.resource && update_data.working_time)
+							update_data.item.data("resource", update_data.working_time.resource);
 					}
 					if (update_data.item.hasClass("unsortable")) {
 						update_data.item.removeClass("unsortable");
@@ -178,7 +179,7 @@ $(document).ready(function () {
 
 	});
 
-	$("#projects_list .wt-cancel").live("click", function () {
+	$("#projects_list .wt-cancel").click(function () {
 		var self = $(this);
 		var cancel_data = $(this).data("cancel-data");
 
@@ -199,10 +200,6 @@ $(document).ready(function () {
 			//console.log(event, ui);
 			var item = $(ui.item);
 
-			item.tooltip({
-				title: 'zzz'
-			});
-
 			item.find(".edit-button").first().css("display", "inline-block");
 			var wt_apply = item.find(".wt-apply").first();
 			var wt_cancel = item.find(".wt-cancel").first();
@@ -222,11 +219,29 @@ $(document).ready(function () {
 			var old_project_id = oldProject.data("project-id");
 			var new_project_id = newProject.data("project-id");
 
+			if (new_project_id > 0) {
+				item.addClass("unsortable");
+				$("#projects_list .item-list").sortable("refresh");
+			}
+
+
+			var new_project = $("#project_" + new_project_id).data("project");
+			var join_start_time = new Date();
+			if (new_project) {
+				item.tooltip({
+					title: "Will join " + new_project.name + " from " + join_start_time.format("mmm d, yyyy HH:MM")
+				});
+			} else {
+				item.tooltip({
+					title: "Will free from " + join_start_time.format("mmm d, yyyy HH:MM")
+				});
+			}
+
 			if (!wt_apply.data("update-data"))
 				wt_apply.data("update-data", {
 					item: item,
 					resource_id: resource_id,
-					resource: working_time ? null : JSON.stringify(resource),
+					resource: /*working_time ? null : */JSON.stringify(resource),
 					working_time: working_time ? JSON.stringify(working_time) : null,
 					new_project_id: new_project_id,
 					old_project_id: old_project_id,
@@ -240,11 +255,6 @@ $(document).ready(function () {
 					old_container: old_container
 				});
 
-			if (new_project_id > 0) {
-				item.addClass("unsortable");
-				$("#projects_list .item-list").sortable("refresh");
-			}
-
 			if (new_project_id) startCircle(7000, wt_apply);
 
 			//$("#projects_list .item-list").sortable( "refresh" );
@@ -252,12 +262,24 @@ $(document).ready(function () {
 		}
 	});
 
+	var circle_mouseleave_timer;
+	$("#projects_list .unsortable").live("mouseenter", function () {
+		clearTimeout(circle_mouseleave_timer);
+		pauseAllCircle();
+	}).live("mouseleave", function () {
+			clearTimeout(circle_mouseleave_timer);
+			circle_mouseleave_timer = setTimeout(function(){
+				continueAllCircle();
+			}, 500);
+		});
+
 	$("#dialog-form").removeClass("hide").dialog({
 		autoOpen: false,
 		width: 450,
 		modal: true,
 		buttons: {
 			"Save": function () {
+				//TODO:zzz
 				var bValid = true;
 
 				if (bValid) {
@@ -326,7 +348,7 @@ $(document).ready(function () {
 		showOptions: { direction: "down" }
 	});
 
-	$("#projects_list .work-time-edit").live("click", function () {
+	$("#projects_list .work-time-edit").click(function () {
 		var self = $(this);
 		var item = self.parents(".human-resource").first();
 		var working_time = item.data("working-time");
@@ -348,7 +370,7 @@ $(document).ready(function () {
 			dialog_start_time.datetimepicker("destroy");
 		} else {
 			var old_project_id = 0;
-			var current_start_time = null;
+			var current_start_time = new Date();
 			var resource = item.data("resource");
 			$("#dialog_current_project").hide();
 		}
