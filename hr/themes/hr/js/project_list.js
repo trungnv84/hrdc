@@ -155,14 +155,19 @@ $(document).ready(function () {
 					//TODO: notification
 					self.data("update-data", null);
 					self.next().data("cancel-data", null);
-					if (data.working_time)
+					if (data.working_time) {
 						update_data.item.data("working-time", data.working_time);
-					else /*if (data.resource)*/ {
+						update_data.item.data("resource", data.working_time.resource);
+					} else /*if (data.resource)*/ {
 						update_data.item.data("working-time", null);
-						if (!update_data.resource && update_data.working_time)
-							update_data.item.data("resource", update_data.working_time.resource);
+						if (data.resource)
+							update_data.item.data("resource", data.resource);
 					}
-					if (update_data.item.hasClass("unsortable")) {
+					var newProject = update_data.item.parents(".view").first();
+					if (parseInt(newProject.data("project-id")) != parseInt(update_data.new_project_id)) {
+						var new_container = $("#project_" + update_data.new_project_id + " .item-list").first();
+						revertTo(update_data.item, new_container);
+					} else if (update_data.item.hasClass("unsortable")) {
 						update_data.item.removeClass("unsortable");
 						$("#projects_list .item-list").sortable("refresh");
 					}
@@ -265,7 +270,7 @@ $(document).ready(function () {
 					old_container: old_container
 				});
 
-			if (new_project_id) startCircle(7000, wt_apply);
+			if (new_project_id) startCircle(6000, wt_apply);
 
 			//$("#projects_list .item-list").sortable( "refresh" );
 			//$("#projects_list .item-list").sortable( "cancel" );
@@ -326,6 +331,7 @@ $(document).ready(function () {
 					var new_end_time = $("#dialog_end_time").datetimepicker('getDate');
 					if (new_end_time)
 						update_data.new_end_time = new_end_time.getTime() / 1000;
+					else update_data.new_end_time = -1;
 
 					if ($("#move_to").is(":checked"))
 						update_data.new_project_id = $("#dialog_project_id").val();
@@ -417,12 +423,16 @@ $(document).ready(function () {
 			if (new_project_id == old_project_id) {
 				var current_start_time = new Date((($time_offset * 60 * 60) + parseInt(working_time.start_time)) * 1000);
 				dialog_start_time.datetimepicker('setDate', current_start_time);
-				dialog_end_time.datetimepicker('option', 'minDate', dialog_start_time.datetimepicker('getDate'));
+				if (working_time.left_point > 0 && working_time.left_point_end_time) {
+					var min_start_time = new Date((($time_offset * 60 * 60) + parseInt(working_time.left_point_end_time)) * 1000);
+					dialog_start_time.datetimepicker('option', 'minDate', min_start_time);
+				} else dialog_start_time.datetimepicker('option', 'minDate', null);
 
 				if (working_time.end_time && working_time.end_time > 0) {
 					var current_end_time = new Date((($time_offset * 60 * 60) + parseInt(working_time.end_time)) * 1000);
 				} else var current_end_time = null;
 				dialog_end_time.datetimepicker('setDate', current_end_time);
+				dialog_end_time.datetimepicker('option', 'minDate', dialog_start_time.datetimepicker('getDate'));
 				//dialog_start_time.datetimepicker("destroy");
 
 				$("#move_to").attr({checked: false, disabled: false});

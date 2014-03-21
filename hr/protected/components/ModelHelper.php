@@ -20,4 +20,40 @@ class ModelHelper
 
 		return $date;
 	}
+
+	public static function getAllReferentWorkingTimes()
+	{
+		static $working_times;
+		if (!isset($working_times)) {
+			$now = self::dateTimeToIntForDB(time());
+			$working_times = Yii::app()->db->createCommand()->from(
+				"(SELECT * FROM working_times
+					WHERE status = 1 AND (right_point > 0 AND end_time > 0 AND end_time < $now) OR (left_point > 0 AND start_time > 0 AND start_time > $now)
+					ORDER BY LEAST($now - end_time, start_time - $now)
+				) AS working_times"
+			)->group('resource_id, project_id, IF(right_point > 0, 2, 0) | IF(left_point > 0, 1, 0)')->queryAll();
+			/*'
+			SELECT * FROM
+			(SELECT * FROM working_times
+				WHERE (right_point > 0 AND end_time > 0 AND end_time < $now) OR (left_point > 0 AND start_time > 0 AND start_time > $now)
+				ORDER BY LEAST($now - end_time, start_time - $now)
+			) AS working_times GROUP BY resource_id, project_id, IF(right_point > 0, 2, 0) | IF(left_point > 0, 1, 0)
+			';*/
+		}
+		return $working_times;
+	}
+
+	public static function getReferentWorkingTimes($referent_working_time_ids)
+	{
+		static $working_times;
+		if (!isset($working_times)) {
+			$working_times = self::getAllReferentWorkingTimes();
+		}
+		$wts = array();
+		foreach ($working_times as $wt) {
+			if (in_array($wt['id'], $referent_working_time_ids))
+				$wts[$wt['id']] = (object)$wt;
+		}
+		return $wts;
+	}
 }

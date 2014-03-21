@@ -136,24 +136,123 @@ class ProjectsController extends BaseController
 		if ($working_time && $new_project_id == @$working_time->project_id) {
 			if ($new_role_id)
 				$working_time->setAttribute('role_id', $new_role_id);
-			if ($new_start_time)
+			if ($new_start_time) {
+				$new_start_time = ModelHelper::dateTimeToIntForDB($new_start_time);
 				$working_time->setAttribute('start_time', $new_start_time);
+			}
 			if ($new_end_time)
-				$working_time->setAttribute('end_time', $new_end_time);
+				$working_time->setAttribute('end_time', $new_end_time > 0 ? ModelHelper::dateTimeToIntForDB($new_end_time) : 0);
 
 			if ($working_time->save()) {
+				if (false && $new_end_time > 0) { //TODO: Tạm thời bỏ qua trường hợp này, sẽ fix sau
+					$next_start_time = ModelHelper::dateTimeToIntForDB($new_end_time);
+					if ($next_start_time) {
+						$working_time_future = WorkingTimes::model()->findAll(array(
+							'condition' => "status = 1 AND resource_id = $working_time->resource_id AND start_time > $next_start_time",
+							'order' => 'start_time'
+						));
+					}
+					if ($working_time_future) {
+						foreach ($working_time_future as $key => &$wt) {
+							if ($wt->end_time) {
+								if ($wt->end_time > $next_start_time) {
+									$wt->setAttribute('start_time', $next_start_time);
+									$wt->save();
+									break;
+								} else {
+									$wt->setAttribute('status', 0);
+									$wt->save();
+									if (isset($working_time_future[$key + 1])) {
+										$working_time_future[$key + 1]->lelt_point = $working_time->id;
+									}
+								}
+							} else {
+								$wt->setAttribute('start_time', $next_start_time);
+								$wt->save();
+								break;
+							}
+						}
+					}
+				} else {
+					$next_start_time = $working_time->start_time;
+					WorkingTimes::model()->updateAll(
+						array('status' => 0),
+						"status = 1 AND resource_id = $working_time->resource_id AND start_time > $next_start_time"
+					);
+				}
 				$status = 1;
 			} else {
 				$errors = $working_time->getErrors();
 				$status = 0;
 			}
 		} elseif ($new_project_id) {
+			if ($new_start_time)
+				$new_start_time = ModelHelper::dateTimeToIntForDB($new_start_time);
+			else $new_start_time = ModelHelper::dateTimeToIntForDB(time());
+
+			if ($new_end_time) $new_end_time = ModelHelper::dateTimeToIntForDB($new_end_time);
+
+			$new_working_time = new WorkingTimes();
+
+			$new_working_time->setAttributes(array(
+				'resource_id' => $resource_id,
+				'project_id' => $new_project_id,
+				'role' => $new_role_id,
+				'start_time' => $new_start_time,
+				'end_time' => $new_end_time,
+				'left_point' => ($working_time ? $working_time->id : 0),
+				'right_point' => 0,
+				'status' => 1
+			));
+
+			if ($new_working_time->save()) {
+				if ($working_time) {
+					$working_time->setAttributes(array(
+						'end_time' => $new_start_time,
+						'right_point' => $new_working_time->id
+					));
+					$working_time->save();
+				}
+
+				$working_time = $new_working_time;
+
+				$status = 1;
+			} else {
+				$errors = $new_working_time->getErrors();
+				$status = 0;
+			}
+
 			$status = 1;
+		} elseif ($working_time) {
+			$new_end_time = ModelHelper::dateTimeToIntForDB(time());
+			$working_time->setAttribute('end_time', ModelHelper::dateTimeToIntForDB(time()));
+			if ($working_time->save()) {
+				$working_time = false;
+				$status = 1;
+			} else {
+				$errors = $working_time->getErrors();
+				$status = 0;
+			}
+		} else {
+			$status = 0;
 		}
 
 		$result = array(
 			'status' => $status
 		);
+
+		if ($status) {
+			if ($working_time) {
+				//TODO: Get left_point_end_time and right_point_start_time
+				$result['working_time'] = (object)$working_time->getAttributes();
+				$result['working_time']->resource = (object)$resource->getAttributes();
+			} else {
+				$result['resource'] = (object)$resource->getAttributes();
+			}
+		} elseif ($errors) {
+			$result['message'] = "";
+		}
+
 		echo json_encode($result);
 	}
 }

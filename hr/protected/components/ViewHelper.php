@@ -59,7 +59,7 @@ class ViewHelper
 	public static function projects()
 	{
 		static $projects;
-		if(!isset($projects))
+		if (!isset($projects))
 			$projects = Projects::model()->findAll(array('index' => 'id'));
 		return $projects;
 	}
@@ -92,20 +92,34 @@ class ViewHelper
 
 	public static function getWorkerInProject($project_id)
 	{
-		static $resources;
-		if (!isset($resources[$project_id])) {
+		static $working_times;
+		if (!isset($working_times[$project_id])) {
 			static $workings_now, $human_resources;
 			if (!isset($workings_now)) $workings_now = & self::getWorkingsNow();
 			if (!isset($human_resources)) $human_resources = & self::getHumanResources();
-			$resources[$project_id] = array();
+			$working_times[$project_id] = array();
+			$referent_working_time_ids = array();
 			foreach ($workings_now as &$value) {
 				if ($value->project_id == $project_id) {
-					$resources[$project_id][$value->id] = (object)$value->getAttributes();
-					$resources[$project_id][$value->id]->resource = (object)$human_resources[$value->resource_id]->getAttributes();
+					$working_times[$project_id][$value->id] = (object)$value->getAttributes();
+					$working_times[$project_id][$value->id]->resource = (object)$human_resources[$value->resource_id]->getAttributes();
+					if ($value->left_point)
+						$referent_working_time_ids[] = $value->left_point;
+					if ($value->right_point)
+						$referent_working_time_ids[] = $value->right_point;
+				}
+			}
+			if ($referent_working_time_ids) {
+				$referent_working_times = ModelHelper::getReferentWorkingTimes($referent_working_time_ids);
+				foreach ($working_times[$project_id] as &$value) {
+					if ($value->left_point && isset($referent_working_times[$value->left_point]))
+						$value->left_point_end_time = $referent_working_times[$value->left_point]->end_time;
+					if ($value->right_point && isset($referent_working_times[$value->right_point]))
+						$value->right_point_start_time = $referent_working_times[$value->right_point]->start_time;
 				}
 			}
 		}
-		return $resources[$project_id];
+		return $working_times[$project_id];
 	}
 
 	public static function getFreeMenNow()
