@@ -23,7 +23,12 @@ $this->menu = array(
 );
 ?>
 
-<h1><?php echo GxHtml::encode(Projects::label(2)); ?></h1>
+<h1><?php echo GxHtml::encode(Projects::label(2)); ?>
+	<span class="label label-info">
+		Fixed Bid</span>
+	<span class="label label-success">
+		Dedicated</span>
+</h1>
 <div id="projects_list">
 	<?php $this->widget('zii.widgets.CListView', array(
 		'dataProvider' => $dataProvider,

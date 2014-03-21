@@ -1,15 +1,18 @@
 <?php
 
-class ProjectsController extends BaseController {
+class ProjectsController extends BaseController
+{
 
 
-	public function actionView($id) {
+	public function actionView($id)
+	{
 		$this->render('view', array(
 			'model' => $this->loadModel($id, 'Projects'),
 		));
 	}
 
-	public function actionCreate() {
+	public function actionCreate()
+	{
 		$model = new Projects;
 
 
@@ -24,10 +27,11 @@ class ProjectsController extends BaseController {
 			}
 		}
 
-		$this->render('create', array( 'model' => $model));
+		$this->render('create', array('model' => $model));
 	}
 
-	public function actionUpdate($id) {
+	public function actionUpdate($id)
+	{
 		$model = $this->loadModel($id, 'Projects');
 
 
@@ -40,11 +44,12 @@ class ProjectsController extends BaseController {
 		}
 
 		$this->render('update', array(
-				'model' => $model,
-				));
+			'model' => $model,
+		));
 	}
 
-	public function actionDelete($id) {
+	public function actionDelete($id)
+	{
 		if (Yii::app()->getRequest()->getIsPostRequest()) {
 			$this->loadModel($id, 'Projects')->delete();
 
@@ -54,7 +59,8 @@ class ProjectsController extends BaseController {
 			throw new CHttpException(400, Yii::t('app', 'Your request is invalid.'));
 	}
 
-	public function actionIndex() {
+	public function actionIndex()
+	{
 		$dataProvider = new CActiveDataProvider('Projects', array(
 			'pagination' => false
 		));
@@ -65,7 +71,8 @@ class ProjectsController extends BaseController {
 		));
 	}
 
-	public function actionAdmin() {
+	public function actionAdmin()
+	{
 		$model = new Projects('search');
 		$model->unsetAttributes();
 
@@ -81,7 +88,8 @@ class ProjectsController extends BaseController {
 		));
 	}
 
-	public function actionUploadImages(){
+	public function actionUploadImages()
+	{
 		$type = Yii::app()->request->getQuery('type', '');
 		switch ($type) {
 			default:
@@ -92,7 +100,7 @@ class ProjectsController extends BaseController {
 		}
 		// Create target dir
 		$path = Yii::app()->basePath . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'images' .
-				DIRECTORY_SEPARATOR . 'projects' . DIRECTORY_SEPARATOR .  $type . DIRECTORY_SEPARATOR;
+			DIRECTORY_SEPARATOR . 'projects' . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR;
 		if (!is_dir($path)) @mkdir($path, 0755, true);
 
 		$this->renderJson(ControllerHelper::upload($path));
@@ -100,6 +108,52 @@ class ProjectsController extends BaseController {
 
 	public function actionUpdateWorkingTime()
 	{
-		echo '{"status": 1}';
+		$new_project_id = (int)Yii::app()->request->getPost('new_project_id', 0);
+		$new_role_id = (int)Yii::app()->request->getPost('new_role_id', 0);
+		$new_start_time = (int)Yii::app()->request->getPost('new_start_time', 0);
+		$new_end_time = (int)Yii::app()->request->getPost('new_end_time', 0);
+		$resource_id = (int)Yii::app()->request->getPost('resource_id', 0);
+		$resource = Yii::app()->request->getPost('resource', 0);
+		$working_time = Yii::app()->request->getPost('working_time', 0);
+
+		if ($working_time) $working_time = @json_decode($working_time);
+
+		if ($resource) $resource = @json_decode($resource);
+
+		if ($working_time) {
+			if (isset($working_time->id)) $working_time_id = $working_time->id;
+			if (!$resource && isset($working_time->resource)) $resource = $working_time->resource;
+		}
+
+		if (isset($working_time_id) && $working_time_id)
+			$working_time = WorkingTimes::model()->findByPk($working_time_id);
+
+		if ($resource && isset($resource->id)) $resource_id = $resource->id;
+
+		if ($resource_id)
+			$resource = HumanResources::model()->findByPk($resource_id);
+
+		if ($working_time && $new_project_id == @$working_time->project_id) {
+			if ($new_role_id)
+				$working_time->setAttribute('role_id', $new_role_id);
+			if ($new_start_time)
+				$working_time->setAttribute('start_time', $new_start_time);
+			if ($new_end_time)
+				$working_time->setAttribute('end_time', $new_end_time);
+
+			if ($working_time->save()) {
+				$status = 1;
+			} else {
+				$errors = $working_time->getErrors();
+				$status = 0;
+			}
+		} elseif ($new_project_id) {
+			$status = 1;
+		}
+
+		$result = array(
+			'status' => $status
+		);
+		echo json_encode($result);
 	}
 }

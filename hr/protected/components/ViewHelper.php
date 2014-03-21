@@ -51,7 +51,7 @@ class ViewHelper
 			$image = $project->logo;
 		} else {
 			$type = 'defaults';
-			$image = 'logo.ico';
+			$image = 'project-logo.png';
 		}
 		return "images/projects/$type/$image";
 	}

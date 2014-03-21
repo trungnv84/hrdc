@@ -37,3 +37,23 @@ in D:\xampp\htdocs\hrdc\hr\themes\hr\views\humanResources\_search.php (20)
 in D:\xampp\htdocs\hrdc\hr\themes\hr\views\humanResources\admin.php (36)
 in D:\xampp\htdocs\hrdc\hr\protected\controllers\HumanResourcesController.php (89)
 in D:\xampp\htdocs\hrdc\hr\index.php (13)
+2014/03/20 17:18:36 [error] [php] Only variables should be assigned by reference (D:\xampp\htdocs\hrdc\hr\protected\controllers\ProjectsController.php:121)
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CController.php(286): ProjectsController->runAction()
+#1 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): ProjectsController->runActionWithFilters()
+#2 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): ProjectsController->run()
+#3 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 D:\xampp\htdocs\hrdc\hr\index.php(13): CWebApplication->run()
+REQUEST_URI=/hrdc/hr/resourceallocation/updateWorkingTime
+in D:\xampp\htdocs\hrdc\hr\protected\controllers\ProjectsController.php (121)
+in D:\xampp\htdocs\hrdc\hr\index.php (13)
+2014/03/21 10:36:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/projects/defaults/logo-project.png".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('images/projects...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/images/projects/defaults/logo-project.png
+HTTP_REFERER=http://localhost/hrdc/hr/resourceallocation/index
+---
