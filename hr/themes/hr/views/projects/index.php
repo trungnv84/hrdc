@@ -41,7 +41,7 @@ $this->menu = array(
 
 	<div class="list-view" id="frees">
 		<div class="items">
-			<div class="view" data-project-id="0">
+			<div id="project_0" class="view" data-project-id="0">
 				<h4>
 					<!--<img src="">-->
 					Free

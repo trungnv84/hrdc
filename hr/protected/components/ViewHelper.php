@@ -113,9 +113,9 @@ class ViewHelper
 				$referent_working_times = ModelHelper::getReferentWorkingTimes($referent_working_time_ids);
 				foreach ($working_times[$project_id] as &$value) {
 					if ($value->left_point && isset($referent_working_times[$value->left_point]))
-						$value->left_point_end_time = $referent_working_times[$value->left_point]->end_time;
+						$value->left_point_start_time = $referent_working_times[$value->left_point]->start_time;
 					if ($value->right_point && isset($referent_working_times[$value->right_point]))
-						$value->right_point_start_time = $referent_working_times[$value->right_point]->start_time;
+						$value->right_point_end_time = $referent_working_times[$value->right_point]->end_time;
 				}
 			}
 		}

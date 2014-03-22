@@ -83,6 +83,11 @@
 		<?php echo $form->textArea($model, 'resources'); ?>
 		<?php echo $form->error($model,'resources'); ?>
 		</div><!-- row -->
+		<div class="row">
+		<?php echo $form->labelEx($model,'ordering'); ?>
+		<?php echo $form->textField($model, 'ordering'); ?>
+		<?php echo $form->error($model,'ordering'); ?>
+		</div><!-- row -->
 
 
 <?php

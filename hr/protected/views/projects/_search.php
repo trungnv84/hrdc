@@ -80,6 +80,11 @@
 		<?php echo $form->textArea($model, 'resources'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model, 'ordering'); ?>
+		<?php echo $form->textField($model, 'ordering'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo GxHtml::submitButton(Yii::t('app', 'Search')); ?>
 	</div>

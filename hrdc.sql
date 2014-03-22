@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50536
 File Encoding         : 65001
 
-Date: 2014-03-21 18:07:26
+Date: 2014-03-22 16:57:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -162,9 +162,9 @@ CREATE TABLE `working_times` (
   `status` tinyint(3) unsigned DEFAULT '0' COMMENT '1: visible',
   `note` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of working_times
 -- ----------------------------
-INSERT INTO `working_times` VALUES ('1', '1', '1', '1', '1394663001', '0', '0', '0', '1', null);
+INSERT INTO `working_times` VALUES ('47', '1', '1', '0', '1395457140', '0', '0', '0', '1', null);

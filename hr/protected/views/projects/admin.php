@@ -58,6 +58,7 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 		'end_development_phase_starts',
 		'uat_phase_starts',
 		'resources',
+		'ordering',
 		*/
 		array(
 			'class' => 'CButtonColumn',

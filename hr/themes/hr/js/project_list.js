@@ -106,16 +106,20 @@ $(document).ready(function () {
 		var ox = pos.left;
 		var oy = pos.top;
 
+		var pos = element.position(); //offset for absolute
+
 		element.css({
 			height: element.height(),
 			width: element.width(),
-			position: "absolute"
+			position: "absolute",
+			top: pos.top,
+			left: pos.left
 		});
 
 		element.animate(
 			{
-				left: nx - ox,
-				top: ny - oy
+				left: nx - ox + pos.left,
+				top: ny - oy + pos.top
 			}, null, null,
 			function () {
 				container.append(element.detach().removeAttr("style"));
@@ -162,10 +166,16 @@ $(document).ready(function () {
 						update_data.item.data("working-time", null);
 						if (data.resource)
 							update_data.item.data("resource", data.resource);
+						var newProject = update_data.item.parents(".view").first();
+						if (parseInt(newProject.data("project-id")) != 0) {
+							var new_container = $("#project_0 .item-list").first();
+							revertTo(update_data.item, new_container);
+							return true;
+						}
 					}
 					var newProject = update_data.item.parents(".view").first();
-					if (parseInt(newProject.data("project-id")) != parseInt(update_data.new_project_id)) {
-						var new_container = $("#project_" + update_data.new_project_id + " .item-list").first();
+					if (parseInt(newProject.data("project-id")) != parseInt(data.working_time.project_id)) {
+						var new_container = $("#project_" + data.working_time.project_id + " .item-list").first();
 						revertTo(update_data.item, new_container);
 					} else if (update_data.item.hasClass("unsortable")) {
 						update_data.item.removeClass("unsortable");
@@ -212,13 +222,21 @@ $(document).ready(function () {
 			//console.log(event, ui);
 			var item = $(ui.item);
 
-			item.find(".edit-button").first().css("display", "inline-block");
 			var wt_apply = item.find(".wt-apply").first();
 			var wt_cancel = item.find(".wt-cancel").first();
 
 			var old_container = $(ui.sender);
 			var oldProject = $(ui.sender).parents(".view").first();
 			var newProject = item.parents(".view").first();
+
+			var old_project_id = oldProject.data("project-id");
+			var new_project_id = newProject.data("project-id");
+
+			var update_data = wt_apply.data("update-data");
+			if (update_data && new_project_id == update_data.old_project_id) {
+				item.find(".edit-button").first().removeAttr("style");
+				return true;
+			}
 
 			var working_time = item.data("working-time");
 			if (working_time) {
@@ -228,8 +246,6 @@ $(document).ready(function () {
 				var resource = item.data("resource");
 				var resource_id = resource.id;
 			}
-			var old_project_id = oldProject.data("project-id");
-			var new_project_id = newProject.data("project-id");
 
 			if (new_project_id > 0) {
 				item.addClass("unsortable");
@@ -252,10 +268,11 @@ $(document).ready(function () {
 				});
 			}
 
-			if (!wt_apply.data("update-data"))
+			//if (!wt_apply.data("update-data"))
 				wt_apply.data("update-data", {
 					item: item,
 					resource_id: resource_id,
+					new_role_id: working_time ? 4 : resource.role_id,
 					resource: /*working_time ? null : */JSON.stringify(resource),
 					working_time: working_time ? JSON.stringify(working_time) : null,
 					new_project_id: new_project_id,
@@ -270,7 +287,9 @@ $(document).ready(function () {
 					old_container: old_container
 				});
 
-			if (new_project_id) startCircle(6000, wt_apply);
+			item.find(".edit-button").first().css("display", "inline-block");
+
+			if (new_project_id) startCircle(5000, wt_apply);
 
 			//$("#projects_list .item-list").sortable( "refresh" );
 			//$("#projects_list .item-list").sortable( "cancel" );
@@ -423,8 +442,8 @@ $(document).ready(function () {
 			if (new_project_id == old_project_id) {
 				var current_start_time = new Date((($time_offset * 60 * 60) + parseInt(working_time.start_time)) * 1000);
 				dialog_start_time.datetimepicker('setDate', current_start_time);
-				if (working_time.left_point > 0 && working_time.left_point_end_time) {
-					var min_start_time = new Date((($time_offset * 60 * 60) + parseInt(working_time.left_point_end_time)) * 1000);
+				if (working_time.left_point > 0 && working_time.left_point_start_time) {
+					var min_start_time = new Date((($time_offset * 60 * 60) + parseInt(working_time.left_point_start_time)) * 1000);
 					dialog_start_time.datetimepicker('option', 'minDate', min_start_time);
 				} else dialog_start_time.datetimepicker('option', 'minDate', null);
 
@@ -488,5 +507,21 @@ $(document).ready(function () {
 		else
 			dialog_project_id.attr("disabled", true);
 
+	});
+
+	$("#projects_list .items").first().sortable({
+		placeholder: "ui-state-highlight view unsortable",
+		items: "> div.view:not(.unsortable)",
+		revert: true,
+		handle: "h4 img",
+		start:  function (event, ui) {
+			ui.placeholder.css({
+				height: ui.helper.height(),
+				width: ui.helper.width()
+			});
+		},
+		update: function (event, ui) {
+			$("#projects_list .items > div.view:not(.unsortable)");
+		}
 	});
 });

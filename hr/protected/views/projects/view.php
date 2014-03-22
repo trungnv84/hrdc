@@ -34,6 +34,7 @@ $this->menu=array(
 'end_development_phase_starts',
 'uat_phase_starts',
 'resources',
+'ordering',
 	),
 )); ?>
 

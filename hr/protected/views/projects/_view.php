@@ -47,6 +47,9 @@
 	<?php echo GxHtml::encode($data->getAttributeLabel('resources')); ?>:
 	<?php echo GxHtml::encode($data->resources); ?>
 	<br />
+	<?php echo GxHtml::encode($data->getAttributeLabel('ordering')); ?>:
+	<?php echo GxHtml::encode($data->ordering); ?>
+	<br />
 	*/ ?>
 
 </div>

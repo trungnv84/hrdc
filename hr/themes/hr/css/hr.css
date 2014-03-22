@@ -67,9 +67,12 @@
 }
 
 #projects_list .items .view {
+	background-color: #ffffff;
 	margin-right: 20px;
 	float: left;
 	position: relative;
+	max-width: 250px;
+	min-width: 250px;
 }
 
 #projects_list .view h4 {
@@ -77,9 +80,6 @@
 	padding: 6px 16px;
 	margin-top: 0;
 	/*text-align: center;*/
-
-	max-width: 200px;
-	min-width: 200px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -113,6 +113,7 @@
 	line-height: 1.6em;
 	padding: 3px 10px;
 	margin: 2px 0;
+	z-index: 10;
 }
 
 #projects_list .item-list .human-resource:hover {

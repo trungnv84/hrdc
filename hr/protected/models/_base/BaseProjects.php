@@ -24,6 +24,7 @@
  * @property integer $end_development_phase_starts
  * @property integer $uat_phase_starts
  * @property string $resources
+ * @property integer $ordering
  *
  */
 abstract class BaseProjects extends GxActiveRecord {
@@ -46,13 +47,13 @@ abstract class BaseProjects extends GxActiveRecord {
 
 	public function rules() {
 		return array(
-			array('type, billable_effort, total_effort, actual_effort, discovery_phase_starts, development_phase_starts, end_development_phase_starts, uat_phase_starts', 'numerical', 'integerOnly'=>true),
+			array('type, billable_effort, total_effort, actual_effort, discovery_phase_starts, development_phase_starts, end_development_phase_starts, uat_phase_starts, ordering', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>120),
 			array('short_name', 'length', 'max'=>30),
 			array('image, logo, icon', 'length', 'max'=>250),
 			array('resources', 'safe'),
-			array('name, short_name, image, logo, icon, type, billable_effort, total_effort, actual_effort, discovery_phase_starts, development_phase_starts, end_development_phase_starts, uat_phase_starts, resources', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, name, short_name, image, logo, icon, type, billable_effort, total_effort, actual_effort, discovery_phase_starts, development_phase_starts, end_development_phase_starts, uat_phase_starts, resources', 'safe', 'on'=>'search'),
+			array('name, short_name, image, logo, icon, type, billable_effort, total_effort, actual_effort, discovery_phase_starts, development_phase_starts, end_development_phase_starts, uat_phase_starts, resources, ordering', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, name, short_name, image, logo, icon, type, billable_effort, total_effort, actual_effort, discovery_phase_starts, development_phase_starts, end_development_phase_starts, uat_phase_starts, resources, ordering', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -83,6 +84,7 @@ abstract class BaseProjects extends GxActiveRecord {
 			'end_development_phase_starts' => Yii::t('app', 'End Development Phase Starts'),
 			'uat_phase_starts' => Yii::t('app', 'Uat Phase Starts'),
 			'resources' => Yii::t('app', 'Resources'),
+			'ordering' => Yii::t('app', 'Ordering'),
 		);
 	}
 
@@ -104,6 +106,7 @@ abstract class BaseProjects extends GxActiveRecord {
 		$criteria->compare('end_development_phase_starts', $this->end_development_phase_starts);
 		$criteria->compare('uat_phase_starts', $this->uat_phase_starts);
 		$criteria->compare('resources', $this->resources, true);
+		$criteria->compare('ordering', $this->ordering);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
