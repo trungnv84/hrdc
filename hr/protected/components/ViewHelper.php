@@ -28,6 +28,14 @@ class ViewHelper
 		else return null;
 	}
 
+	public static function userRole($role_id)
+	{
+		static $userRoles;
+		if (!isset($userRoles))
+			$userRoles = Yii::app()->params['userRoles'];
+		return isset($userRoles[$role_id]) ? $userRoles[$role_id] : '';
+	}
+
 	public static function roles()
 	{
 		return Yii::app()->params['roles'];

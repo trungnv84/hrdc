@@ -110,6 +110,9 @@ return array(
 			3 => 'Dev',
 			4 => 'Supporter',
 			5 => 'QA'
+		),
+		'userRoles' => array(
+			'Dev', 'Admin', 'BOM', 'Chief', 'PM'
 		)
 	),
 );

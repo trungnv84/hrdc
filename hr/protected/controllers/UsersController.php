@@ -99,6 +99,10 @@ class UsersController extends GxController
 		$model = new Users('search');
 		$model->unsetAttributes();
 
+		$search = Yii::app()->request->getQuery('search');
+		if ($search)
+			$model->search = $search;
+
 		if (isset($_GET['Users']))
 			$model->setAttributes($_GET['Users']);
 

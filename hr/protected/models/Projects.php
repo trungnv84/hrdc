@@ -22,9 +22,11 @@ class Projects extends BaseProjects
 
 		if ($this->search) {
 			if (isset($this->search['text']) && $this->search['text']) {
-				$criteria->compare('id', $this->search['text'], false);
-				$criteria->compare('name', $this->search['text'], true, 'OR');
-				$criteria->compare('short_name', $this->search['text'], true, 'OR');
+				$criteria2 = new CDbCriteria;
+				$criteria2->compare('id', $this->search['text'], false);
+				$criteria2->compare('name', $this->search['text'], true, 'OR');
+				$criteria2->compare('short_name', $this->search['text'], true, 'OR');
+				$criteria->mergeWith($criteria2);
 			}
 		}
 

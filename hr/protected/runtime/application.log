@@ -114,3 +114,36 @@ in D:\xampp\htdocs\hrdc\hr\protected\components\ViewHelper.php (122)
 in D:\xampp\htdocs\hrdc\hr\themes\hr\views\projects\_view.php (2)
 in D:\xampp\htdocs\hrdc\hr\themes\hr\views\projects\index.php (36)
 in D:\xampp\htdocs\hrdc\hr\protected\controllers\ProjectsController.php (71)
+2014/03/25 11:39:42 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'hrdc.tbl_user' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_user`.
+in D:\xampp\htdocs\hrdc\hr\index.php (13)
+2014/03/25 11:39:42 [error] [exception.CDbException] exception 'CDbException' with message 'The table "tbl_user" for active record class "TblUser" cannot be found in the database.' in D:\xampp\htdocs\hrdc\framework\db\ar\CActiveRecord.php:2362
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(TblUser))
+#1 D:\xampp\htdocs\hrdc\framework\db\ar\CActiveRecord.php(138): CActiveRecord->getMetaData()
+#2 D:\xampp\htdocs\hrdc\framework\gii\generators\crud\CrudCode.php(66): CActiveRecord->__get('tableSchema')
+#3 D:\xampp\htdocs\hrdc\framework\validators\CInlineValidator.php(42): CrudCode->validateModel('model', Array)
+#4 D:\xampp\htdocs\hrdc\framework\validators\CValidator.php(213): CInlineValidator->validateAttribute(Object(GiixCrudCode), 'model')
+#5 D:\xampp\htdocs\hrdc\framework\base\CModel.php(159): CValidator->validate(Object(GiixCrudCode), NULL)
+#6 D:\xampp\htdocs\hrdc\framework\gii\CCodeGenerator.php(159): CModel->validate()
+#7 D:\xampp\htdocs\hrdc\framework\gii\CCodeGenerator.php(63): CCodeGenerator->prepare()
+#8 D:\xampp\htdocs\hrdc\framework\web\actions\CInlineAction.php(49): CCodeGenerator->actionIndex()
+#9 D:\xampp\htdocs\hrdc\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 D:\xampp\htdocs\hrdc\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 D:\xampp\htdocs\hrdc\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(282): CController->run('index')
+#13 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('gii/giixCrud/in...')
+#14 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/hrdc/hr/gii/giixCrud/index
+HTTP_REFERER=http://localhost/hrdc/hr/gii/giixCrud/index
+---
+2014/03/27 14:41:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "humanResource/quickSearch".' in D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\xampp\htdocs\hrdc\framework\web\CWebApplication.php(141): CWebApplication->runController('humanResource/q...')
+#1 D:\xampp\htdocs\hrdc\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\xampp\htdocs\hrdc\hr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hrdc/hr/humanResource/quickSearch?q=z&limit=10&offset=0&_=1395906074429
+HTTP_REFERER=http://localhost/hrdc/hr/users/admin
+---

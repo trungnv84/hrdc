@@ -24,13 +24,15 @@ class HumanResources extends BaseHumanResources
 		$criteria->compare('skype', $this->skype, true);
 
 		if ($this->search) {
-			$criteria->compare('id', $this->search, false);
-			$criteria->compare('employee_id', $this->search, false, 'OR');
-			$criteria->compare('name', $this->search, true, 'OR');
-			$criteria->compare('username', $this->search, true, 'OR');
-			$criteria->compare('phone', $this->search, true, 'OR');
-			$criteria->compare('email', $this->search, true, 'OR');
-			$criteria->compare('skype', $this->search, true, 'OR');
+			$criteria2 = new CDbCriteria;
+			$criteria2->compare('id', $this->search, false);
+			$criteria2->compare('employee_id', $this->search, false, 'OR');
+			$criteria2->compare('name', $this->search, true, 'OR');
+			$criteria2->compare('username', $this->search, true, 'OR');
+			$criteria2->compare('phone', $this->search, true, 'OR');
+			$criteria2->compare('email', $this->search, true, 'OR');
+			$criteria2->compare('skype', $this->search, true, 'OR');
+			$criteria->mergeWith($criteria2);
 		}
 
 		return new CActiveDataProvider($this, array(

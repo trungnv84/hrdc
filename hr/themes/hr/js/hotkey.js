@@ -427,7 +427,7 @@
 					event.preventDefault();
 				}
 			}
-			//console.log(event);
+			console.log(event);
 		}).keyup(function (event) {
 				if (event.keyCode == 16 && !event.shiftKey && !event.ctrlKey && !event.altKey) {
 					$.hostKey(":shiftUp");
