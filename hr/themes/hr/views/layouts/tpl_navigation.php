@@ -4,7 +4,7 @@ if (!isset($baseUrl)) $baseUrl = Yii::app()->theme->baseUrl;
 $cs->registerCssFile($baseUrl.'/js/select2-3.4.5/select2.css');
 $cs->registerScriptFile($baseUrl.'/js/select2-3.4.5/select2.js');
 $cs->registerScriptFile($baseUrl.'/js/hotkey.js');
-$cs->registerScriptFile($baseUrl.'/js/quick_search.js');
+//$cs->registerScriptFile($baseUrl.'/js/quick_search.js');
 ?>
 <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="navbar-inner">
@@ -59,8 +59,7 @@ $cs->registerScriptFile($baseUrl.'/js/quick_search.js');
 
 <div class="subnav navbar navbar-fixed-top">
 	<div class="navbar-inner">
-		<div class="container">
-
+		<!--<div class="container">
 			<div class="style-switcher pull-left">
 				<a href="javascript:chooseStyle('none', 60)" checked="checked"><span class="style" style="background-color:#0088CC;"></span></a>
 				<a href="javascript:chooseStyle('style2', 60)"><span class="style" style="background-color:#7c5706;"></span></a>
@@ -76,7 +75,7 @@ $cs->registerScriptFile($baseUrl.'/js/quick_search.js');
 				       data-hot-key-action="trigger" data-hot-key-trigger="select2click" data-hot-key-z-index="1031"
 				       data-hot-key-position="fixed">
 			</form>
-		</div>
+		</div>-->
 		<!-- container -->
 	</div>
 	<!-- navbar-inner -->

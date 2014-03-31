@@ -109,7 +109,6 @@ $saveTexts = array('', _SAVE_END_CLOSE, _SAVE_END_NEW);
 				<?php
 				echo GxHtml::htmlButton('Save' . @$saveTexts[$redirect], array('type' => 'submit', 'id' => 'btn-save',
 						'class' => 'btn btn-primary hot-key', 'data-hot-key-code' => 's'));
-				$this->endWidget();
 				?>
 				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
 					<span class="caret"></span>
@@ -143,4 +142,8 @@ $saveTexts = array('', _SAVE_END_CLOSE, _SAVE_END_NEW);
 			<?php echo $form->error($model, 'resources'); ?>
 		</div>
 	</div>
+
+<?php
+$this->endWidget();
+?>
 </div><!-- form -->

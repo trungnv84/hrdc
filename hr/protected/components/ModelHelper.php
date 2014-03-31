@@ -56,4 +56,11 @@ class ModelHelper
 		}
 		return $wts;
 	}
+
+	public static function password($password)
+	{
+		$hash = new CSecurityManager;
+		$key = $hash->generateRandomString(rand(32, 64));
+		return $hash->computeHMAC($password, $key) . ":$key";
+	}
 }

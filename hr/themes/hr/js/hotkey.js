@@ -418,7 +418,7 @@
 		$(d).keydown(function (event) {
 			if ($.inArray(event.keyCode, [16, 17]) > -1 && event.shiftKey && event.ctrlKey && !event.altKey) {
 				$.hostKey(":showSuggest");
-			} else if (90 == event.keyCode && !event.shiftKey && !event.ctrlKey && event.altKey) {
+			} else if (90 == event.keyCode && !event.shiftKey && event.ctrlKey && event.altKey) {
 				$.hostKey(":showSuggest");
 			} else if (16 == event.keyCode && event.shiftKey && !event.ctrlKey && !event.altKey) {
 				$.hostKey(":shiftDown");
@@ -427,7 +427,7 @@
 					event.preventDefault();
 				}
 			}
-			console.log(event);
+			//console.log(event);
 		}).keyup(function (event) {
 				if (event.keyCode == 16 && !event.shiftKey && !event.ctrlKey && !event.altKey) {
 					$.hostKey(":shiftUp");

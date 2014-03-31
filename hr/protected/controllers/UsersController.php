@@ -1,6 +1,6 @@
 <?php
 
-class UsersController extends GxController
+class UsersController extends BaseController
 {
 
 	public function filters()
@@ -42,17 +42,19 @@ class UsersController extends GxController
 	{
 		$model = new Users;
 
-
 		if (isset($_POST['Users'])) {
+			$_POST['Users']['password'] = ModelHelper::password($_POST['Users']['password']);
 			$model->setAttributes($_POST['Users']);
 
 			if ($model->save()) {
 				if (Yii::app()->getRequest()->getIsAjaxRequest())
 					Yii::app()->end();
 				else
-					$this->redirect(array('view', 'id' => $model->id));
+					$this->saveRedirect($model->id);
 			}
 		}
+
+		$model->setAttribute('password', null);
 
 		$this->render('create', array('model' => $model));
 	}
@@ -61,14 +63,18 @@ class UsersController extends GxController
 	{
 		$model = $this->loadModel($id, 'Users');
 
-
 		if (isset($_POST['Users'])) {
+			if (trim($_POST['Users']['password']))
+				$_POST['Users']['password'] = ModelHelper::password($_POST['Users']['password']);
+			else unset($_POST['Users']['password']);
 			$model->setAttributes($_POST['Users']);
 
 			if ($model->save()) {
-				$this->redirect(array('view', 'id' => $model->id));
+				$this->saveRedirect($model->id);
 			}
 		}
+
+		$model->setAttribute('password', null);
 
 		$this->render('update', array(
 			'model' => $model,
