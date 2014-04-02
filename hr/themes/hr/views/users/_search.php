@@ -20,7 +20,7 @@
 		</div>
 		<div class="span2 offset3 text-right">
 			<label>&nbsp;</label>
-			<?php echo GxHtml::link('Create', array('/users/create'), array('id' => 'user-create', 'class' => 'btn hot-key', 'data-hot-key-code' => 'c', 'data-hot-key-action' => 'js', 'data-hot-key-js' => 'location = $(\'#project-create\').attr(\'href\');')); ?>
+			<?php echo GxHtml::link('Create', array('/users/create'), array('id' => 'user-create', 'class' => 'btn hot-key', 'data-hot-key-code' => 'c', 'data-hot-key-action' => 'js', 'data-hot-key-js' => 'location = $(\'#user-create\').attr(\'href\');')); ?>
 		</div>
 	</div>
 <?php $this->endWidget(); ?>

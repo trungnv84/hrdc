@@ -6,7 +6,8 @@ class Users extends BaseUsers
 {
 	public $search = null;
 
-	public static function model($className=__CLASS__) {
+	public static function model($className = __CLASS__)
+	{
 		return parent::model($className);
 	}
 
@@ -29,6 +30,9 @@ class Users extends BaseUsers
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
+			'pagination' => array(
+				'pageSize' => 30,
+			),
 		));
 	}
 }

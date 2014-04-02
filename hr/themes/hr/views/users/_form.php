@@ -67,7 +67,7 @@ $saveTexts = array('', _SAVE_END_CLOSE, _SAVE_END_NEW);
 						</li>
 					</ul>
 				</div>
-				<?php echo GxHtml::link('Cancel', array('admin'), array('class' => 'btn'));?>
+				<?php echo GxHtml::link('Cancel', array('admin'), array('id' => 'form-cancel', 'class' => 'btn hot-key', 'data-hot-key-code' => 'c', 'data-hot-key-action' => 'js', 'data-hot-key-js' => 'location = $(\'#form-cancel\').attr(\'href\');'));?>
 				<input type="hidden" id="redirect" name="redirect" value="<?php echo $redirect; ?>">
 			</div>
 		</div>

@@ -34,6 +34,19 @@
 	padding: 0;
 }
 
+a.search-button {
+	display: none;
+}
+
+.grid-view table.items th, .grid-view table.items td {
+	font-size: 1.2em !important;
+	line-height: 1.5em;
+}
+
+.grid-view table.items th {
+	font-size: 1.3em !important;
+}
+
 .bootstrap-datetimepicker-widget, .ui-datepicker {
 	z-index: 1040 !important;
 }

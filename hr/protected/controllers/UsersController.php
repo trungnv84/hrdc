@@ -2,6 +2,7 @@
 
 class UsersController extends BaseController
 {
+	public $layout = 'column1';
 
 	public function filters()
 	{

@@ -37,6 +37,9 @@ class HumanResources extends BaseHumanResources
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
+			'pagination' => array(
+				'pageSize' => 30,
+			),
 		));
 	}
 }
