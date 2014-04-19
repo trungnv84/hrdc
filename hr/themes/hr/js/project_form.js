@@ -138,4 +138,17 @@ $(document).ready(function () {
 		$("#redirect").val(0);
 		$("#btn-save").click();
 	});
+
+	$("#projects-form").validate({
+		rules: {
+			"Projects[name]": "required",
+			"Projects[short_name]": "required",
+			"Projects[type]": "required"
+		},
+		messages: {
+			"Projects[name]": "Please enter a name",
+			"Projects[short_name]": "Please enter a short name",
+			"Projects[type]": "Please select a type"
+		}
+	});
 });

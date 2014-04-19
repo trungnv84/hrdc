@@ -2,7 +2,36 @@
 
 class ProjectsController extends BaseController
 {
+	public $layout = 'column1';
+	private static $allowRoles = array('Admin', 'BOM', 'Chief');
 
+	public function filters()
+	{
+		return array(
+			'accessControl',
+		);
+	}
+
+	public function accessRules()
+	{
+		return array(
+			array('allow',
+				'actions' => array('index', 'view'),
+				'users' => array('@'),
+			),
+			array('allow',
+				'actions' => array('minicreate', 'create', 'update'),
+				'roles' => ModelHelper::getRoleIdsByNames(self::$allowRoles),
+			),
+			array('allow',
+				'actions' => array('admin', 'delete'),
+				'roles' => ModelHelper::getRoleIdsByNames(self::$allowRoles),
+			),
+			array('deny',
+				'users' => array('*'),
+			),
+		);
+	}
 
 	public function actionView($id)
 	{

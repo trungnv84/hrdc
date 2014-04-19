@@ -5,6 +5,7 @@ $cs->registerCssFile($baseUrl.'/js/select2-3.4.5/select2.css');
 $cs->registerScriptFile($baseUrl.'/js/select2-3.4.5/select2.js');
 $cs->registerScriptFile($baseUrl.'/js/plupload-2.1.1/plupload.full.min.js');
 $cs->registerScriptFile($baseUrl.'/js/hotkey.js');
+$cs->registerScriptFile($baseUrl.'/js/jquery-validation-1.12.0/dist/jquery.validate.min.js');
 $cs->registerScriptFile($baseUrl.'/js/human_resource_form.js');
 $redirect = Yii::app()->user->getState("HumanResources_form_states_redirect", 0);
 $saveTexts = array('', _SAVE_END_CLOSE, _SAVE_END_NEW);

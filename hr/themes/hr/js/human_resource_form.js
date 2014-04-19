@@ -180,4 +180,19 @@ $(document).ready(function () {
 		$("#redirect").val(0);
 		$("#btn-save").click();
 	});
+
+	$("#human-resources-form").validate({
+		rules: {
+			"HumanResources[employee_id]": "required",
+			"HumanResources[name]": "required",
+			"HumanResources[user_id]": "required",
+			"HumanResources[division_id]": "required"
+		},
+		messages: {
+			"HumanResources[employee_id]": "Please enter a id",
+			"HumanResources[name]": "Please enter a name",
+			"HumanResources[user_id]": "Please enter a user account",
+			"HumanResources[division_id]": "Please enter a division"
+		}
+	});
 });

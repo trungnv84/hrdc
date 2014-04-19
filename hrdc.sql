@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50536
 File Encoding         : 65001
 
-Date: 2014-03-22 16:57:41
+Date: 2014-04-19 14:29:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,7 +65,7 @@ CREATE TABLE `human_resources` (
   `skype` varchar(60) DEFAULT '',
   `position` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of human_resources
@@ -76,6 +76,7 @@ INSERT INTO `human_resources` VALUES ('3', '6987', 'Chien Hoang Long', '0', 'Lon
 INSERT INTO `human_resources` VALUES ('4', '8888', 'Ha Minh Chien', '0', 'ChienHM8888', '3', '0', 'Koala-5.jpg', '123456789', 'ChienHM8888@setacinq.com.vn', 'ChienHM88', null);
 INSERT INTO `human_resources` VALUES ('5', '8521', 'ABC', '0', 'ABC', '3', '0', 'Loi dang nhap.png', '54987878', null, null, null);
 INSERT INTO `human_resources` VALUES ('6', '8798', 'Hoang Tuan Nhat', '0', 'NhatHT8798', '1', '0', 'Desert.jpg', '0987564321', 'NhatHT8798@setacinq.com.vn', 'NhatHT8798', null);
+INSERT INTO `human_resources` VALUES ('7', '555', '5555', '0', null, '1', '0', null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `projects`
@@ -99,7 +100,7 @@ CREATE TABLE `projects` (
   `resources` text,
   `ordering` int(10) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of projects
@@ -107,6 +108,7 @@ CREATE TABLE `projects` (
 INSERT INTO `projects` VALUES ('1', 'Best Fashion Friend', 'BFF', null, 'Nexus 4 (7).png', 'Nexus 4 (7).png', '2', '5000', '4500', '0', '1394100000', null, null, null, null, '0');
 INSERT INTO `projects` VALUES ('2', 'SellPoint', 'SPT', null, null, null, '1', '0', '0', '0', '1394013600', '1394100000', '1394186400', '1394272800', null, '0');
 INSERT INTO `projects` VALUES ('3', 'TiViTz College $avings Game-a-thon', 'TIV', null, null, null, '2', '5000', '5000', '0', '1377943200', '1380535200', '1391076000', '1392372000', null, '0');
+INSERT INTO `projects` VALUES ('4', '555', '555', null, null, null, '1', '0', '0', '0', null, null, null, null, null, '0');
 
 -- ----------------------------
 -- Table structure for `users`
@@ -117,9 +119,9 @@ CREATE TABLE `users` (
   `username` varchar(128) DEFAULT NULL,
   `password` varchar(128) DEFAULT NULL,
   `email` varchar(128) DEFAULT NULL,
-  `roles` tinyint(3) DEFAULT '0' COMMENT '0: Dev; 1: Admin; 2: BOM; 3: Chief; 4: PM',
+  `roles` tinyint(3) unsigned DEFAULT '0' COMMENT '0: Dev; 1: Admin; 2: BOM; 3: Chief; 4: PM',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of users
@@ -145,6 +147,9 @@ INSERT INTO `users` VALUES ('18', 'test18', 'pass18', 'test18@example.com', '0')
 INSERT INTO `users` VALUES ('19', 'test19', 'pass19', 'test19@example.com', '0');
 INSERT INTO `users` VALUES ('20', 'test20', 'pass20', 'test20@example.com', '0');
 INSERT INTO `users` VALUES ('21', 'test21', 'pass21', 'test21@example.com', '0');
+INSERT INTO `users` VALUES ('22', 'ty', 'd68b7bc0755d4dcca15be3258f76e9ac4a53245b:xUXg8jMzLExTrJITLb~Pkmsmb8jfle4An', null, '0');
+INSERT INTO `users` VALUES ('23', 'admin', 'ca48f94bca966e20e4b4d54ff348532b116a04f5:7rr6qSs6pC0AokkSxcAglT3fHNg8ng6y8KDRlEkxiCRKkEBewsalI_skOFgnR~Dh', 'trungnv6371@setacinq.com.vn', '1');
+INSERT INTO `users` VALUES ('24', 'admin2', '55c5204a65d96e99ef647ccd5acf96e4277ec837:m_3xS~ZeDElFXhYfHwsZ~neDW4nUCLkQcFlfJt3kuA_3', 'trungnv6371@setacinq.com.vn', '3');
 
 -- ----------------------------
 -- Table structure for `working_times`
@@ -162,9 +167,11 @@ CREATE TABLE `working_times` (
   `status` tinyint(3) unsigned DEFAULT '0' COMMENT '1: visible',
   `note` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of working_times
 -- ----------------------------
-INSERT INTO `working_times` VALUES ('47', '1', '1', '0', '1395457140', '0', '0', '0', '1', null);
+INSERT INTO `working_times` VALUES ('51', '1', '2', '0', '1395457660', '1395457200', '0', '52', '0', null);
+INSERT INTO `working_times` VALUES ('52', '1', '3', '4', '1395457200', '1395457809', '51', '53', '1', null);
+INSERT INTO `working_times` VALUES ('53', '1', '1', '4', '1395889740', '0', '52', '0', '1', null);

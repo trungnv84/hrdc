@@ -221,6 +221,12 @@ a.search-button {
 	margin: 0;
 }
 
+label.error {
+	color: red;
+	font-size: 1em;
+	margin-top: -5px;
+}
+
 /*========== loading ==========*/
 .saving-busy {
 	color: #2187e7;

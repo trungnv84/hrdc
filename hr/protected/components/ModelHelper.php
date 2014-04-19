@@ -63,4 +63,13 @@ class ModelHelper
 		$key = $hash->generateRandomString(rand(32, 64));
 		return $hash->computeHMAC($password, $key) . ":$key";
 	}
+
+	public static function getRoleIdsByNames(Array $names)
+	{
+		$roleIds = array();
+		foreach (Yii::app()->params['userRoles'] as $key => $role) {
+			if (in_array($role, $names)) $roleIds[] = $key;
+		}
+		return $roleIds;
+	}
 }

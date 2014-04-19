@@ -2,6 +2,7 @@
 if (!isset($cs)) $cs = Yii::app()->getClientScript();
 if (!isset($baseUrl)) $baseUrl = Yii::app()->theme->baseUrl;
 $cs->registerScriptFile($baseUrl.'/js/hotkey.js');
+$cs->registerScriptFile($baseUrl.'/js/jquery-validation-1.12.0/dist/jquery.validate.min.js');
 $cs->registerScriptFile($baseUrl . '/js/user_form.js');
 $redirect = Yii::app()->user->getState("Users_form_states_redirect", 0);
 $saveTexts = array('', _SAVE_END_CLOSE, _SAVE_END_NEW);
@@ -22,24 +23,24 @@ $saveTexts = array('', _SAVE_END_CLOSE, _SAVE_END_NEW);
 
 		<div class="row">
 			<div class="span3">
-				<?php echo $form->labelEx($model,'username'); ?>
+				<?php echo $form->labelEx($model, 'username', array('label' => 'Username*' )); ?>
 				<?php echo $form->textField($model, 'username', array('class' => 'span12 hot-key', 'maxlength' => 128)); ?>
 				<?php echo $form->error($model,'username'); ?>
 			</div>
 			<div class="span3">
-				<?php echo $form->labelEx($model,'password'); ?>
+				<?php echo $form->labelEx($model, 'password', array('label' => 'Password*' )); ?>
 				<?php echo $form->passwordField($model, 'password', array('class' => 'span12 hot-key', 'maxlength' => 128)); ?>
 				<?php echo $form->error($model,'password'); ?>
 			</div>
 		</div><!-- row -->
 		<div class="row">
 			<div class="span3">
-				<?php echo $form->labelEx($model,'email'); ?>
+				<?php echo $form->labelEx($model, 'email', array('label' => 'Email*' )); ?>
 				<?php echo $form->textField($model, 'email', array('class' => 'span12 hot-key', 'maxlength' => 128)); ?>
 				<?php echo $form->error($model,'email'); ?>
 			</div>
 			<div class="span3">
-				<?php echo $form->labelEx($model,'roles'); ?>
+				<?php echo $form->labelEx($model, 'roles', array('label' => 'Role*' )); ?>
 				<?php echo $form->dropDownList($model, 'roles', Yii::app()->params['userRoles'], array('empty' => '(Select a role)', 'class' => 'span12 hot-key')); ?>
 				<?php echo $form->error($model,'roles'); ?>
 			</div>

@@ -1,3 +1,8 @@
+<?php
+if (!isset($cs)) $cs = Yii::app()->getClientScript();
+if (!isset($baseUrl)) $baseUrl = Yii::app()->theme->baseUrl;
+$cs->registerScriptFile($baseUrl.'/js/hotkey.js');
+?>
 <div class="wide form">
 
 <?php $form = $this->beginWidget('GxActiveForm', array(

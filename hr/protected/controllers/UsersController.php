@@ -3,6 +3,7 @@
 class UsersController extends BaseController
 {
 	public $layout = 'column1';
+	private static $allowRoles = array('Admin', 'BOM', 'Chief');
 
 	public function filters()
 	{
@@ -20,11 +21,11 @@ class UsersController extends BaseController
 			),
 			array('allow',
 				'actions' => array('minicreate', 'create', 'update'),
-				'roles' => array(1),
+				'roles' => ModelHelper::getRoleIdsByNames(self::$allowRoles),
 			),
 			array('allow',
 				'actions' => array('admin', 'delete'),
-				'roles' => array(1),
+				'roles' => ModelHelper::getRoleIdsByNames(self::$allowRoles),
 			),
 			array('deny',
 				'users' => array('*'),
@@ -44,8 +45,9 @@ class UsersController extends BaseController
 		$model = new Users;
 
 		if (isset($_POST['Users'])) {
-			$_POST['Users']['password'] = ModelHelper::password($_POST['Users']['password']);
-			$model->setAttributes($_POST['Users']);
+			$user = $_POST['Users'];
+			$user['password'] = ModelHelper::password($user['password']);
+			$model->setAttributes($user);
 
 			if ($model->save()) {
 				if (Yii::app()->getRequest()->getIsAjaxRequest())
@@ -65,10 +67,11 @@ class UsersController extends BaseController
 		$model = $this->loadModel($id, 'Users');
 
 		if (isset($_POST['Users'])) {
-			if (trim($_POST['Users']['password']))
-				$_POST['Users']['password'] = ModelHelper::password($_POST['Users']['password']);
-			else unset($_POST['Users']['password']);
-			$model->setAttributes($_POST['Users']);
+			$user = $_POST['Users'];
+			if (trim($user['password']))
+				$user['password'] = ModelHelper::password($user['password']);
+			else unset($user['password']);
+			$model->setAttributes($user);
 
 			if ($model->save()) {
 				$this->saveRedirect($model->id);
