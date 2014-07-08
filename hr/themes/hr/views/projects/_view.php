@@ -13,7 +13,7 @@ $human_resources = ViewHelper::getWorkerInProject($data->id);
 		<?php foreach ($human_resources as $human_resource): ?>
 
 			<div class="human-resource" data-working-time="<?php echo GxHtml::encode(json_encode($human_resource)); ?>">
-				<?php echo $human_resource->resource->username ? $human_resource->resource->username : $human_resource->resource->name . " ($human_resource->resource->employee_id)"; ?>
+				<?php echo $human_resource->resource->username ? $human_resource->resource->username : $human_resource->resource->name . " ({$human_resource->resource->employee_id})"; ?>
 				<div class="edit-button">
 					<a class="wt-apply" href="javascript:;" title="Apply">
 						<i class="icon icon-ok"></i></a>
